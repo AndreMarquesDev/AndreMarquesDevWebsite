@@ -1,0 +1,23 @@
+// Animations //
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+// Page transitions
+
+.fadeTransition-enter-active, .fadeTransition-leave-active {
+    transition: opacity .3s ease;
+}
+
+.fadeTransition-enter, .fadeTransition-leave-active {
+    opacity: 0
+}
