@@ -1,22 +1,22 @@
 <template>
     <main>
-        <navigation name="Navigation"/>
+        <navigation/>
         <main-content url="secondPage" name="This is the first page" destination="the second page"/>
-        <footerNav name="Footer"/>
+        <transitionComponent name="Transition"/>
     </main>
 </template>
 
 <script>
 import navigation from './../components/navigation.vue';
 import mainContent from './../components/mainContent.vue';
-import footerNav from './../components/footerNav.vue';
+import transitionComponent from './../components/transitionComponent.vue';
 
 export default {
     name: 'home',
     components: {
         navigation,
         mainContent,
-        footerNav
+        transitionComponent
     }
 }
 </script>

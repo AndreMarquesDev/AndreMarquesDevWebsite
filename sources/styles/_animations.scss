@@ -19,5 +19,29 @@
 }
 
 .fadeTransition-enter, .fadeTransition-leave-active {
-    opacity: 0
+    opacity: 0;
 }
+
+.testTransition-enter-active, .testTransition-leave-active {
+    @include transition (all, 1s);
+}
+
+.testTransition-leave-active {
+    .transitionComponent {
+        height: 100vh;
+
+        .leftBar, .rightBar {
+            height: 100%;
+        }
+    }
+}
+
+// .testTransition-enter-active {
+//     .transitionComponent {
+//         height: 0;
+
+//         .leftBar, .rightBar {
+//             height: 0;
+//         }
+//     }
+// }

@@ -1,5 +1,5 @@
-# Vue Boilerplate
-Vue boilerplate to start a new project. Includes routes and store.  
+# Andre Marques Dev Website
+My very own website
 
 ## About
 
@@ -8,8 +8,10 @@ Vue boilerplate to start a new project. Includes routes and store.
 Vue  
 Vue Router  
 Vuex store  
-Webpack (based on my [Webpack Boilerplate](https://github.com/AndreMarquesDev/WebpackBoilerplate))  
+Webpack
 PWA ready
+
+(based on my [Vue Boilerplate](https://github.com/AndreMarquesDev/VueBoilerplate))  
 
 ### Author
 

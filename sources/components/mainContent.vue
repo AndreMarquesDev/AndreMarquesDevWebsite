@@ -33,12 +33,12 @@ export default {
 
 .content {
     width: 100%;
-    height: 800px;
+    height: 1200px;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     text-align: center;
-    background: $mediumGrey;
+    background: $grey;
     display: flex;
     align-items: center;
 

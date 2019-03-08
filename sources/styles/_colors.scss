@@ -1,17 +1,15 @@
 // Colors //
+$black: #09101c;
 $white: #ffffff;
-$black: #232c35;
-$grey: #727d86;
-$mediumGrey: #acb8c1;
-$salmon: #f4555d;
-$orange: #fc9e00;
-$mustard: #f9cc4a;
-$oliveGreen: #8cd187;
-$aqua: #2fc9da;
+$grey: #e8f0f3;
+$blue: #5066a7;
+$darkBlue: #083c81;
+$orange: #e87600;
+$purple: #662d8c;
 
 // Gradients //
-$primaryGradient: linear-gradient(126deg, $salmon, $orange 99%);
-$portugalGradient: linear-gradient(45deg, $salmon, $mustard, $oliveGreen);
+$primaryGradient: linear-gradient(to right, $purple, $black);
+$invertedPrimaryGradient: linear-gradient(to right, $black, $purple);
 
 // Box-shadow //
 $boxShadow: rgba(45,45,45,0.05) 0px 2px 2px, rgba(49,49,49,0.05) 0px 4px 4px, rgba(42,42,42,0.05) 0px 8px 8px, rgba(32,32,32,0.05) 0px 16px 16px, rgba(49,49,49,0.05) 0px 32px 32px, rgba(35,35,35,0.05) 0px 64px 64px;
