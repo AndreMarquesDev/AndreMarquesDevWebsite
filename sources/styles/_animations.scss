@@ -14,34 +14,38 @@
 
 // Page transitions
 
-.fadeTransition-enter-active, .fadeTransition-leave-active {
-    transition: opacity .3s ease;
-}
-
-.fadeTransition-enter, .fadeTransition-leave-active {
-    opacity: 0;
-}
-
-.testTransition-enter-active, .testTransition-leave-active {
+// Common settings, usually where transition is defined
+.curtainTransition-enter-active, .curtainTransition-leave-active {
     @include transition (all, 1s);
-}
 
-.testTransition-leave-active {
     .transitionComponent {
         height: 100vh;
-
-        .leftBar, .rightBar {
-            height: 100%;
-        }
     }
+
+    .leftBar, .rightBar {
+        @include transition (transform, 1s);
+    }
+
 }
 
-// .testTransition-enter-active {
-//     .transitionComponent {
-//         height: 0;
+// When leaving the page
+.curtainTransition-enter, .curtainTransition-leave-to {
 
-//         .leftBar, .rightBar {
-//             height: 0;
-//         }
-//     }
-// }
+    .transitionComponent .leftBar, .transitionComponent .rightBar {
+        transform: translateX(0);
+    }
+
+}
+
+// When entering the new page
+.curtainTransition-enter-to, .curtainTransition-leave {
+
+    .transitionComponent .leftBar {
+        transform: translateX(-100%);
+    }
+
+    .transitionComponent .rightBar {
+        transform: translateX(100%);
+    }
+
+}

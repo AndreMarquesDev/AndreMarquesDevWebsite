@@ -5,44 +5,33 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        name: {
-            type: String,
-            required: true
-        }
-    }
-}
-</script>
-
 <style lang='scss'>
 @import '../styles/variables.scss';
 
 .transitionComponent {
-    height: 0;
     width: 100%;
+    height: 0;
     position: absolute;
     top: 0;
     z-index: 1;
 
     .leftBar, .rightBar {
         width: 50%;
-        height: 0;
+        height: 100%;
         position: absolute;
-        @include transition (height, 1s);
+        top: 0;
     }
 
     .leftBar {
-        top: 0;
         left: 0;
         background: $primaryGradient;
+        transform: translateX(-100%);
     }
 
     .rightBar {
         right: 0;
-        bottom: 0;
         background: $invertedPrimaryGradient;
+        transform: translateX(100%);
     }
 
 }

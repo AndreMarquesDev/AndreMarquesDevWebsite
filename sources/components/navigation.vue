@@ -1,5 +1,5 @@
 <template>
-    <section class="navigation" :class="{open: menuOpen}" @mousemove="teste">
+    <section class="navigation" :class="{open: this.$store.state.menuOpen}" @mousemove="movingPolygons">
         <div class="wrapper">
 
             <nav>
@@ -42,24 +42,17 @@
 </template>
 
 <script>
+// import { mapMutations } from 'vuex'
+
 export default {
-    props: {
-    },
-    data() {
-        return {
-            menuOpen: false
-        }
-    },
     methods: {
         toggleMenu() {
-            const body = document.querySelector('body');
-
-            this.menuOpen = !this.menuOpen;
-            this.menuOpen
-                ? body.classList.add('noScroll')
-                : body.classList.remove('noScroll');
+            this.$store.commit('toggleMenu');
         },
-        teste() {
+        // ...mapMutations({
+        //     toggleMenu: 'toggleMenu'
+        // }),
+        movingPolygons() {
             const polygonsContainer = this.$el.querySelector('.navigation__polygons'),
                 x = event.pageX - event.target.offsetLeft,
                 y = event.pageY - event.target.offsetTop;
@@ -67,6 +60,9 @@ export default {
             polygonsContainer.style.right = x / 10 + 'px';
             polygonsContainer.style.top = `calc(15% + ${y / 10}px)`;
         }
+    },
+    mounted() {
+        console.log('montou nav');
     }
 }
 </script>

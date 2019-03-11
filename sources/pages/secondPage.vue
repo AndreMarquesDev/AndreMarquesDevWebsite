@@ -2,7 +2,7 @@
     <main>
         <navigation name="Navigation"/>
         <main-content url="home" name="This is the second page" destination="the first page"/>
-        <transitionComponent name="Transition"/>
+        <transitionComponent/>
     </main>
 </template>
 

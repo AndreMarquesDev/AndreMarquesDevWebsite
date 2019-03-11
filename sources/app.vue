@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <transition name="testTransition" mode="out-in">
-            <router-view></router-view>
+        <transition name="curtainTransition" mode="out-in">
+            <router-view/>
         </transition>
     </div>
 </template>
@@ -9,7 +9,10 @@
 <script>
 
 export default {
-    name: 'app'
+    name: 'app',
+    updated() {
+        this.$store.commit('toggleMenu', true)
+    }
 }
 </script>
 
