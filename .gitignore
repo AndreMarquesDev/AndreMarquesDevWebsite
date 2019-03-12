@@ -17,7 +17,7 @@ node_modules
 .vscode
 /node_modules
 /.vscode
-/public
+# /public
 .env
 .svn
 Dockerfile
