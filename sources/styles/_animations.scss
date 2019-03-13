@@ -12,11 +12,21 @@
     }
 }
 
+// Animation for spinning loader
+@keyframes spinningLoader {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(720deg);
+    }
+}
+
 // Page transitions
 
 // Common settings, usually where transition is defined
 .curtainTransition-enter-active, .curtainTransition-leave-active {
-    @include transition (all, 1s);
+    @include transition (all, 10000s);
 
     .transitionComponent {
         height: 100vh;
