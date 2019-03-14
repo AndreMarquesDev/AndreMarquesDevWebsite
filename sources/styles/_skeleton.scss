@@ -14,6 +14,7 @@ body {
     font-family: $font;
     font-weight: $fontRegular;
     -webkit-font-smoothing: antialiased;
+    background: #9c9c9c;
     overflow-x: hidden;
 
     &.noScroll {
@@ -43,69 +44,4 @@ a {
     text-decoration: none;
     outline: none;
     cursor: pointer;
-}
-
-// Spacing //
-.paddingTop80 {
-    padding-top: 80px;
-    @include tablet {
-        padding-top: 40px;
-    }
-}
-
-.paddingTop60 {
-    padding-top: 60px;
-    @include tablet {
-        padding-top: 30px;
-    }
-}
-
-.paddingTop40 {
-    padding-top: 40px;
-    @include tablet {
-        padding-top: 20px;
-    }
-}
-
-.paddingTop20 {
-    padding-top: 20px;
-    @include tablet {
-        padding-top: 10px;
-    }
-}
-
-.paddingTop0 {
-    padding-top: 0;
-}
-
-.paddingBottom80 {
-    padding-bottom: 80px;
-    @include tablet {
-        padding-bottom: 40px;
-    }
-}
-
-.paddingBottom60 {
-    padding-bottom: 60px;
-    @include tablet {
-        padding-bottom: 30px;
-    }
-}
-
-.paddingBottom40 {
-    padding-bottom: 40px;
-    @include tablet{
-        padding-bottom: 20px;
-    }
-}
-
-.paddingBottom20 {
-    padding-bottom: 20px;
-    @include tablet {
-        padding-bottom: 10px;
-    }
-}
-
-.paddingBottom0 {
-    padding-bottom: 0;
 }

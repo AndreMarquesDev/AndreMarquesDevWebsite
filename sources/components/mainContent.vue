@@ -38,7 +38,6 @@ export default {
     position: relative;
     vertical-align: middle;
     text-align: center;
-    background: $grey;
     display: flex;
     align-items: center;
 

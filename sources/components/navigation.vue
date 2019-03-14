@@ -7,17 +7,6 @@
                     <img src="../images/logo.svg" alt="logo">
                 </router-link>
                 <i class="navigation__menuIcon" @click="toggleMenu"><span></span></i>
-                <ul class="navigation__linksContainer">
-                    <li>
-                        <router-link to="/">Work</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/">About</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/">Contact</router-link>
-                    </li>
-                </ul>
             </nav>
 
             <div class="navigation__polygons">
@@ -38,6 +27,23 @@
             </div>
 
         </div>
+
+        <ul class="navigation__linksContainer">
+            <div class="wrapper noPadding">
+                <li>
+                    <router-link to="/">Teste</router-link>
+                </li>
+                <li>
+                    <router-link to="/">Teste</router-link>
+                </li>
+                <li>
+                    <router-link to="/">Teste</router-link>
+                </li>
+            </div>
+        </ul>
+
+        <button @click="dummy">Dummy</button>
+
     </section>
 </template>
 
@@ -54,6 +60,9 @@ export default {
 
             polygonsContainer.style.right = x / 10 + 'px';
             polygonsContainer.style.top = `calc(15% + ${y / 10}px)`;
+        },
+        dummy() {
+            this.$el.querySelector('.navigation__linksContainer').classList.toggle('open');
         }
     }
 }
@@ -66,9 +75,16 @@ $navHeight: 80px;
 $clipPathPolygonRight: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
 $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
 
+button {
+    position: absolute;
+    top: 0;
+    font-size: 40px;
+    color: red;
+    z-index: 5;
+}
+
 .navigation {
     height: $navHeight;
-    background: $primaryGradient;
     overflow: hidden;
     @include transition (height, .4s, ease);
 
@@ -76,7 +92,7 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
         height: 100vh;
 
         .navigation__polygons {
-            display: block;
+            // display: block;
         }
 
         .navigation__menuIcon {
@@ -140,13 +156,35 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
 
     &__linksContainer {
         width: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 10%;
-        overflow: hidden;
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        text-align: center;
         z-index: 1;
+        transform: scale(0);
+        @include transition (all, .4s, ease);
+
+        &:before {
+            content: '';
+            width: 200vw;
+            height: 300vh;
+            position: absolute;
+            top: -100vh;
+            background: lightblue;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        &.open {
+            top: 0;
+            left: 0;
+            transform: scale(1);
+        }
 
         li {
             @include fontGiant ($white);
