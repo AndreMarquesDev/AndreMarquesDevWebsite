@@ -74,7 +74,7 @@ module.exports = {
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(['public']),
+        new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: 'Index',

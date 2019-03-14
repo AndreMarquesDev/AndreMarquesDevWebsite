@@ -7,6 +7,7 @@ import Vue from 'vue'
 import app from './app.vue'
 import routes from './routes.js'
 import store from './store.js'
+import './fontAwesome.config'
 
 Vue.config.productionTip = false
 

@@ -2,6 +2,7 @@
     <div class="transitionComponent">
         <div class="leftBar"></div>
         <div class="rightBar"></div>
+        <fontAwesomeIcon icon="circle-notch" />
     </div>
 </template>
 
@@ -68,6 +69,10 @@
             right: 0;
         }
 
+    }
+
+    svg {
+        animation: spinningLoader 1s ease-in-out 0s infinite normal;
     }
 
 }

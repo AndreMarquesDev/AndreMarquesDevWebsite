@@ -155,7 +155,7 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
             letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 10%;
-            @include transition;
+            @include transition (color, .2s, ease-out);
 
             &:last-child {
                 margin-bottom: 0;
@@ -165,7 +165,7 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
                 color: $orange;
 
                 a {
-                    -webkit-text-stroke: 0;
+                    -webkit-text-stroke: 1px $orange;
                 }
 
             }
