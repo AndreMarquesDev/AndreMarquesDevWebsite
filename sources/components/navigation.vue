@@ -1,50 +1,33 @@
 <template>
-    <section class="navigation" :class="{open: this.$store.state.menuOpen}" @mousemove="polygonsAnimation">
-        <div class="wrapper">
+    <header class="navigation">
 
-            <nav>
-                <router-link to="home" class="navigation__logo">
-                    <img src="../images/logo.svg" alt="logo">
-                </router-link>
-                <i class="navigation__menuIcon" @click="toggleMenu"><span></span></i>
-            </nav>
+        <nav>
+            <router-link to="home" class="navigation__logo">
+                <img src="../images/logo.svg" alt="logo">
+            </router-link>
 
-            <div class="navigation__polygons">
-                <div class="leftContainer">
-                    <div class="left"></div>
-                    <div class="left"></div>
-                    <div class="left"></div>
-                    <div class="left"></div>
-                    <div class="left"></div>
-                </div>
-                <div class="rightContainer">
-                    <div class="right"></div>
-                    <div class="right"></div>
-                    <div class="right"></div>
-                    <div class="right"></div>
-                    <div class="right"></div>
-                </div>
-            </div>
+            <i class="navigation__menuIcon" @click="toggleMenu"><span></span></i>
 
-        </div>
-
-        <ul class="navigation__linksContainer">
-            <div class="wrapper noPadding">
+            <ul class="navigation__socialLinks">
                 <li>
-                    <router-link to="/">Teste</router-link>
+                    <a href="https://github.com/AndreMarquesDev" target="_blank">
+                        <fontAwesomeIcon :icon="['fab', 'github']" />
+                    </a>
                 </li>
-                <li>
-                    <router-link to="/">Teste</router-link>
+                 <li>
+                    <a href="https://codepen.io/AndreMarquesDev/" target="_blank">
+                        <fontAwesomeIcon :icon="['fab', 'codepen']" />
+                    </a>
                 </li>
-                <li>
-                    <router-link to="/">Teste</router-link>
+                 <li>
+                    <a href="https://twitter.com/BazingaCS" target="_blank">
+                        <fontAwesomeIcon :icon="['fab', 'twitter']" />
+                    </a>
                 </li>
-            </div>
-        </ul>
+            </ul>
+        </nav>
 
-        <button @click="dummy">Dummy</button>
-
-    </section>
+    </header>
 </template>
 
 <script>
@@ -52,17 +35,6 @@ export default {
     methods: {
         toggleMenu() {
             this.$store.commit('toggleMenu');
-        },
-        polygonsAnimation() {
-            const polygonsContainer = this.$el.querySelector('.navigation__polygons'),
-                x = event.pageX - event.target.offsetLeft,
-                y = event.pageY - event.target.offsetTop;
-
-            polygonsContainer.style.right = x / 10 + 'px';
-            polygonsContainer.style.top = `calc(15% + ${y / 10}px)`;
-        },
-        dummy() {
-            this.$el.querySelector('.navigation__linksContainer').classList.toggle('open');
         }
     }
 }
@@ -72,49 +44,16 @@ export default {
 @import '../styles/variables.scss';
 
 $navHeight: 80px;
-$clipPathPolygonRight: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
-$clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
-
-button {
-    position: absolute;
-    top: 0;
-    font-size: 40px;
-    color: red;
-    z-index: 5;
-}
 
 .navigation {
     height: $navHeight;
     overflow: hidden;
-    @include transition (height, .4s, ease);
-
-    &.open {
-        height: 100vh;
-
-        .navigation__polygons {
-            // display: block;
-        }
-
-        .navigation__menuIcon {
-
-            span {
-                transform: scale(0);
-            }
-
-            &:before {
-                transform: translateY(9px) rotate(45deg);
-            }
-
-            &:after {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-
-        }
-
-    }
 
     nav {
-        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4%;
         z-index: 1;
     }
 
@@ -131,8 +70,8 @@ button {
     &__menuIcon {
         width: 28px;
         position: absolute;
-        top: 25px;
-        right: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         cursor: pointer;
 
         span, &:before, &:after {
@@ -154,146 +93,8 @@ button {
 
     }
 
-    &__linksContainer {
-        width: 100%;
-        height: 100vh;
+    &__socialLinks {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        text-align: center;
-        z-index: 1;
-        transform: scale(0);
-        @include transition (all, .4s, ease);
-
-        &:before {
-            content: '';
-            width: 200vw;
-            height: 300vh;
-            position: absolute;
-            top: -100vh;
-            background: lightblue;
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        &.open {
-            top: 0;
-            left: 0;
-            transform: scale(1);
-        }
-
-        li {
-            @include fontGiant ($white);
-            font-weight: $fontBold;
-            color: transparent;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 10%;
-            @include transition (color, .2s, ease-out);
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            &:hover {
-                color: $orange;
-
-                a {
-                    -webkit-text-stroke: 1px $orange;
-                }
-
-            }
-
-            a {
-                color: inherit;
-                -webkit-text-stroke: 1px $white;
-            }
-
-        }
-
-    }
-
-    &__polygons {
-        display: none;
-        width: 75vw;
-        position: absolute;
-        @include transition;
-
-        .leftContainer, .rightContainer {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-        }
-
-        .left, .right {
-            width: 85px;
-            height: 70px;
-            background: transparent;
-            position: relative;
-            border: 2px solid $white;
-            clip-path: $clipPathPolygonRight;
-
-            &:before, &:after {
-                content: '';
-                width: 2px;
-                height: 120%;
-                display: block;
-                background: $white;
-                position: absolute;
-                top: -10%;
-                transform: rotate(211.5deg);
-            }
-
-            &:before {
-                left: 24%;
-            }
-
-            &:after {
-                right: 24%;
-            }
-
-        }
-
-        .left {
-            left: -15%;
-
-            &:nth-of-type(even) {
-                left: 0;
-                clip-path: $clipPathPolygonLeft;
-
-                &:before, &:after {
-                    transform: rotate(-211.5deg);
-                }
-
-            }
-
-        }
-
-        .right {
-            left: 95%;
-            clip-path: $clipPathPolygonLeft;
-
-            &:before, &:after {
-                transform: rotate(-211.5deg);
-            }
-
-            &:nth-of-type(even) {
-                left: 80%;
-                clip-path: $clipPathPolygonRight;
-
-                &:before, &:after {
-                    transform: rotate(211.5deg);
-                }
-
-            }
-
-        }
-
     }
 
 }

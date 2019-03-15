@@ -1,5 +1,17 @@
 // Font Awesome Icons //
 
 .svg-inline--fa {
-    // color: red;
+    color: $white;
+    margin: 0 15px;
+    @include transition;
+
+    &:hover {
+        opacity: .5;
+    }
+
+}
+
+.svg-inline--fa.fa-w-16 {
+    width: 30px;
+    height: 30px;
 }

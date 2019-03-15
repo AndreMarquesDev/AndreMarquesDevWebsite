@@ -33,7 +33,7 @@ export default {
 
 .content {
     width: 100%;
-    height: 1200px;
+    height: 1500px;
     display: inline-block;
     position: relative;
     vertical-align: middle;

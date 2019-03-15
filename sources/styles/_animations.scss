@@ -26,7 +26,7 @@
 
 // Common settings, usually where transition is defined
 .curtainTransition-enter-active, .curtainTransition-leave-active {
-    @include transition (all, 10000s);
+    @include transition (all, 2s);
 
     .transitionComponent {
         height: 100vh;

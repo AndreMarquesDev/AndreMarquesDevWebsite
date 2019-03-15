@@ -1,7 +1,8 @@
 <template>
     <main>
-        <navigation name="Navigation"/>
+        <navigation/>
         <main-content url="home" name="This is the second page" destination="the first page"/>
+        <menuOverlay/>
         <transitionComponent/>
     </main>
 </template>
@@ -9,6 +10,7 @@
 <script>
 import navigation from './../components/navigation.vue';
 import mainContent from './../components/mainContent.vue';
+import menuOverlay from './../components/menuOverlay.vue';
 import transitionComponent from './../components/transitionComponent.vue';
 
 export default {
@@ -16,6 +18,7 @@ export default {
     components: {
         navigation,
         mainContent,
+        menuOverlay,
         transitionComponent
     }
 }

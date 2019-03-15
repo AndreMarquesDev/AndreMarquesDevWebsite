@@ -4,7 +4,7 @@ $fontRegular: 400;
 $fontBold: 700;
 
 // Font Sizes //
-$fontGiant: 56px;
+$fontGiant: 86px;
 $fontXXL: 36px;
 $fontXL: 30px;
 $fontL: 24px;
@@ -12,7 +12,7 @@ $fontM: 17px;
 $fontS: 15px;
 $fontXS: 11px;
 // Font Sizes Mobile //
-$fontGiantMobile: 30px;
+$fontGiantMobile: 43px;
 $fontXXLMobile: 24px;
 $fontXLMobile: 24px;
 $fontLMobile: 17px;
@@ -23,12 +23,12 @@ $fontMMobile: 15px;
     font-family: $font;
     font-size: $fontGiant;
     line-height: 70px;
-    letter-spacing: -0.6px;
+    letter-spacing: 10px;
     color: $color;
     @include tablet {
         font-size: $fontGiantMobile;
         line-height: 40px;
-        letter-spacing: -0.3px;
+        letter-spacing: 5px;
     }
 }
 
