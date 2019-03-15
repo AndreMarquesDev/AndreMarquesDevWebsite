@@ -14,14 +14,19 @@
                         <fontAwesomeIcon :icon="['fab', 'github']" />
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="https://codepen.io/AndreMarquesDev/" target="_blank">
                         <fontAwesomeIcon :icon="['fab', 'codepen']" />
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="https://twitter.com/BazingaCS" target="_blank">
                         <fontAwesomeIcon :icon="['fab', 'twitter']" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/BazingaCS" target="_blank">
+                        <fontAwesomeIcon :icon="['fab', 'linkedin-in']" />
                     </a>
                 </li>
             </ul>

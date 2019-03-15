@@ -14,12 +14,7 @@ body {
     font-family: $font;
     font-weight: $fontRegular;
     -webkit-font-smoothing: antialiased;
-    background: url('../images/shapesBackground.webp') no-repeat center/cover;
     overflow-x: hidden;
-
-    main > *:not(.menu):not(.navigation) {
-        @include transition (filter, .4s);
-    }
 
     &.noScroll {
         position: fixed;
@@ -31,6 +26,14 @@ body {
 
     }
 
+}
+
+main {
+    background: url('../images/shapesBackground.webp') no-repeat center/cover;
+
+    > *:not(.menu):not(.navigation) {
+        @include transition (filter, .4s);
+    }
 }
 
 section {

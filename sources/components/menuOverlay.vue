@@ -4,12 +4,21 @@
         <nav>
             <li>
                 <router-link to="/">Work</router-link>
+                <div>
+                    <span>Work</span>
+                </div>
             </li>
             <li>
                 <router-link to="/">About</router-link>
+                <div>
+                    <span>About</span>
+                </div>
             </li>
             <li>
                 <router-link to="/">Contact</router-link>
+                <div>
+                    <span>Contact</span>
+                </div>
             </li>
         </nav>
 
@@ -105,16 +114,23 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
             text-transform: uppercase;
             margin-bottom: 10%;
             @include transition (color, .2s, ease-out);
+            overflow: hidden;
+            position: relative;
 
             &:last-child {
                 margin-bottom: 0;
             }
 
             &:hover {
-                color: $white;
+                // color: $white;
 
                 a {
-                    -webkit-text-stroke: 1px $white;
+                    // -webkit-text-stroke: 1px $white;
+                }
+
+                > div, span {
+                    transform: translateY(0%);
+                @include transition (transform, .2s);
                 }
 
             }
@@ -122,6 +138,24 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
             a {
                 color: inherit;
                 -webkit-text-stroke: 1px $white;
+            }
+
+            > div {
+                content: 'teste';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                transform: translateY(100%);
+                color: $white;
+                @include transition (transform, .2s);
+                overflow: hidden;
+
+                span {
+                    color: red;
+                    position: absolute;
+                    transform: translateY(-100%);
+                }
             }
 
         }
