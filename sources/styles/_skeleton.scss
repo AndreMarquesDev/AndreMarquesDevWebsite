@@ -14,18 +14,6 @@ body {
     font-family: $font;
     font-weight: $fontRegular;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-
-    &.noScroll {
-        position: fixed;
-        overflow-y: scroll;
-
-        main > *:not(.menu):not(.navigation) {
-            filter: blur(5px);
-        }
-
-    }
-
 }
 
 main {
@@ -33,6 +21,10 @@ main {
 
     > *:not(.menu):not(.navigation) {
         @include transition (filter, .4s);
+    }
+
+    &.blur > *:not(.menu):not(.navigation) {
+        filter: blur(5px);
     }
 }
 

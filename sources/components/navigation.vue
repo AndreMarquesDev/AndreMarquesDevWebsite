@@ -1,5 +1,5 @@
 <template>
-    <header class="navigation">
+    <header class="navigation" :class="{menuOpen: this.$store.state.menuOpen}" >
 
         <nav>
             <router-link to="home" class="navigation__logo">
@@ -7,29 +7,6 @@
             </router-link>
 
             <i class="navigation__menuIcon" @click="toggleMenu"><span></span></i>
-
-            <ul class="navigation__socialLinks">
-                <li>
-                    <a href="https://github.com/AndreMarquesDev" target="_blank">
-                        <fontAwesomeIcon :icon="['fab', 'github']" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://codepen.io/AndreMarquesDev/" target="_blank">
-                        <fontAwesomeIcon :icon="['fab', 'codepen']" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/BazingaCS" target="_blank">
-                        <fontAwesomeIcon :icon="['fab', 'twitter']" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/BazingaCS" target="_blank">
-                        <fontAwesomeIcon :icon="['fab', 'linkedin-in']" />
-                    </a>
-                </li>
-            </ul>
         </nav>
 
     </header>
@@ -37,6 +14,7 @@
 
 <script>
 export default {
+    name: 'navigation',
     methods: {
         toggleMenu() {
             this.$store.commit('toggleMenu');
@@ -53,6 +31,29 @@ $navHeight: 80px;
 .navigation {
     height: $navHeight;
     overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    &.menuOpen {
+
+        .navigation__menuIcon {
+
+            span {
+                transform: scale(0);
+            }
+
+            &:before {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            &:after {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+        }
+
+    }
 
     nav {
         display: flex;
@@ -74,9 +75,6 @@ $navHeight: 80px;
 
     &__menuIcon {
         width: 28px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         cursor: pointer;
 
         span, &:before, &:after {
@@ -96,10 +94,6 @@ $navHeight: 80px;
             @include transition (all, .5s, ease-in-out);
         }
 
-    }
-
-    &__socialLinks {
-        display: flex;
     }
 
 }

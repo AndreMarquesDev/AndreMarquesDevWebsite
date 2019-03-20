@@ -1,24 +1,18 @@
 <template>
-    <section class="menu" :class="{open: this.$store.state.menuOpen}" @mousemove="polygonsAnimation">
+    <section class="menu" :class="{menuOpen: this.$store.state.menuOpen}" @click="toggleMenu" @mousemove="polygonsAnimation">
 
-        <nav>
-            <li>
-                <router-link to="/">Work</router-link>
-                <div>
-                    <span>Work</span>
-                </div>
+        <nav class="menu__links">
+            <li @click="activeLink">
+                <router-link to="/">{{ menuLinks.link1 }}</router-link>
+                <span :text="menuLinks.link1"></span>
             </li>
-            <li>
-                <router-link to="/">About</router-link>
-                <div>
-                    <span>About</span>
-                </div>
+            <li @click="activeLink">
+                <router-link to="/">{{ menuLinks.link2 }}</router-link>
+                <span :text="menuLinks.link2"></span>
             </li>
-            <li>
-                <router-link to="/">Contact</router-link>
-                <div>
-                    <span>Contact</span>
-                </div>
+            <li @click="activeLink">
+                <router-link to="/secondPage">{{ menuLinks.link3 }}</router-link>
+                <span :text="menuLinks.link3"></span>
             </li>
         </nav>
 
@@ -44,7 +38,23 @@
 
 <script>
 export default {
+    name: 'menuOverlay',
+    data() {
+        return {
+            menuLinks: {
+                link1: 'Work',
+                link2: 'About',
+                link3: '2nd Page'
+            }
+        }
+    },
     methods: {
+        toggleMenu() {
+            this.$store.commit('toggleMenu');
+        },
+        activeLink() {
+            event.currentTarget.classList.add('active');
+        },
         polygonsAnimation() {
             const polygonsContainer = this.$el.querySelector('.menu__polygons'),
                 x = event.pageX - event.target.offsetLeft,
@@ -62,41 +72,27 @@ export default {
 
 $clipPathPolygonRight: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
 $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
+$navHeight: 80px;
 
 .menu {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - #{$navHeight});
     position: absolute;
-    top: 80px;
+    top: $navHeight;
     left: -100%;
-    @include transition (left, .4s);
+    @include transition (left, .4s, ease-in-out);
+    position: fixed;
 
-    &.open {
+    &.menuOpen {
         left: 0;
 
         .navigation__polygons {
             // display: block;
         }
 
-        // .navigation__menuIcon {
-
-        //     span {
-        //         transform: scale(0);
-        //     }
-
-        //     &:before {
-        //         transform: translateY(9px) rotate(45deg);
-        //     }
-
-        //     &:after {
-        //         transform: translateY(-9px) rotate(-45deg);
-        //     }
-
-        // }
-
     }
 
-    nav {
+    &__links {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -107,54 +103,57 @@ $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
         z-index: 1;
 
         li {
+            width: 100%;
+            position: relative;
             @include fontGiant ($white);
             font-weight: $fontBold;
             color: transparent;
             letter-spacing: 5px;
+            text-align: center;
             text-transform: uppercase;
             margin-bottom: 10%;
-            @include transition (color, .2s, ease-out);
-            overflow: hidden;
-            position: relative;
+
+            &.active, &:hover {
+
+                > span, > span:before {
+                    transform: translateY(0);
+                    @include transition (transform, .4s);
+                }
+
+            }
 
             &:last-child {
                 margin-bottom: 0;
             }
 
-            &:hover {
-                // color: $white;
-
-                a {
-                    // -webkit-text-stroke: 1px $white;
-                }
-
-                > div, span {
-                    transform: translateY(0%);
-                @include transition (transform, .2s);
-                }
-
-            }
-
             a {
+                display: block;
+                position: relative;
                 color: inherit;
                 -webkit-text-stroke: 1px $white;
+                z-index: 1;
             }
 
-            > div {
-                content: 'teste';
+            > span {
                 width: 100%;
                 height: 100%;
                 position: absolute;
                 top: 0;
+                left: 0;
                 transform: translateY(100%);
                 color: $white;
-                @include transition (transform, .2s);
                 overflow: hidden;
+                @include transition (transform, .4s);
 
-                span {
-                    color: red;
+                &:before {
+                    content: attr(text);
+                    width: 100%;
                     position: absolute;
+                    top: 0;
+                    left: 0;
                     transform: translateY(-100%);
+                    color: $white;
+                    @include transition (transform, .4s);
                 }
             }
 

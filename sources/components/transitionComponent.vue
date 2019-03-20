@@ -16,20 +16,6 @@
     overflow: hidden;
     z-index: 1;
 
-    &:before {
-        content: '';
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: $white;
-        border: 1px solid red;
-        border-radius: 50%;
-        z-index: 1;
-    }
-
     .leftBar, .rightBar {
         width: 50%;
         height: 100%;
@@ -38,34 +24,35 @@
 
         &:before {
             content: '';
-            width: 99%;
+            width: 100%;
             height: 2px;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: $orange;
+            background: $white;
+            animation: teste 2s ease 2s;
         }
 
     }
 
     .leftBar {
         left: 0;
-        background: $primaryGradient;
+        background: $black;
         transform: translateX(-100%);
 
         &:before {
-            left: 0;
+            right: 0;
         }
 
     }
 
     .rightBar {
         right: 0;
-        background: $invertedPrimaryGradient;
+        background: $black;
         transform: translateX(100%);
 
         &:before {
-            right: 0;
+            left: 0;
         }
 
     }

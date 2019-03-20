@@ -9,14 +9,18 @@ export default new Vuex.Store({
     },
     mutations: {
         toggleMenu(state, isPageLoad = false) {
+            // console.log(event.target)
+            // console.log(event.currentTarget)
+            // console.log(!!event.target.closest('nav'))
+
             isPageLoad
                 ? state.menuOpen = false
-                : state.menuOpen = !state.menuOpen;
+                : !event.target.closest('.menu__links') && (state.menuOpen = !state.menuOpen);
 
-            const body = document.querySelector('body');
+            const main = document.querySelector('main');
             state.menuOpen
-                ? body.classList.add('noScroll')
-                : body.classList.remove('noScroll');
+                ? main.classList.add('blur')
+                : main.classList.remove('blur');
         }
     },
     actions: {

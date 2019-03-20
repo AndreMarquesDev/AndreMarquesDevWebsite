@@ -11,6 +11,7 @@
 
 <script>
 export default {
+    name: 'mainContent',
     props: {
         name: {
             type: String,
