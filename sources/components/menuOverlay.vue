@@ -49,13 +49,13 @@ export default {
         }
     },
     methods: {
-        toggleMenu() {
-            this.$store.commit('toggleMenu');
+        toggleMenu(event) {
+            this.$store.commit('toggleMenu', {event});
         },
-        activeLink() {
+        activeLink(event) {
             event.currentTarget.classList.add('active');
         },
-        polygonsAnimation() {
+        polygonsAnimation(event) {
             const polygonsContainer = this.$el.querySelector('.menu__polygons'),
                 x = event.pageX - event.target.offsetLeft,
                 y = event.pageY - event.target.offsetTop;

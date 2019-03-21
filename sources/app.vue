@@ -11,7 +11,7 @@
 export default {
     name: 'app',
     updated() {
-        this.$store.commit('toggleMenu', true);
+        this.$store.commit('toggleMenu', {isPageLoad: true});
     }
 }
 </script>

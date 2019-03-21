@@ -8,11 +8,7 @@ export default new Vuex.Store({
         menuOpen: false
     },
     mutations: {
-        toggleMenu(state, isPageLoad = false) {
-            // console.log(event.target)
-            // console.log(event.currentTarget)
-            // console.log(!!event.target.closest('nav'))
-
+        toggleMenu(state, {event, isPageLoad = false}) {
             isPageLoad
                 ? state.menuOpen = false
                 : !event.target.closest('.menu__links') && (state.menuOpen = !state.menuOpen);

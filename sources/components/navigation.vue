@@ -16,8 +16,8 @@
 export default {
     name: 'navigation',
     methods: {
-        toggleMenu() {
-            this.$store.commit('toggleMenu');
+        toggleMenu(event) {
+            this.$store.commit('toggleMenu', {event});
         }
     }
 }
