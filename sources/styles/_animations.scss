@@ -35,20 +35,30 @@
     transform-origin: center bottom;
 }
 
-@keyframes teste {
-    from {
-        width: 100%;
-    }
-    to {
+@keyframes lineAnimation{
+    25% {
         width: 20%;
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+    }
+    75% {
+        width: 20%;
+        opacity: 1;
     }
 }
 
-// Page transitions
+// Page transition
 
 // Common settings, usually where transition is defined
-.curtainTransition-enter-active, .curtainTransition-leave-active {
-    @include transition (all, 4s);
+.curtainTransition-leave-active, .curtainTransition-enter-active {
 
     .transitionComponent {
         height: 100vh;
@@ -56,8 +66,27 @@
 
     .leftBar, .rightBar {
         @include transition (transform, 1s);
+
+        &:before {
+            animation: lineAnimation 3s 1 1s linear;
+        }
+
     }
 
+}
+
+// basically the whole transition happens on the 'leave-active' moment;
+// the 'enter-active' part just controls the opening of the curtain
+.curtainTransition-leave-active {
+    @include transition (all, 4s);
+
+    > *:not(.menu):not(.navigation):not(.transitionComponent) {
+        filter: blur(5px);
+    }
+}
+
+.curtainTransition-enter-active {
+    @include transition (all, 1s);
 }
 
 // When leaving the page

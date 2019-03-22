@@ -30,7 +30,6 @@
             top: 50%;
             transform: translateY(-50%);
             background: $white;
-            animation: teste 2s ease 2s;
         }
 
     }

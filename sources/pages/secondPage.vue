@@ -1,7 +1,7 @@
 <template>
     <main>
         <navigation/>
-        <main-content url="home" name="This is the second page" destination="the first page"/>
+        <main-content url="home" destination="the first page"/>
         <footerNavigation/>
         <menuOverlay/>
         <transitionComponent/>

@@ -47,7 +47,7 @@ footer {
     padding: 40px 4%;
 
     small {
-        color: white;
+        color: $white;
     }
 
     ul {
