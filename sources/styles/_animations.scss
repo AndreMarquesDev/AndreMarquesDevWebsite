@@ -1,5 +1,96 @@
 // Animations //
 
+// Menu animation
+
+@keyframes topToCross {
+    0% {
+        top: 0;
+        transform: rotate(0);
+    }
+    50% {
+        top: 12px;
+        transform: rotate(0);
+    }
+    100% {
+        top: 12px;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes topToBurguer {
+    0% {
+        top: 12px;
+        transform: rotate(45deg);
+    }
+    50% {
+        top: 12px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes bottomToCross {
+    0% {
+        bottom: 0;
+        transform: rotate(0);
+    }
+    50% {
+        bottom: 12px;
+        transform: rotate(0);
+    }
+    100% {
+        bottom: 12px;
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes bottomToBurguer {
+    0% {
+        bottom: 12px;
+        transform: rotate(135deg);
+    }
+    50% {
+        bottom: 12px;
+        transform: rotate(0);
+    }
+    100% {
+        bottom: 0;
+        transform: rotate(0);
+    }
+}
+
+@keyframes middleToCross {
+    50%, 100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes middleToBurguer {
+    0%, 50% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes menuHover {
+    0% {
+        width: 100%;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+// Letters rubber band animation
+
 @keyframes rubberBand {
     from {
         transform: scale3d(1, 1, 1);
@@ -35,6 +126,8 @@
     transform-origin: center bottom;
 }
 
+// Page transition
+
 @keyframes lineAnimation{
     25% {
         width: 20%;
@@ -54,8 +147,6 @@
         opacity: 1;
     }
 }
-
-// Page transition
 
 // Common settings, usually where transition is defined
 .curtainTransition-leave-active, .curtainTransition-enter-active {

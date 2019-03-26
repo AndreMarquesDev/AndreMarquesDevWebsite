@@ -3,7 +3,7 @@
 
         <nav class="menu__links">
             <li @click="activeLink">
-                <router-link to="/">{{ menuLinks.link1 }}</router-link>
+                <router-link to="/work">{{ menuLinks.link1 }}</router-link>
                 <span :text="menuLinks.link1"></span>
             </li>
             <li @click="activeLink">
@@ -72,7 +72,6 @@ export default {
 
 $clipPathPolygonRight: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
 $clipPathPolygonLeft: polygon(0 0, 50% 0, 100% 100%, 50% 100%);
-$navHeight: 80px;
 
 .menu {
     width: 100%;

@@ -36,12 +36,10 @@ export default {
 .content {
     width: 100%;
     height: 1500px;
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    text-align: center;
     display: flex;
     align-items: center;
+    position: relative;
+    text-align: center;
 }
 
 </style>

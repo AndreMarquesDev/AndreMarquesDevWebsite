@@ -1,5 +1,5 @@
 <template>
-    <p>
+    <p class="animatedLetters">
         <span v-for="letter in letters" @mouseover="addAnimation" @animationend="removeAnimation" @webkitAnimationEnd="removeAnimation">{{ letter }}</span>
     </p>
 </template>
@@ -36,7 +36,7 @@ export default {
         });
 
         // Add a margin to emulate whitespace
-        setTimeout(() => this.$el.querySelectorAll('span').forEach(letter => letter.innerHTML.length > 1 && letter.classList.add('whitespace')), 1);
+        setTimeout(() => this.$el.querySelectorAll('span').forEach(letter => letter.innerText.length > 1 && letter.classList.add('whitespace')), 1);
     }
 }
 </script>
@@ -44,7 +44,7 @@ export default {
 <style lang='scss'>
 @import '../styles/variables.scss';
 
-p {
+.animatedLetters {
     width: 100%;
     display: block;
     color: $white;

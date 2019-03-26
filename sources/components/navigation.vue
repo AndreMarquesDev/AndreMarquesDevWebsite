@@ -26,29 +26,28 @@ export default {
 <style lang='scss'>
 @import '../styles/variables.scss';
 
-$navHeight: 80px;
-
 .navigation {
-    height: $navHeight;
-    overflow: hidden;
-    position: fixed;
     width: 100%;
+    height: $navHeight;
+    position: absolute;
+    overflow: hidden;
     z-index: 1;
 
     &.menuOpen {
+        position: fixed;
 
         .navigation__menuIcon {
 
-            span {
-                transform: scale(0);
+            &:before {
+                animation: topToCross .7s ease forwards;
             }
 
-            &:before {
-                transform: translateY(9px) rotate(45deg);
+            span {
+                animation: middleToCross .7s ease forwards;
             }
 
             &:after {
-                transform: translateY(-9px) rotate(-45deg);
+                animation: bottomToCross .7s ease forwards;
             }
 
         }
@@ -74,26 +73,64 @@ $navHeight: 80px;
     }
 
     &__menuIcon {
-        width: 28px;
+        width: 40px;
         cursor: pointer;
 
-        span, &:before, &:after {
+        &:hover {
+            &:before {
+                animation: topToBurguer .7s ease forwards, menuHover 1s infinite ease-in-out alternate;
+            }
+
+            span {
+                animation: middleToBurguer .7s ease forwards, menuHover 1s infinite ease-in-out alternate forwards 200ms;
+            }
+
+            &:after {
+                animation: bottomToBurguer .7s ease forwards, menuHover 1s infinite ease-in-out alternate forwards 400ms;
+            }
+        }
+
+        &:before, span, &:after {
             content: '';
+            width: 100%;
             height: 2px;
             display: block;
-            background-color: $white;
-            margin: 7px 0;
-            border-radius: 4px;
+            position: relative;
+            background: $white;
+            border-radius: 3px;
+        }
+
+        &:before {
+            margin: 0 auto;
+            animation: topToBurguer .7s ease forwards;
         }
 
         span {
-            @include transition (all, .25s, ease-in-out);
+            margin: 10px auto 0;
+            animation: middleToBurguer .7s ease forwards;
         }
 
-        &:before, &:after {
-            @include transition (all, .5s, ease-in-out);
+        &:after {
+            margin: 10px auto 0;
+            animation: bottomToBurguer .7s ease forwards;
         }
 
+    }
+
+    @include tablet {
+        &__menuIcon:hover {
+            &:before {
+                animation: topToBurguer .7s ease forwards;
+            }
+
+            span {
+                animation: middleToBurguer .7s ease forwards;
+            }
+
+            &:after {
+                animation: bottomToBurguer .7s ease forwards;
+            }
+        }
     }
 
 }
