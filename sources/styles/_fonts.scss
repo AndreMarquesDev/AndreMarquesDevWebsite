@@ -5,7 +5,7 @@ $fontBold: 700;
 
 // Font Sizes //
 $fontGiant: 86px;
-$fontXXL: 36px;
+$fontXXL: 48px;
 $fontXL: 30px;
 $fontL: 24px;
 $fontM: 17px;
@@ -19,7 +19,7 @@ $fontLMobile: 17px;
 $fontMMobile: 15px;
 
 // Font mixins //
-@mixin fontGiant($color: $black) {
+@mixin fontGiant ($color: $white) {
     font-family: $font;
     font-size: $fontGiant;
     line-height: 70px;
@@ -32,66 +32,65 @@ $fontMMobile: 15px;
     }
 }
 
-@mixin fontXXL($color: $black) {
+@mixin fontXXL ($color: $white) {
     font-family: $font;
     font-size: $fontXXL;
-    line-height: 42px;
-    letter-spacing: -0.3px;
+    letter-spacing: .4px;
+    line-height: 56px;
     color: $color;
     @include tablet {
-        font-size: $fontXXLMobile;
-        line-height: 33px;
-        letter-spacing: -0.2px;
+        font-size: 34px;
+        line-height: 40px;
     }
 }
 
-@mixin fontXL($color: $black) {
+@mixin fontXL ($color: $white) {
     font-family: $font;
     font-size: $fontXL;
     line-height: 40px;
-    letter-spacing: -0.3px;
+    letter-spacing: -.3px;
     color: $color;
     @include tablet {
         font-size: $fontXLMobile;
         line-height: 33px;
-        letter-spacing: -0.2px;
+        letter-spacing: -.2px;
     }
 }
 
-@mixin fontL($color: $black) {
+@mixin fontL ($color: $white) {
     font-family: $font;
     font-size: $fontL;
     line-height: 33px;
-    letter-spacing: -0.2px;
+    letter-spacing: -.2px;
     color: $color;
     @include tablet {
         font-size: $fontLMobile;
         line-height: 26px;
-        letter-spacing: -0.1px;
+        letter-spacing: -.1px;
     }
 }
 
-@mixin fontM($color: $black) {
+@mixin fontM ($color: $white) {
     font-family: $font;
     font-size: $fontM;
     line-height: 26px;
-    letter-spacing: -0.1px;
+    letter-spacing: -.1px;
     color: $color;
     @include tablet {
         font-size: $fontMMobile;
         line-height: 24px;
-        letter-spacing: -0.1px;
+        letter-spacing: -.1px;
     }
 }
 
-@mixin fontS($color: $black) {
+@mixin fontS ($color: $white) {
     font-family: $font;
     font-size: $fontS;
     line-height: 24px;
     color: $color;
 }
 
-@mixin fontXS($color: $black) {
+@mixin fontXS ($color: $white) {
     font-family: $font;
     font-size: $fontXS;
     line-height: 17px;

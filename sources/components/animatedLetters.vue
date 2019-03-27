@@ -36,7 +36,12 @@ export default {
         });
 
         // Add a margin to emulate whitespace
-        setTimeout(() => this.$el.querySelectorAll('span').forEach(letter => letter.innerText.length > 1 && letter.classList.add('whitespace')), 1);
+        setTimeout(() => this.$el.querySelectorAll('span').forEach(letter => {
+            // innerHTML returns this when the character is a '<' or a '>'
+            letter.innerHTML === '&lt;'
+                ? letter.innerText.length > 1 && letter.classList.add('whitespace')
+                : letter.innerHTML.length > 1 && letter.classList.add('whitespace');
+        }), 1);
     }
 }
 </script>
