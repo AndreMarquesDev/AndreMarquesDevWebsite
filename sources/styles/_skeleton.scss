@@ -19,6 +19,7 @@ body {
 
 main {
     min-height: 100vh;
+    position: relative;
     background: url('../images/shapesBackground.webp') no-repeat center/cover;
 
     > *:not(.menu):not(.navigation) {

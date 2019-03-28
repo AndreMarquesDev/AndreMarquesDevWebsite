@@ -6,9 +6,8 @@
 
             <ul>
                 <li v-for="project in projectsArray" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
-                <!-- <li v-for="project in projectsArray"> -->
                     <figure :text="project.name">
-                        <img :src="project.image" alt="Project image">
+                        <img :src="require('../images/' + project.image + '.jpg')" alt="Project image">
                     </figure>
                 </li>
             </ul>
@@ -30,19 +29,19 @@ export default {
             projectsArray: {
                 aguarela: {
                     name: 'Aguarela',
-                    image: '../images/aguarela.jpg'
+                    image: 'aguarela'
                 },
                 seguroDirecto: {
                     name: 'Seguro Directo',
-                    image: '../images/seguro-directo.jpg'
+                    image: 'seguro-directo'
                 },
                 ageasPortugal: {
                     name: 'Ageas Portugal',
-                    image: '../images/ageas-portugal.jpg'
+                    image: 'ageas-portugal'
                 },
                 galp: {
                     name: 'Galp Corporate Event 2019',
-                    image: '../images/galp.jpg'
+                    image: 'galp'
                 }
             }
         }
@@ -118,7 +117,7 @@ export default {
     width: 100%;
     display: flex;
     position: relative;
-    padding: calc(#{$navHeight + 40}) 0;
+    padding: calc(#{$navHeight + 40}) 0 calc(#{$footerHeight + 40});
 
     .animatedLetters {
         @include fontXXL;
