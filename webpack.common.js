@@ -90,6 +90,9 @@ module.exports = {
             chunkFilename: '[id].css'
         })
     ],
+    devServer: {
+        historyApiFallback: true
+    },
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'public')
