@@ -5,8 +5,8 @@
             <animatedLetters text="<work/>"/>
 
             <ul>
-                <li v-for="project in projectsArray" @mouseenter="addClass($event, 'in')" @mouseleave="addClass($event, 'out')">
-                    <!-- {{ project.name }} -->
+                <li v-for="project in projectsArray" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
+                <!-- <li v-for="project in projectsArray"> -->
                     <figure :text="project.name">
                         <img :src="project.image" alt="Project image">
                     </figure>
@@ -48,75 +48,64 @@ export default {
         }
     },
     mounted() {
-        const projectsList = this.$el.querySelectorAll('li');
+        const projects = this.$el.querySelectorAll('li');
 
-        this.makeItemsSquare(projectsList);
-        window.addEventListener('resize', () => this.makeItemsSquare(projectsList));
+        this.makeItemsSquare(projects);
+        window.addEventListener('resize', () => this.makeItemsSquare(projects));
     },
     methods: {
         makeItemsSquare(elements) {
             elements.forEach(element => element.style.height = element.offsetWidth + 'px');
         },
-        getPosition(el) {
-            var xPos = 0;
-            var yPos = 0;
+        getPosition(element) {
+            let x = 0,
+                y = 0;
 
-            while (el) {
-                xPos += el.offsetLeft + el.clientLeft;
-                yPos += el.offsetTop + el.clientTop;
+            while (element) {
+                x += element.offsetLeft + element.clientLeft;
+                y += element.offsetTop + element.clientTop;
 
-                el = el.offsetParent;
+                element = element.offsetParent;
             }
+
             return {
-                x: xPos,
-                y: yPos
+                x,
+                y
             };
         },
-        getDirection(e) {
-            // Width and height of current item
-            var w = event.target.offsetWidth;
-            var h = event.target.offsetHeight;
-            var position = this.getPosition(event.target);
+        getDirection(event) {
+            const width = event.target.offsetWidth,
+                height = event.target.offsetHeight,
+                position = this.getPosition(event.target),
+                x = event.pageX - position.x - width / 2 * (width > height ? height / width : 1),
+                y = event.pageY - position.y - height / 2 * (height > width ? width / height : 1);
+            let direction = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
-            // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
-            var x = e.pageX - position.x - w / 2 * (w > h ? h / w : 1);
-            var y = e.pageY - position.y - h / 2 * (h > w ? w / h : 1);
-
-            // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
-            var d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
-
-            switch(d) {
+            switch(direction) {
                 case 0:
-                    d = 'top'
+                    direction = 'top'
                     break;
                 case 1:
-                    d = 'right'
+                    direction = 'right'
                     break;
                 case 2:
-                    d = 'bottom'
+                    direction = 'bottom'
                     break;
                 case 3:
-                    d = 'left'
+                    direction = 'left'
                     break;
                 default:
-                    d = 'top'
+                    direction = 'top'
             }
 
-            console.log(d);
-
-            return d;
+            return direction;
         },
-        addClass(e, state) {
-            var currentItem = e.currentTarget;
-            var direction = this.getDirection(e, currentItem);
+        addAnimation(event, state) {
+            const target = event.currentTarget,
+                direction = this.getDirection(event, target);
 
-            // Remove current animation classes and add new ones e.g. swap --in for --out.
-            var currentCssClasses = currentItem.className.split(' ');
-            var filteredCssClasses = currentCssClasses.filter(function (cssClass) {
-                return !cssClass.startsWith(animationName);
-            }).join(' ');
-            currentItem.className = filteredCssClasses;
-            currentItem.classList.add(animationName + '--' + state + '-' + direction);
+            target.className = '';
+            target.classList.add(`slide-${state}-${direction}`);
         }
     }
 }
@@ -140,16 +129,50 @@ export default {
     ul {
         width: 100%;
         display: grid;
-        grid-template: 300px / repeat(auto-fit,minmax(200px,1fr));
-        grid-column-gap: 4%;
-        overflow: hidden;
+        grid-template: auto / repeat(2, minmax(200px, 500px));
+        grid-gap: 100px 3%;
+        justify-content: space-around;
     }
 
     li {
-        color: $white;
+        &.slide-in-top figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-in-top;
+        }
 
-        &:hover figure:before {
-            opacity: .2;
+        &.slide-in-right figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-in-right;
+        }
+
+        &.slide-in-bottom figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-in-bottom;
+        }
+
+        &.slide-in-left figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-in-left;
+        }
+
+        &.slide-out-top figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-out-top;
+        }
+
+        &.slide-out-right figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-out-right;
+        }
+
+        &.slide-out-bottom figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-out-bottom;
+        }
+
+        &.slide-out-left figure:before {
+            transform: translate3d(0, 0, 0);
+            animation-name: slide-out-left;
         }
     }
 
@@ -166,9 +189,11 @@ export default {
             position: absolute;
             top: 0;
             left: 0;
-            color: $white;
+            @include fontXXL;
+            text-align: center;
             background: $black;
-            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+            animation: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             z-index: 1;
         }
 
@@ -177,6 +202,8 @@ export default {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
         }
 
     }

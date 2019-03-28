@@ -126,6 +126,57 @@
     transform-origin: center bottom;
 }
 
+// Direction aware hover effect
+
+@keyframes slide-in-top {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+@keyframes slide-out-top {
+    100% {
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+@keyframes slide-in-bottom {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+@keyframes slide-out-bottom {
+    100% {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes slide-out-left {
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+
+@keyframes slide-in-right {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes slide-out-right {
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
 // Page transition
 
 @keyframes lineAnimation{

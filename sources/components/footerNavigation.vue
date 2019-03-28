@@ -41,11 +41,14 @@ export default {
 @import '../styles/variables.scss';
 
 footer {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 4%;
+    position: absolute;
+    bottom: 0;
     perspective: 800px;
+    padding: 40px 4%;
 
     small {
         position: relative;
