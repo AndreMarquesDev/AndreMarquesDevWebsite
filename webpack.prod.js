@@ -39,8 +39,11 @@ module.exports = merge(common, {
             })]
         }),
         new FaviconsWebpackPlugin({
-            logo: './sources/images/logoAguarela.svg',
+            logo: './sources/images/logo.svg',
+            background: '#09101c',
+            title: 'André Marques Dev',
             icons: {
+                opengraph: true,
                 twitter: true,
                 windows: true
             }
