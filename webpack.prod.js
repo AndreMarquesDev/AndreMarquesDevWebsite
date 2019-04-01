@@ -48,6 +48,17 @@ module.exports = merge(common, {
                 windows: true
             }
         }),
-        new OfflinePlugin()
+        new OfflinePlugin({
+            ServiceWorker: {
+                publicPath: '/sw.js'
+            },
+            publicPath: '/',
+            appShell: '/',
+            externals: [
+              '/'
+            ],
+            autoUpdate: true
+            // updateStrategy: 'all'
+        })
     ]
 });
