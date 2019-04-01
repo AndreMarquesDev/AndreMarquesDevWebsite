@@ -1,4 +1,9 @@
-require('offline-plugin/runtime').install();
+// require('offline-plugin/runtime').install();
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js');
+    });
+}
 
 import './index.html';
 import './styles/main.scss';
