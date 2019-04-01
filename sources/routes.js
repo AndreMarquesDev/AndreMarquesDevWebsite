@@ -28,5 +28,9 @@ export default new Router ({
             path: '*',
             redirect: '/'
         }
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) return setTimeout(() => window.scrollTo({ top: savedPosition, behavior: 'smooth' }), 1000);
+        else return setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 1000);
+    }
 })
