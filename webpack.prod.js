@@ -63,7 +63,8 @@ module.exports = merge(common, {
         // })
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
-            skipWaiting: true
+            skipWaiting: true,
+            exclude: ['_redirects']
         })
     ]
 });
