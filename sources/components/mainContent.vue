@@ -2,7 +2,7 @@
     <section class="content">
         <div class="wrapper">
 
-            <animatedLetters text="Hover me. Cool animation right? :)"/>
+            <animatedLetters text="Hover me. Cool animation right?"/>
             <router-link :to="url">Link to {{ destination }}</router-link>
 
         </div>

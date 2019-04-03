@@ -14,13 +14,25 @@ body {
     font-family: $font;
     font-weight: $fontRegular;
     -webkit-font-smoothing: antialiased;
-    cursor: url('../images/mouseCursor.png'), auto;
+    cursor: url('../images/mouseCursor.webp'), auto;
 }
 
 main {
     min-height: 100vh;
     position: relative;
-    background: url('../images/shapesBackground.webp') no-repeat center/cover;
+    background: url('../images/background.webp') no-repeat center/cover;
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('../images/shapes.svg') no-repeat center bottom/contain;
+        opacity: .6;
+
+    }
 
     > *:not(.menu):not(.navigation) {
         @include transition (filter, .4s);

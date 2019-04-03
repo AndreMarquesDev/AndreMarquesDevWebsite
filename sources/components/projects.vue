@@ -5,9 +5,10 @@
             <animatedLetters text="<work/>"/>
 
             <ul>
-                <li v-for="project in projectsArray" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
-                    <figure :text="project.name">
-                        <img :src="require('../images/' + project.image + '.jpg')" alt="Project image">
+                <li v-for="project in projectsArray" :project="project.name" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
+                    <figure>
+                        <img :src="require('../images/' + project.image + '.webp')" alt="Project image">
+                        <span :projectName="project.name"></span>
                     </figure>
                 </li>
             </ul>
@@ -27,17 +28,17 @@ export default {
     data() {
         return {
             projectsArray: {
-                aguarela: {
-                    name: 'Aguarela',
-                    image: 'aguarela'
+                ageasPortugal: {
+                    name: 'Ageas Portugal',
+                    image: 'ageas-portugal'
                 },
                 seguroDirecto: {
                     name: 'Seguro Directo',
                     image: 'seguro-directo'
                 },
-                ageasPortugal: {
-                    name: 'Ageas Portugal',
-                    image: 'ageas-portugal'
+                aguarela: {
+                    name: 'Aguarela Project',
+                    image: 'aguarela'
                 },
                 galp: {
                     name: 'Galp Corporate Event 2019',
@@ -51,6 +52,9 @@ export default {
 
         this.makeItemsSquare(projects);
         window.addEventListener('resize', () => this.makeItemsSquare(projects));
+
+
+        if (window.innerWidth < 570) this.mobileAnimationBehavior();
     },
     methods: {
         makeItemsSquare(elements) {
@@ -103,8 +107,90 @@ export default {
             const target = event.currentTarget,
                 direction = this.getDirection(event, target);
 
+            if (window.innerWidth < 570) return;
+
             target.className = '';
             target.classList.add(`slide-${state}-${direction}`);
+        },
+        mobileAnimationBehavior() {
+            const projectsElements = this.$el.querySelectorAll('li');
+            let previousY = 0;
+
+            // ver tamanho das letras em tablet
+            // corrigir o fallback; neste momento, ele mente a classe em todos os que aparecem sequer um bocadinho
+
+            if ('IntersectionObserver' in window) {
+                const projectObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+
+                            // window.pageYOffset was reporting wrong values so this setTimeout was needed
+                            // to actually report the offsetY of the current element being evaluated
+                            setTimeout(() => {
+                                const project = entry.target;
+
+                                // Scroll down
+                                if (previousY <= window.pageYOffset) {
+                                    project.className = 'slide-in-top';
+
+                                    projectsElements.forEach(element => {
+                                        project.getAttribute('project') !== element.getAttribute('project') &&
+                                            element.matches('.slide-in-top, .slide-in-bottom') &&
+                                                (element.className = 'slide-out-bottom');
+                                    });
+
+                                // Scroll up
+                                } else {
+                                    project.className = 'slide-in-bottom';
+
+                                    projectsElements.forEach(element => {
+                                        project.getAttribute('project') !== element.getAttribute('project') &&
+                                            element.matches('.slide-in-top, .slide-in-bottom') &&
+                                                (element.className = 'slide-out-top');
+                                    });
+                                }
+
+                                previousY = window.pageYOffset;
+
+                            }, 100);
+                        }
+                    });
+                }, {
+                    threshold: 1.0
+                });
+
+                projectsElements.forEach(project => projectObserver.observe(project));
+
+            } else { // older browsers fallback
+                let lazyloadThrottleTimeout;
+
+                const lazyload = () => {
+                    lazyloadThrottleTimeout && clearTimeout(lazyloadThrottleTimeout);
+
+                    lazyloadThrottleTimeout = setTimeout(() => {
+                        projectsElements.forEach(project => {
+                            if (project.offsetTop < (window.innerHeight + window.pageYOffset)) {
+
+                                previousY <= window.pageYOffset
+                                    ? project.className = 'slide-in-top' // Scroll down
+                                    : project.className = 'slide-in-bottom'; // Scroll up
+
+                                previousY = window.pageYOffset;
+
+                            } else if (project.matches('.slide-in-top, .slide-in-bottom')) {
+                                previousY <= window.pageYOffset
+                                    ? project.className = 'slide-out-bottom' // Scroll down
+                                    : project.className = 'slide-out-top'; // Scroll up
+                            } else project.className = '';
+                        });
+
+                    }, 20);
+                }
+
+                document.addEventListener('scroll', lazyload);
+                window.addEventListener('resize', lazyload);
+                window.addEventListener('orientationChange', lazyload);
+            }
         }
     }
 }
@@ -121,6 +207,7 @@ export default {
 
     .animatedLetters {
         @include fontXXL;
+        font-weight: $fontBold;
         text-align: left;
         margin-bottom: 40px;
     }
@@ -134,42 +221,42 @@ export default {
     }
 
     li {
-        &.slide-in-top figure:before {
+        &.slide-in-top span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-in-top;
         }
 
-        &.slide-in-right figure:before {
+        &.slide-in-right span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-in-right;
         }
 
-        &.slide-in-bottom figure:before {
+        &.slide-in-bottom span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-in-bottom;
         }
 
-        &.slide-in-left figure:before {
+        &.slide-in-left span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-in-left;
         }
 
-        &.slide-out-top figure:before {
+        &.slide-out-top span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-out-top;
         }
 
-        &.slide-out-right figure:before {
+        &.slide-out-right span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-out-right;
         }
 
-        &.slide-out-bottom figure:before {
+        &.slide-out-bottom span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-out-bottom;
         }
 
-        &.slide-out-left figure:before {
+        &.slide-out-left span {
             transform: translate3d(0, 0, 0);
             animation-name: slide-out-left;
         }
@@ -188,12 +275,41 @@ export default {
             position: absolute;
             top: 0;
             left: 0;
-            @include fontXXL;
-            text-align: center;
             background: $black;
+            opacity: .15;
+            @include transition (opacity, .4s); // should be equal or higher than the direction aware animation (on <span>)
+            z-index: 1;
+        }
+
+        &:hover:before {
+            opacity: .5;
+        }
+
+        span {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include fontGiant ($black);
+            font-weight: $fontBold;
+            letter-spacing: 6.5px; // So that 'Corporate' fits
+            text-align: center;
+            background: $white;
+            mix-blend-mode: color-dodge;
             transform: translate3d(0, -100%, 0);
             animation: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             z-index: 1;
+
+            &:before {
+                content: attr(projectName);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+            }
+
         }
 
         img {
@@ -205,6 +321,15 @@ export default {
             height: 100%;
         }
 
+    }
+
+    @include mq (0, 569px) {
+        padding: calc(#{$navHeight + 20}) 0 calc(#{$footerHeight + 20});
+
+        ul {
+            grid-template-columns: 1fr;
+            grid-gap: 50px;
+        }
     }
 
 }
