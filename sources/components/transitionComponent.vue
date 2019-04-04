@@ -5,6 +5,12 @@
     </div>
 </template>
 
+<script>
+export default {
+    name: 'transitionComponent'
+}
+</script>
+
 <style lang='scss'>
 @import '../styles/variables.scss';
 

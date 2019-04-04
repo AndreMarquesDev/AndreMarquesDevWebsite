@@ -116,81 +116,46 @@ export default {
             const projectsElements = this.$el.querySelectorAll('li');
             let previousY = 0;
 
-            // ver tamanho das letras em tablet
-            // corrigir o fallback; neste momento, ele mente a classe em todos os que aparecem sequer um bocadinho
+            const projectObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
 
-            if ('IntersectionObserver' in window) {
-                const projectObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
+                        // window.pageYOffset was reporting wrong values so this setTimeout was needed
+                        // to actually report the offsetY of the current element being evaluated
+                        setTimeout(() => {
+                            const project = entry.target;
 
-                            // window.pageYOffset was reporting wrong values so this setTimeout was needed
-                            // to actually report the offsetY of the current element being evaluated
-                            setTimeout(() => {
-                                const project = entry.target;
+                            // Scroll down
+                            if (previousY <= window.pageYOffset) {
+                                project.className = 'slide-in-top';
 
-                                // Scroll down
-                                if (previousY <= window.pageYOffset) {
-                                    project.className = 'slide-in-top';
+                                projectsElements.forEach(element => {
+                                    project.getAttribute('project') !== element.getAttribute('project') &&
+                                        element.matches('.slide-in-top, .slide-in-bottom') &&
+                                            (element.className = 'slide-out-bottom');
+                                });
 
-                                    projectsElements.forEach(element => {
-                                        project.getAttribute('project') !== element.getAttribute('project') &&
-                                            element.matches('.slide-in-top, .slide-in-bottom') &&
-                                                (element.className = 'slide-out-bottom');
-                                    });
+                            // Scroll up
+                            } else {
+                                project.className = 'slide-in-bottom';
 
-                                // Scroll up
-                                } else {
-                                    project.className = 'slide-in-bottom';
+                                projectsElements.forEach(element => {
+                                    project.getAttribute('project') !== element.getAttribute('project') &&
+                                        element.matches('.slide-in-top, .slide-in-bottom') &&
+                                            (element.className = 'slide-out-top');
+                                });
+                            }
 
-                                    projectsElements.forEach(element => {
-                                        project.getAttribute('project') !== element.getAttribute('project') &&
-                                            element.matches('.slide-in-top, .slide-in-bottom') &&
-                                                (element.className = 'slide-out-top');
-                                    });
-                                }
+                            previousY = window.pageYOffset;
 
-                                previousY = window.pageYOffset;
-
-                            }, 100);
-                        }
-                    });
-                }, {
-                    threshold: 1.0
+                        }, 100);
+                    }
                 });
+            }, {
+                threshold: 1.0
+            });
 
-                projectsElements.forEach(project => projectObserver.observe(project));
-
-            } else { // older browsers fallback
-                let lazyloadThrottleTimeout;
-
-                const lazyload = () => {
-                    lazyloadThrottleTimeout && clearTimeout(lazyloadThrottleTimeout);
-
-                    lazyloadThrottleTimeout = setTimeout(() => {
-                        projectsElements.forEach(project => {
-                            if (project.offsetTop < (window.innerHeight + window.pageYOffset)) {
-
-                                previousY <= window.pageYOffset
-                                    ? project.className = 'slide-in-top' // Scroll down
-                                    : project.className = 'slide-in-bottom'; // Scroll up
-
-                                previousY = window.pageYOffset;
-
-                            } else if (project.matches('.slide-in-top, .slide-in-bottom')) {
-                                previousY <= window.pageYOffset
-                                    ? project.className = 'slide-out-bottom' // Scroll down
-                                    : project.className = 'slide-out-top'; // Scroll up
-                            } else project.className = '';
-                        });
-
-                    }, 20);
-                }
-
-                document.addEventListener('scroll', lazyload);
-                window.addEventListener('resize', lazyload);
-                window.addEventListener('orientationChange', lazyload);
-            }
+            projectsElements.forEach(project => projectObserver.observe(project));
         }
     }
 }
@@ -323,12 +288,36 @@ export default {
 
     }
 
+    @include phablet {
+        figure span {
+            @include fontXXL ($black);
+        }
+    }
+
     @include mq (0, 569px) {
         padding: calc(#{$navHeight + 20}) 0 calc(#{$footerHeight + 20});
 
         ul {
             grid-template-columns: 1fr;
             grid-gap: 50px;
+        }
+
+        li.slide-in-top figure:before, li.slide-in-bottom figure:before {
+            opacity: .5;
+        }
+
+        figure {
+
+            &:hover:before {
+                opacity: .15;
+            }
+
+            span {
+                font-size: $fontGiantMobile;
+                line-height: 40px;
+                letter-spacing: 5px;
+            }
+
         }
     }
 

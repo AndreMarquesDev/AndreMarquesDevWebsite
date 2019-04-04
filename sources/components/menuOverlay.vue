@@ -2,15 +2,15 @@
     <section class="menu" :class="{menuOpen: this.$store.state.menuOpen}" @click="toggleMenu">
 
         <nav class="menu__links">
-            <li @click="activeLink">
+            <li>
                 <router-link to="/work">{{ menuLinks.link1 }}</router-link>
                 <span :text="menuLinks.link1"></span>
             </li>
-            <li @click="activeLink">
-                <router-link to="/">{{ menuLinks.link2 }}</router-link>
+            <li>
+                <router-link to="/about">{{ menuLinks.link2 }}</router-link>
                 <span :text="menuLinks.link2"></span>
             </li>
-            <li @click="activeLink">
+            <li>
                 <router-link to="/secondPage">{{ menuLinks.link3 }}</router-link>
                 <span :text="menuLinks.link3"></span>
             </li>
@@ -34,9 +34,6 @@ export default {
     methods: {
         toggleMenu(event) {
             this.$store.commit('toggleMenu', {event});
-        },
-        activeLink(event) {
-            event.currentTarget.classList.add('active');
         }
     }
 }
@@ -91,7 +88,7 @@ export default {
             text-transform: uppercase;
             margin-bottom: 10%;
 
-            &.active, &:hover {
+            &:hover {
 
                 > span, > span:before {
                     transform: translateY(0);

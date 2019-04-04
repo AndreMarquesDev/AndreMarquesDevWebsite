@@ -21,21 +21,15 @@ main {
     min-height: 100vh;
     position: relative;
     background: url('../images/background.webp') no-repeat center/cover;
-
-    &:before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: url('../images/shapes.svg') no-repeat center bottom/contain;
-        opacity: .6;
-
-    }
+    overflow: hidden; // because of shapes background movement
 
     > *:not(.menu):not(.navigation) {
         @include transition (filter, .4s);
+
+        &.shapesBackground {
+            transition: filter .4s, -webkit-filter .4s, transform .1s, -webkit-transform .1s; // so that it doesn't flick on the first mousemove; had to be given here, otherwise it would be overwritten by the filter transition
+        }
+
     }
 
     &.blur > *:not(.menu):not(.navigation) {
