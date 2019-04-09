@@ -207,10 +207,10 @@
     }
 
     .leftBar, .rightBar {
-        @include transition (transform, 1s);
+        @include transition (transform, .5s);
 
         &:before {
-            animation: lineAnimation 3s 1 1s linear;
+            animation: lineAnimation 2s 1 .5s linear;
         }
 
     }
@@ -220,7 +220,7 @@
 // basically the whole transition happens on the 'leave-active' moment;
 // the 'enter-active' part just controls the opening of the curtain
 .curtainTransition-leave-active {
-    @include transition (all, 4s);
+    @include transition (all, 2.5s);
 
     > *:not(.menu):not(.navigation):not(.transitionComponent) {
         filter: blur(5px);
@@ -228,7 +228,7 @@
 }
 
 .curtainTransition-enter-active {
-    @include transition (all, 1s);
+    @include transition (all, .5s);
 }
 
 // When leaving the page

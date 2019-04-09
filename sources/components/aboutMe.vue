@@ -48,7 +48,7 @@ export default {
                     identation: 'identation2'
                 },
                 {
-                    html: `<span class="lightblue">year</span>: <span class="red">1993</span>,`,
+                    html: `<span class="lightblue">year</span>: <span class="red teste">1993</span>,`,
                     identation: 'identation2'
                 },
                 {
@@ -60,7 +60,7 @@ export default {
                     identation: 'identation2'
                 },
                 {
-                    html: `<span class="lightblue">email</span>: <span class="green">'andregm_7@hotmail.com'</span>,`,
+                    html: `<span class="lightblue">email</span>: <a href="mailto:andregm_7@hotmail.com" class="link"><span class="green">'andregm_7@hotmail.com'</span></a>,`,
                     identation: 'identation2'
                 },
                 {
@@ -96,7 +96,7 @@ export default {
                     identation: 'identation3'
                 },
                 {
-                    html: `<span class="green">'@ EDIT. - Disruptive Digital Education'</span>,`,
+                    html: `<a href="https://edit.com.pt/formacao/curso-frontend-development-lisboa" target="_blank" class="link"><span class="green">'@ EDIT. - Disruptive Digital Education'</span></a>,`,
                     identation: 'identation3'
                 },
                 {
@@ -228,7 +228,7 @@ export default {
                     identation: 'identation1'
                 },
                 {
-                    html: `company <span class="orange">=</span> <span class="green">'Fullsix'</span>;`,
+                    html: `company <span class="orange">=</span> <a href="https://www.fullsix.pt" target="_blank" class="link"><span class="green">'Fullsix Portugal'</span></a>;`,
                     identation: 'identation2'
                 },
                 {
@@ -244,7 +244,7 @@ export default {
                     identation: 'identation2'
                 },
                 {
-                    html: `projects <span class="orange">=</span> <span class="green">'Ageas Portugal'</span> <span class="orange">+</span> <span class="green">'Seguro Directo'</span> <span class="orange">+</span> <span class="green">'Galp Corporate Event'</span>;`,
+                    html: `projects <span class="orange">=</span> <a href="work" class="link innerLink"><span class="green">'Ageas Portugal'</span></a> <span class="orange">+</span> <a href="work" class="link innerLink"><span class="green">'Seguro Directo'</span></a> <span class="orange">+</span> <a href="work" class="link innerLink"><span class="green">'Galp Corporate Event'</span></a>;`,
                     identation: 'identation2'
                 },
                 {
@@ -268,11 +268,21 @@ export default {
                     identation: null
                 },
                 {
-                    html: '<span class="orange">if</span> <span class="yellow">(</span>needNewWebsite <span class="orange">===</span> <span class="red">true</span><span class="yellow">) hireMe()</span>;',
+                    html: '<span class="orange">if</span> <span class="yellow">(</span>needNewWebsite <span class="orange">===</span> <span class="red">true</span><span class="yellow">) <a href="contact" class="link innerLink">hireMe()</a></span>;',
                     identation: null
                 }
             ]
         }
+    },
+    mounted() {
+        this.$el.querySelectorAll('.link.innerLink').forEach(manualLink => {
+            manualLink.addEventListener('click', event => {
+                event.preventDefault();
+
+                const route = event.currentTarget.getAttribute('href');
+                this.$router.push(route);
+            });
+        })
     }
 }
 
@@ -365,7 +375,6 @@ $lightblue: #9effff;
     .animatedLetters {
         @include fontXXL;
         font-weight: $fontBold;
-        text-align: left;
         margin-bottom: 40px;
     }
 
@@ -388,6 +397,7 @@ $lightblue: #9effff;
         p {
             min-height: 26px;
             position: relative;
+            z-index: 1;
 
             &.identation1 {
                 padding-left: $identation1;
@@ -409,8 +419,33 @@ $lightblue: #9effff;
                 color: #aaa;
             }
 
+            &:after {
+                content: '';
+                width: 1000vw;
+                height: 100%;;
+                position: absolute;
+                top: 0;
+                left: -100%;
+                background: rgba($white, .1);
+                opacity: 0;
+                z-index: -1;
+            }
+
+            &:hover:after {
+                opacity: 1;
+            }
+
             .yellow {
                 color: $yellow;
+
+                .link {
+                    color: inherit;
+
+                    &:before {
+                        background: $yellow;
+                    }
+
+                }
             }
 
             .orange {
@@ -431,6 +466,51 @@ $lightblue: #9effff;
 
             .lightblue {
                 color: $lightblue;
+            }
+
+            .link {
+                display: inline-block;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    width: 0;
+                    height: 2.5px;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    background: $green;
+                    @include transition (width, .3s, ease-out);
+                }
+
+                &:hover:before, &:focus:before, &:active:before {
+                    width: 100%;
+                    left: 0;
+                    right: auto;
+                }
+            }
+
+            .teste {
+                display: inline-block;
+                position: relative;
+                transform-style: preserve-3d;
+                @include transition (all, .4s);
+
+                &:before {
+                    content: '25yo';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: -100%;
+                    transform-origin: 0% 100%;
+                    transform: rotateX(90deg);
+                }
+
+                &:hover {
+                    transform-origin: 50% 100%;
+                    transform: rotateX(-90deg) translateY(100%);
+                }
+
             }
 
         }

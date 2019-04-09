@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from './pages/home.vue'
-import secondPage from './pages/secondPage.vue'
+import contact from './pages/contact.vue'
 import work from './pages/work.vue'
 import about from './pages/about.vue'
 
@@ -16,9 +16,9 @@ export default new Router ({
             component: home
         },
         {
-            path: '/secondPage',
-            name: 'secondPage',
-            component: secondPage
+            path: '/contact',
+            name: 'contact',
+            component: contact
         },
         {
             path: '/work',

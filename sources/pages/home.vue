@@ -2,7 +2,7 @@
     <main>
         <shapesBackground/>
         <navigation/>
-        <main-content url="secondPage" destination="the second page"/>
+        <homepage/>
         <footerNavigation/>
         <menuOverlay/>
         <transitionComponent/>
@@ -12,7 +12,7 @@
 <script>
 import shapesBackground from './../components/shapesBackground.vue';
 import navigation from './../components/navigation.vue';
-import mainContent from './../components/mainContent.vue';
+import homepage from './../components/homepage.vue';
 import menuOverlay from './../components/menuOverlay.vue';
 import footerNavigation from './../components/footerNavigation.vue';
 import transitionComponent from './../components/transitionComponent.vue';
@@ -22,7 +22,7 @@ export default {
     components: {
         shapesBackground,
         navigation,
-        mainContent,
+        homepage,
         menuOverlay,
         footerNavigation,
         transitionComponent

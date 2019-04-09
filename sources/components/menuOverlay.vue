@@ -3,16 +3,16 @@
 
         <nav class="menu__links">
             <li>
-                <router-link to="/work">{{ menuLinks.link1 }}</router-link>
-                <span :text="menuLinks.link1"></span>
+                <router-link to="/about">{{ menuLinks.about }}</router-link>
+                <span :text="menuLinks.about"></span>
             </li>
             <li>
-                <router-link to="/about">{{ menuLinks.link2 }}</router-link>
-                <span :text="menuLinks.link2"></span>
+                <router-link to="/work">{{ menuLinks.projects }}</router-link>
+                <span :text="menuLinks.projects"></span>
             </li>
             <li>
-                <router-link to="/secondPage">{{ menuLinks.link3 }}</router-link>
-                <span :text="menuLinks.link3"></span>
+                <router-link to="/contact">{{ menuLinks.contact }}</router-link>
+                <span :text="menuLinks.contact"></span>
             </li>
         </nav>
 
@@ -25,9 +25,9 @@ export default {
     data() {
         return {
             menuLinks: {
-                link1: 'Work',
-                link2: 'About',
-                link3: '2nd Page'
+                about: 'about',
+                projects: 'Projects',
+                contact: 'Contact'
             }
         }
     },

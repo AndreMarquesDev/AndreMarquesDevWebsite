@@ -2,7 +2,7 @@
     <section class="projects">
         <div class="wrapper">
 
-            <animatedLetters text="<work/>"/>
+            <animatedLetters text="<projects/>"/>
 
             <ul>
                 <li v-for="project in projectsArray" :project="project.name" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
@@ -173,7 +173,6 @@ export default {
     .animatedLetters {
         @include fontXXL;
         font-weight: $fontBold;
-        text-align: left;
         margin-bottom: 40px;
     }
 

@@ -54,7 +54,7 @@ export default {
     display: block;
     color: $white;
     font-size: 40px;
-    text-align: center;
+    text-align: left;
 
     span {
         display: inline-block;
