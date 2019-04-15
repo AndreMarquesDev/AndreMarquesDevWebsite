@@ -1,5 +1,5 @@
 <template>
-    <div id="main" @mousemove="shapesAnimation">
+    <div id="app" @mousemove="shapesAnimation">
         <transition name="curtainTransition" mode="out-in">
             <router-view/>
         </transition>
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-    name: 'main',
+    name: 'app',
     methods: {
         shapesAnimation(event) {
             if (window.innerWidth < 768) return;

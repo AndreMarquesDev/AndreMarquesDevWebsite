@@ -2,9 +2,9 @@
     <section class="contactForm">
         <div class="wrapper">
 
-            <animatedLetters text="<contact/>"/>
+            <animatedLetters text="<contact me/>"/>
 
-            <h1>This is the contact page</h1>
+            <formComponent/>
 
         </div>
     </section>
@@ -12,11 +12,13 @@
 
 <script>
 import animatedLetters from './../components/animatedLetters.vue';
+import formComponent from './../components/formComponent.vue';
 
 export default {
     name: 'contactForm',
     components: {
-        animatedLetters
+        animatedLetters,
+        formComponent
     }
 }
 </script>
@@ -30,8 +32,8 @@ export default {
     position: relative;
     padding: calc(#{$navHeight + 40}) 0 calc(#{$footerHeight + 40});
 
-    h1 {
-        @include fontXXL;
+    .animatedLetters {
+        margin-bottom: 100px;
     }
 
 }
