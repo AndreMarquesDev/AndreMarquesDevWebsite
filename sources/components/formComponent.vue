@@ -1,8 +1,8 @@
 <template>
     <div class="formComponent">
-        <button @click="teste">isto é um botão</button>
+        <button @click="closeFormTeste">isto é um botão</button>
 
-        <form class="teste" action="https://docs.google.com/forms/d/e/1FAIpQLSeflKZw6gkJ2uxaIlOE_XdDVYHU3KsmJPNzR7RcQrPAKsB-eg/formResponse" target="hiddenIframe" method="POST" id="mG61Hd" @submit="formHandler">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeflKZw6gkJ2uxaIlOE_XdDVYHU3KsmJPNzR7RcQrPAKsB-eg/formResponse" target="hiddenIframe" method="POST" id="mG61Hd" @submit="formHandler">
             <animatedLetters text="<!-- Get in touch -->"/>
 
             <input type="text" name="name" required placeholder="Name" tabindex="0" aria-label="Your name">
@@ -52,39 +52,9 @@ export default {
             });
 
         },
-        teste() {
-            this.slideUp(document.querySelector('form'))
-        },
-        slideUp(element, duration = 500, easing) {
-            return new Promise(resolve => {
 
-                element.style.height = element.offsetHeight + 'px';
-                element.style.transitionProperty = `height, margin, padding`;
-                element.style.transitionDuration = duration + 'ms';
-                element.style.transitionTimingFunction = easing;
-                element.offsetHeight;
-                element.style.overflow = 'hidden';
-                element.style.height = 0;
-                element.style.paddingTop = 0;
-                element.style.paddingBottom = 0;
-                element.style.marginTop = 0;
-                element.style.marginBottom = 0;
-
-                setTimeout(() => {
-                    element.style.display = 'none';
-                    element.style.removeProperty('height');
-                    element.style.removeProperty('padding-top');
-                    element.style.removeProperty('padding-bottom');
-                    element.style.removeProperty('margin-top');
-                    element.style.removeProperty('margin-bottom');
-                    element.style.removeProperty('overflow');
-                    element.style.removeProperty('transition-duration');
-                    element.style.removeProperty('transition-property');
-                    element.style.removeProperty('transition-timing-function');
-                    resolve(false);
-                }, duration);
-
-            });
+        closeFormTeste() {
+            document.querySelector('form').classList.add('success');
         }
     }
 }
@@ -102,21 +72,46 @@ export default {
 
     form {
         max-width: 700px;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        background: url('../images/background.webp') no-repeat center/cover;
+        position: relative;
+        background: url('../images/background.jpg') no-repeat center/cover;
+        background: limegreen;
         margin: auto;
         padding: 30px;
         @include transition (all, 2s, ease);
 
-        &.success {
+        &:before, &:after {
+            content: '';
+            width: 100%;
             height: 0;
-            overflow: hidden;
+            position: absolute;
+            left: 0;
+            background: red;
+            @include transition (all, 2s, ease);
+        }
 
-            > * {
-                height: 0;
-                opacity: 0;
-                @include transition (all, 2s, ease);
+        &:before {
+            top: 0;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+
+        &.success {
+            // height: 0;
+            // overflow: hidden;
+
+            // > * {
+            //     height: 0;
+            //     opacity: 0;
+            //     @include transition (all, 2s, ease);
+            // }
+
+            &:before, &:after {
+                height: 50%;
             }
         }
 

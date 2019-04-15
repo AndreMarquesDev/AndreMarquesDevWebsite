@@ -7,7 +7,11 @@
             <ul>
                 <li v-for="project in projectsArray" :project="project.name" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
                     <figure>
-                        <img :src="require('../images/' + project.image + '.webp')" alt="Project image">
+                        <picture>
+                            <source :srcset="require('../images/' + project.image + '.webp')" type="image/webp">
+                            <source :srcset="require('../images/' + project.image + '.jpg')" type="image/jpeg">
+                            <img :src="require('../images/' + project.image + '.jpg')" :alt="project.name">
+                        </picture>
                         <span :projectName="project.name"></span>
                     </figure>
                 </li>

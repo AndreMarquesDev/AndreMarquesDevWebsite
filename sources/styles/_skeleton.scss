@@ -14,14 +14,14 @@ body {
     font-family: $font;
     font-weight: $fontRegular;
     -webkit-font-smoothing: antialiased;
-    cursor: url('../images/mouseCursor.webp'), auto;
+    cursor: url('../images/mouseCursor.jpg'), auto;
 }
 
 main {
     min-height: 100vh;
     position: relative;
-    background: url('../images/background.webp') no-repeat center/cover;
-    background: url('../images/mapa-dummy.jpg') no-repeat center/cover;
+    background: url('../images/background.jpg') no-repeat center/cover;
+    // background: url('../images/mapa-dummy.jpg') no-repeat center/cover;
     overflow: hidden; // because of shapes background movement
 
     > *:not(.menu):not(.navigation) {
