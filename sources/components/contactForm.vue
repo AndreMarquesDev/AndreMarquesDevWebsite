@@ -2,7 +2,7 @@
     <section class="contactForm">
         <div class="wrapper">
 
-            <!-- <animatedLetters text="<contact me/>"/> -->
+            <animatedLetters text="<contact me/>"/>
 
             <formComponent/>
 

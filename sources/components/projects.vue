@@ -5,14 +5,14 @@
             <animatedLetters text="<projects/>"/>
 
             <ul>
-                <li v-for="project in projectsArray" :project="project.name" @mouseenter="addAnimation($event, 'in')" @mouseleave="addAnimation($event, 'out')">
+                <li v-for="project in projectsArray" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')">
                     <figure>
                         <picture>
                             <source :srcset="require('../images/' + project.image + '.webp')" type="image/webp">
                             <source :srcset="require('../images/' + project.image + '.jpg')" type="image/jpeg">
                             <img :src="require('../images/' + project.image + '.jpg')" :alt="project.name">
                         </picture>
-                        <span :projectName="project.name"></span>
+                        <span :projectName="project.name" class="overlay"></span>
                     </figure>
                 </li>
             </ul>
@@ -58,65 +58,18 @@ export default {
         window.addEventListener('resize', () => this.makeItemsSquare(projects));
 
 
-        if (window.innerWidth < 570) this.mobileAnimationBehavior();
+        if (window.innerWidth < 570) this.mobileSlideAnimationBehavior();
     },
     methods: {
         makeItemsSquare(elements) {
             elements.forEach(element => element.style.height = element.offsetWidth + 'px');
         },
-        getPosition(element) {
-            let x = 0,
-                y = 0;
 
-            while (element) {
-                x += element.offsetLeft + element.clientLeft;
-                y += element.offsetTop + element.clientTop;
-
-                element = element.offsetParent;
-            }
-
-            return {
-                x,
-                y
-            };
+        addSlideAnimation(event, action) {
+            this.$store.commit('addSlideAnimation', {event, action});
         },
-        getDirection(event) {
-            const width = event.target.offsetWidth,
-                height = event.target.offsetHeight,
-                position = this.getPosition(event.target),
-                x = event.pageX - position.x - width / 2 * (width > height ? height / width : 1),
-                y = event.pageY - position.y - height / 2 * (height > width ? width / height : 1);
-            let direction = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
-            switch(direction) {
-                case 0:
-                    direction = 'top'
-                    break;
-                case 1:
-                    direction = 'right'
-                    break;
-                case 2:
-                    direction = 'bottom'
-                    break;
-                case 3:
-                    direction = 'left'
-                    break;
-                default:
-                    direction = 'top'
-            }
-
-            return direction;
-        },
-        addAnimation(event, state) {
-            const target = event.currentTarget,
-                direction = this.getDirection(event, target);
-
-            if (window.innerWidth < 570) return;
-
-            target.className = '';
-            target.classList.add(`slide-${state}-${direction}`);
-        },
-        mobileAnimationBehavior() {
+        mobileSlideAnimationBehavior() {
             const projectsElements = this.$el.querySelectorAll('li');
             let previousY = 0;
 
@@ -188,48 +141,6 @@ export default {
         justify-content: space-around;
     }
 
-    li {
-        &.slide-in-top span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-in-top;
-        }
-
-        &.slide-in-right span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-in-right;
-        }
-
-        &.slide-in-bottom span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-in-bottom;
-        }
-
-        &.slide-in-left span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-in-left;
-        }
-
-        &.slide-out-top span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-out-top;
-        }
-
-        &.slide-out-right span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-out-right;
-        }
-
-        &.slide-out-bottom span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-out-bottom;
-        }
-
-        &.slide-out-left span {
-            transform: translate3d(0, 0, 0);
-            animation-name: slide-out-left;
-        }
-    }
-
     figure {
         width: 100%;
         height: 100%;
@@ -253,7 +164,7 @@ export default {
             opacity: .5;
         }
 
-        span {
+        span { // overlay
             width: 100%;
             height: 100%;
             position: absolute;
@@ -266,7 +177,6 @@ export default {
             background: $white;
             mix-blend-mode: color-dodge;
             transform: translate3d(0, -100%, 0);
-            animation: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             z-index: 1;
 
             &:before {

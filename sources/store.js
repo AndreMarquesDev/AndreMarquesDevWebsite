@@ -8,7 +8,7 @@ export default new Vuex.Store({
         menuOpen: false
     },
     mutations: {
-        toggleMenu(state, {event, isPageLoad = false}) {
+        toggleMenu(state, { event, isPageLoad = false }) {
             isPageLoad
                 ? state.menuOpen = false
                 : !event.target.closest('.menu__links') && (state.menuOpen = !state.menuOpen);
@@ -17,6 +17,62 @@ export default new Vuex.Store({
             state.menuOpen
                 ? main.classList.add('blur')
                 : main.classList.remove('blur');
+        },
+
+        addSlideAnimation(state, { event, action }) {
+
+            if (window.innerWidth < 570) return;
+
+            const getPosition = element => {
+                let x = 0,
+                    y = 0;
+
+                while (element) {
+                    x += element.offsetLeft + element.clientLeft;
+                    y += element.offsetTop + element.clientTop;
+
+                    element = element.offsetParent;
+                }
+
+                return {
+                    x, y
+                };
+            }
+
+            const getDirection = event => {
+                const width = event.target.offsetWidth,
+                    height = event.target.offsetHeight,
+                    position = getPosition(event.target),
+                    x = event.pageX - position.x - width / 2 * (width > height ? height / width : 1),
+                    y = event.pageY - position.y - height / 2 * (height > width ? width / height : 1);
+                let direction = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
+
+                switch(direction) {
+                    case 0:
+                        direction = 'top'
+                        break;
+                    case 1:
+                        direction = 'right'
+                        break;
+                    case 2:
+                        direction = 'bottom'
+                        break;
+                    case 3:
+                        direction = 'left'
+                        break;
+                    default:
+                        direction = 'top'
+                }
+
+                return direction;
+            }
+
+            const target = event.currentTarget,
+                direction = getDirection(event);
+
+
+            target.className = '';
+            target.classList.add(`slide-${action}-${direction}`);
         }
     },
     actions: {

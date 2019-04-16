@@ -3,7 +3,7 @@
         <shapesBackground/>
         <navigation/>
         <contactForm/>
-        <!-- <footerNavigation/> -->
+        <footerNavigation/>
         <menuOverlay/>
         <transitionComponent/>
     </main>
@@ -14,7 +14,7 @@ import shapesBackground from './../components/shapesBackground.vue';
 import navigation from './../components/navigation.vue';
 import contactForm from './../components/contactForm.vue';
 import menuOverlay from './../components/menuOverlay.vue';
-// import footerNavigation from './../components/footerNavigation.vue';
+import footerNavigation from './../components/footerNavigation.vue';
 import transitionComponent from './../components/transitionComponent.vue';
 
 export default {
@@ -24,7 +24,7 @@ export default {
         navigation,
         contactForm,
         menuOverlay,
-        // footerNavigation,
+        footerNavigation,
         transitionComponent
     }
 }
