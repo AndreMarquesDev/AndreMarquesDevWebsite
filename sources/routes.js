@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import home from './pages/home.vue'
 import contact from './pages/contact.vue'
 import work from './pages/work.vue'
+import projectPage from './pages/projectPage.vue'
 import about from './pages/about.vue'
 
 Vue.use(Router);
@@ -24,6 +25,11 @@ export default new Router ({
             path: '/work',
             name: 'work',
             component: work
+        },
+        {
+            path: '/work/:project',
+            name: 'projectPage',
+            component: projectPage
         },
         {
             path: '/about',

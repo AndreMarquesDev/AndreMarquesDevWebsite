@@ -1,19 +1,21 @@
 <template>
-    <section class="projects">
+    <section class="projects mainSection">
         <div class="wrapper">
 
             <animatedLetters text="<projects/>"/>
 
             <ul>
-                <li v-for="project in projectsArray" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')">
-                    <figure>
-                        <picture>
-                            <source :srcset="require('../images/' + project.image + '.webp')" type="image/webp">
-                            <source :srcset="require('../images/' + project.image + '.jpg')" type="image/jpeg">
-                            <img :src="require('../images/' + project.image + '.jpg')" :alt="project.name">
-                        </picture>
-                        <span :projectName="project.name" class="overlay"></span>
-                    </figure>
+                <li v-for="project in projects" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')">
+                    <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }">
+                        <figure>
+                            <picture>
+                                <source :srcset="require('../images/' + project.path + '.webp')" type="image/webp">
+                                <source :srcset="require('../images/' + project.path + '.jpg')" type="image/jpeg">
+                                <img :src="require('../images/' + project.path + '.jpg')" :alt="project.name">
+                            </picture>
+                            <span :projectName="project.name" class="overlay"></span>
+                        </figure>
+                    </router-link>
                 </li>
             </ul>
 
@@ -31,24 +33,7 @@ export default {
     },
     data() {
         return {
-            projectsArray: {
-                ageasPortugal: {
-                    name: 'Ageas Portugal',
-                    image: 'ageas-portugal'
-                },
-                seguroDirecto: {
-                    name: 'Seguro Directo',
-                    image: 'seguro-directo'
-                },
-                aguarela: {
-                    name: 'Aguarela Project',
-                    image: 'aguarela'
-                },
-                galp: {
-                    name: 'Galp Corporate Event 2019',
-                    image: 'galp'
-                }
-            }
+            projects: this.$store.state.projects
         }
     },
     mounted() {
@@ -122,10 +107,6 @@ export default {
 @import '../styles/variables.scss';
 
 .projects {
-    width: 100%;
-    display: flex;
-    position: relative;
-    padding: calc(#{$navHeight + 40}) 0 calc(#{$footerHeight + 40});
 
     .animatedLetters {
         @include fontXXL;
@@ -191,12 +172,12 @@ export default {
         }
 
         img {
+            width: 100%;
+            height: 100%;
             position: relative;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
         }
 
     }

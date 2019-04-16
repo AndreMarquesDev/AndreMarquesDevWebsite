@@ -7,8 +7,8 @@
                 <span :text="menuLinks.about"></span>
             </li>
             <li>
-                <router-link to="/work">{{ menuLinks.projects }}</router-link>
-                <span :text="menuLinks.projects"></span>
+                <router-link to="/work">{{ menuLinks.work }}</router-link>
+                <span :text="menuLinks.work"></span>
             </li>
             <li>
                 <router-link to="/contact">{{ menuLinks.contact }}</router-link>
@@ -25,8 +25,8 @@ export default {
     data() {
         return {
             menuLinks: {
-                about: 'about',
-                projects: 'Projects',
+                about: 'About',
+                work: 'Work',
                 contact: 'Contact'
             }
         }

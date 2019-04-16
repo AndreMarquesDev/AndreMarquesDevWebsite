@@ -35,7 +35,7 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     outputPath: 'images/',
-                    publicPath: 'images/'
+                    publicPath: '/images/'
                 },
             }]
         },
@@ -111,6 +111,7 @@ module.exports = {
     },
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'public')
+        path: path.resolve(__dirname, 'public'),
+        publicPath: '/'
     }
 };

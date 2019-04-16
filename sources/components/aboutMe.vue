@@ -1,5 +1,5 @@
 <template>
-    <section class="aboutMe">
+    <section class="aboutMe mainSection">
         <div class="wrapper">
 
             <animatedLetters text="<about/>"/>
@@ -367,10 +367,6 @@ $green: #a5ff90;
 $lightblue: #9effff;
 
 .aboutMe {
-    width: 100%;
-    display: flex;
-    position: relative;
-    padding: calc(#{$navHeight + 40}) 0 calc(#{$footerHeight + 40});
 
     .animatedLetters {
         @include fontXXL;

@@ -42,6 +42,13 @@ section {
     width: 100%;
 }
 
+.mainSection {
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding: #{$navHeight + 40} 0 #{$footerHeight + 40};
+}
+
 .wrapper {
     max-width: 1440px;
     width: 100%;

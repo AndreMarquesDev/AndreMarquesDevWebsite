@@ -2,7 +2,7 @@
     <header class="navigation" :class="{menuOpen: this.$store.state.menuOpen}" >
 
         <nav>
-            <router-link to="home" class="navigation__logo">
+            <router-link to="/" class="navigation__logo">
                 <img src="../images/logo.svg" alt="logo">
             </router-link>
 

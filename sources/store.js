@@ -5,7 +5,29 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        menuOpen: false
+        menuOpen: false,
+        projects: [
+            {
+                name: 'Ageas Portugal',
+                path: 'ageas-portugal',
+                description: '<a href="https://www.grupoageas.pt" target="_blank">www.grupoageas.pt</a> is the the institutional website for the Portuguese department of Ageas, a Belgian multinational insurance company.'
+            },
+            {
+                name: 'Seguro Directo',
+                path: 'seguro-directo',
+                description: 'Seguro Directo description'
+            },
+            {
+                name: 'Aguarela',
+                path: 'aguarela',
+                description: 'Aguarela description'
+            },
+            {
+                name: 'Galp Corporate Event 2019',
+                path: 'galp',
+                description: 'Galp description'
+            }
+        ]
     },
     mutations: {
         toggleMenu(state, { event, isPageLoad = false }) {
