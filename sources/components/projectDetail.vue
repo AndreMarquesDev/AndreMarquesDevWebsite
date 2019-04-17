@@ -26,11 +26,30 @@
 
             <article>
                 <h2 class="breakpointCircle">Lighthouse results</h2>
-                <p>Lighthouse</p>
+                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages, by running a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for screen readers and such), Best Practices (General development practices) and SEO (search engine optimization)</p>
+                <p>Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS,write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.</p>
+
+                <div class="projectDetail__progressCircleContainer">
+                    <div class="projectDetail__progressCircle" data-progress="95">
+                        <span>95% <small>Performance</small></span>
+                    </div>
+
+                    <div class="projectDetail__progressCircle" data-progress="65">
+                        <span>65% <small>Accessibility</small></span>
+                    </div>
+
+                    <div class="projectDetail__progressCircle" data-progress="75">
+                        <span>75% <small>Best Practices</small></span>
+                    </div>
+
+                    <div class="projectDetail__progressCircle" data-progress="100">
+                        <span>100% <small>SEO</small></span>
+                    </div>
+                </div>
             </article>
 
             <article>
-                <h2 class="breakpointCircle">Responsive web</h2>
+                <h2 class="breakpointCircle">Responsive development</h2>
 
                 <figure class="projectDetail__detailImage">
                     <picture>
@@ -68,6 +87,10 @@ export default {
 
 <style lang='scss'>
 @import '../styles/variables.scss';
+
+$circleBarColor: $white;
+$circleCenterColor: $backgroundMainColor;
+$circleBackColor: $backgroundMainColor;
 
 .projectDetail {
 
@@ -119,6 +142,11 @@ export default {
             padding-left: 20px;
         }
 
+        p span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
     }
 
     &__mainImage {
@@ -141,6 +169,15 @@ export default {
         @include fontM;
         margin-bottom: 40px;
 
+        > * {
+            margin-bottom: 40px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+        }
+
         h2 {
             @include fontL ($darkOrange);
             letter-spacing: 2.5px;
@@ -162,6 +199,56 @@ export default {
             height: auto;
         }
 
+    }
+
+    &__progressCircleContainer {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__progressCircle {
+        width: 140px;
+        height: 140px;
+        position: relative;
+        border-radius: 50%;
+        background: $circleBarColor;
+
+        span {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            background: $circleCenterColor;
+            @include fontM;
+            text-align: center;
+            color: $white;
+            border-radius: 50%;
+            margin: 20px 0 0 20px;
+        }
+
+        small {
+            @include fontXS;
+        }
+
+    }
+
+    $steps: 5; // steps of % for created classes
+    $loops: round(100 / $steps);
+    $increment: 360 / $loops;
+    $half: round($loops / 2);
+
+    @for $i from 0 through $loops {
+        [data-progress="#{$i * $steps}"] {
+            @if ($i < $half) {
+                $nextdeg: 90deg + ($increment * $i);
+                background-image: linear-gradient(90deg, $circleBackColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);
+            } @else {
+                $nextdeg: -90deg + ($increment * ($i - $half));
+                background-image: linear-gradient($nextdeg, $circleBarColor 50%, transparent 50%, transparent), linear-gradient(270deg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);
+            }
+        }
     }
 
 }
