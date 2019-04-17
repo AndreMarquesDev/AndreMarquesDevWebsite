@@ -19,6 +19,12 @@ export default {
     left: 0;
     background: url('../images/shapes.svg') no-repeat center bottom/contain;
     opacity: .6;
+
+    // with 'background-size: contain', on higher resolutions, the background's boundaries became visible
+    @include mq (2240px, 9999px) {
+        height: 115%;
+    }
+
 }
 
 </style>

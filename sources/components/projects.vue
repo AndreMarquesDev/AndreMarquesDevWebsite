@@ -9,9 +9,9 @@
                     <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }">
                         <figure>
                             <picture>
-                                <source :srcset="require('../images/' + project.path + '.webp')" type="image/webp">
-                                <source :srcset="require('../images/' + project.path + '.jpg')" type="image/jpeg">
-                                <img :src="require('../images/' + project.path + '.jpg')" :alt="project.name">
+                                <source :srcset="require('../images/' + project.image.main + '.webp')" type="image/webp">
+                                <source :srcset="require('../images/' + project.image.main + '.jpg')" type="image/jpeg">
+                                <img :src="require('../images/' + project.image.main + '.jpg')" :alt="project.name">
                             </picture>
                             <span :projectName="project.name" class="overlay"></span>
                         </figure>

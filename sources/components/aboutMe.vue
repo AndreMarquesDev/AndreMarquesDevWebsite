@@ -359,13 +359,6 @@ $identation1: 40px;
 $identation2: #{$identation1 * 2};
 $identation3: #{$identation1 * 3};
 
-$yellow: #ffc600;
-$orange: #ff7200;
-$red: #f44542;
-$purple: #fb94ff;
-$green: #a5ff90;
-$lightblue: #9effff;
-
 .aboutMe {
 
     .animatedLetters {
@@ -432,58 +425,36 @@ $lightblue: #9effff;
             }
 
             .yellow {
-                color: $yellow;
+                color: $aboutMeYellow;
 
                 .link {
                     color: inherit;
 
                     &:before {
-                        background: $yellow;
+                        background: $aboutMeYellow;
                     }
 
                 }
             }
 
             .orange {
-                color: $orange;
+                color: $aboutMeOrange;
             }
 
             .red {
-                color: $red;
+                color: $aboutMeRed;
             }
 
             .purple {
-                color: $purple;
+                color: $aboutMePurple;
             }
 
             .green {
-                color: $green;
+                color: $aboutMeGreen;
             }
 
             .lightblue {
-                color: $lightblue;
-            }
-
-            .link {
-                display: inline-block;
-                position: relative;
-
-                &:before {
-                    content: '';
-                    width: 0;
-                    height: 2.5px;
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    background: $green;
-                    @include transition (width, .3s, ease-out);
-                }
-
-                &:hover:before, &:focus:before, &:active:before {
-                    width: 100%;
-                    left: 0;
-                    right: auto;
-                }
+                color: $aboutMeLightBlue;
             }
 
             .teste {

@@ -10,22 +10,46 @@ export default new Vuex.Store({
             {
                 name: 'Ageas Portugal',
                 path: 'ageas-portugal',
-                description: '<a href="https://www.grupoageas.pt" target="_blank">www.grupoageas.pt</a> is the the institutional website for the Portuguese department of Ageas, a Belgian multinational insurance company.'
+                description: '<a href="https://www.grupoageas.pt" target="_blank" class="link">Ageas Portugal</a> is the institutional website for the Portuguese headquarters of <a href="https://www.ageas.com" target="_blank" class="link">Ageas</a>, a Belgian multinational insurance company, where it is also the largest one. It operates in 14 countries worldwide and is very relevant in Portugal, with their offer varying from life, house, health, car or even pet insurances.',
+                myRole: 'My job at Ageas Portugal was',
+                image: {
+                    main: 'ageas-portugal',
+                    detail1: 'ageas-portugal-detail-1',
+                    detail2: 'ageas-portugal-detail-2'
+                }
             },
             {
                 name: 'Seguro Directo',
                 path: 'seguro-directo',
-                description: 'Seguro Directo description'
+                description: 'Seguro Directo description',
+                myRole: 'My job at Seguro Directo was',
+                image: {
+                    main: 'seguro-directo',
+                    detail1: 'seguro-directo-detail-1',
+                    detail2: 'seguro-directo-detail-2'
+                }
             },
             {
                 name: 'Aguarela',
                 path: 'aguarela',
-                description: 'Aguarela description'
+                description: 'Aguarela description',
+                myRole: 'My job at Aguarela was',
+                image: {
+                    main: 'aguarela',
+                    detail1: 'aguarela-detail-1',
+                    detail2: 'aguarela-detail-2'
+                }
             },
             {
                 name: 'Galp Corporate Event 2019',
                 path: 'galp',
-                description: 'Galp description'
+                description: 'Galp description',
+                myRole: 'My job at Galp was',
+                image: {
+                    main: 'galp',
+                    detail1: 'galp-detail-1',
+                    detail2: 'galp-detail-2'
+                }
             }
         ]
     },

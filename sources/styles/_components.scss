@@ -15,3 +15,28 @@
     width: 30px;
     height: 30px;
 }
+
+// Animated link line
+
+.link {
+    display: inline-block;
+    position: relative;
+    color: $white;
+
+    &:before {
+        content: '';
+        width: 0;
+        height: 2.5px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: $white;
+        @include transition (width, .3s, ease-out);
+    }
+
+    &:hover:before, &:focus:before, &:active:before {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+}
