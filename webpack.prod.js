@@ -13,13 +13,12 @@ const merge = require('webpack-merge');
 
 module.exports = merge(common, {
     mode: 'production',
-    devtool: 'source-map',
     optimization: {
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
                 parallel: true,
-                sourceMap: true,
+                sourceMap: false,
                 terserOptions: {
                     ie8: true,
                     safari10: true

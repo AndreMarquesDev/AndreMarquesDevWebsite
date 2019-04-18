@@ -4,7 +4,7 @@
 
             <animatedLetters :text="this.project.name"/>
 
-            <figure class="projectDetail__mainImage">
+            <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
                     <source :srcset="require('../images/' + this.project.image.detail1 + '.webp')" type="image/webp">
                     <source :srcset="require('../images/' + this.project.image.detail1 + '.png')" type="image/jpeg">
@@ -12,20 +12,19 @@
                 </picture>
             </figure>
 
-            <article>
+            <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Summary">Summary</h2>
                 <p v-html="this.project.description"></p>
             </article>
 
-            <article>
+            <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="My role">My role</h2>
                 <p v-html="this.project.myRole"></p>
             </article>
 
-            <article>
+            <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Responsive development">Responsive development</h2>
 
-                <!-- <div class="projectDetail__slider"> -->
                 <div class="projectDetail__slider" data-flickity='{ "wrapAround": true, "pageDots": true }'>
                     <figure class="projectDetail__detailImage">
                         <picture>
@@ -51,28 +50,16 @@
                 </div>
             </article>
 
-            <article>
+            <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
                 <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for screen readers and such), Best Practices (General development practices) and SEO (search engine optimization)</p>
-                <p>Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.</p>
+                <p>{{ this.project.lighthouseText }}</p>
 
-                <div class="projectDetail__progressCircleContainer">
-                    <div class="projectDetail__progressCircle" data-progress="95">
-                        <span>95% <small>Performance</small></span>
-                    </div>
-
-                    <div class="projectDetail__progressCircle" data-progress="65">
-                        <span>65% <small>Accessibility</small></span>
-                    </div>
-
-                    <div class="projectDetail__progressCircle" data-progress="75">
-                        <span>75% <small>Best Practices</small></span>
-                    </div>
-
-                    <div class="projectDetail__progressCircle" data-progress="100">
-                        <span>100% <small>SEO</small></span>
-                    </div>
-                </div>
+                <ul class="projectDetail__progressCircleContainer">
+                    <li v-for="(result, index) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
+                        <span>{{ result }} <small>{{ index }}</small></span>
+                    </li>
+                </ul>
             </article>
 
         </div>
@@ -81,6 +68,7 @@
 
 <script>
 import flickity from 'flickity';
+
 import animatedLetters from './../components/animatedLetters.vue';
 
 export default {
@@ -109,6 +97,16 @@ $circleCenterColor: $backgroundMainColor;
 $circleBackColor: $backgroundMainColor;
 
 .projectDetail {
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('../images/projectDetailBackground.png') no-repeat center/cover;
+    }
 
     .wrapper {
         position: relative;
@@ -315,7 +313,7 @@ $circleBackColor: $backgroundMainColor;
     $half: round($loops / 2);
 
     @for $i from 0 through $loops {
-        [data-progress="#{$i * $steps}"] {
+        [progress="#{$i * $steps}"] {
             @if ($i < $half) {
                 $nextdeg: 90deg + ($increment * $i);
                 background-image: linear-gradient(90deg, $circleBackColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);

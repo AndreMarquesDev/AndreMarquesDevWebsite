@@ -3,10 +3,10 @@
 .svg-inline--fa {
     color: $white;
     margin: 0 15px;
-    @include transition;
+    @include transition (transform);
 
     &:hover {
-        opacity: .5;
+        transform: translateY(-5px);
     }
 
 }

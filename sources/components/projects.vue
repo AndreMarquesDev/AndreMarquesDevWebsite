@@ -5,7 +5,7 @@
             <animatedLetters text="<projects/>"/>
 
             <ul>
-                <li v-for="project in projects" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')">
+                <li v-for="project in projects" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')" class="scrollReveal">
                     <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }">
                         <figure>
                             <picture>

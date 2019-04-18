@@ -10,6 +10,7 @@ const path = require('path'),
 module.exports = {
     mode: 'development',
     entry: './sources/index.js',
+    devtool: 'inline-source-map',
     module: {
         rules: [{
             test: /\.txt$/,

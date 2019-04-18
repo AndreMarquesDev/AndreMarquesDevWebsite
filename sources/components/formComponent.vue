@@ -1,5 +1,5 @@
 <template>
-    <div class="formComponent">
+    <div class="formComponent scrollReveal">
 
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSeflKZw6gkJ2uxaIlOE_XdDVYHU3KsmJPNzR7RcQrPAKsB-eg/formResponse" target="hiddenIframe" method="POST" id="mG61Hd" @submit="formSubmitted = true" novalidate>
             <animatedLetters text="<!-- Get in touch -->"/>

@@ -4,8 +4,8 @@
 
             <animatedLetters text="<about/>"/>
 
-            <code>
-                <p v-for="(line, index) in code" v-html="line.html" :class="line.identation" :lineNumber="index + 1"></p>
+            <code class="">
+                <p v-for="(line, index) in code" v-html="line.html" :class="['scrollReveal', line.identation]" :lineNumber="index + 1"></p>
             </code>
 
         </div>
