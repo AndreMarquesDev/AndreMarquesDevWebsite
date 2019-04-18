@@ -48,7 +48,7 @@ export default {
                     identation: 'identation2'
                 },
                 {
-                    html: `<span class="lightblue">year</span>: <span class="red teste">1993</span>,`,
+                    html: `<span class="lightblue">year</span>: <span class="red threeDHover">1993</span>,`,
                     identation: 'identation2'
                 },
                 {
@@ -457,27 +457,8 @@ $identation3: #{$identation1 * 3};
                 color: $aboutMeLightBlue;
             }
 
-            .teste {
-                display: inline-block;
-                position: relative;
-                transform-style: preserve-3d;
-                @include transition (all, .4s);
-
-                &:before {
-                    content: '25yo';
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: -100%;
-                    transform-origin: 0% 100%;
-                    transform: rotateX(90deg);
-                }
-
-                &:hover {
-                    transform-origin: 50% 100%;
-                    transform: rotateX(-90deg) translateY(100%);
-                }
-
+            .threeDHover:before {
+                content: '25yo';
             }
 
         }

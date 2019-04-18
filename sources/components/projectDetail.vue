@@ -2,32 +2,59 @@
     <section class="projectDetail mainSection">
         <div class="wrapper">
 
-            <animatedLetters :text="this.project.name" class="breakpointCircle"/>
+            <animatedLetters :text="this.project.name"/>
 
-            <div class="projectDetail__description">
-                <article>
-                    <h2>Summary</h2>
-                    <p v-html="this.project.description"></p>
-                </article>
-
-                <figure class="projectDetail__mainImage">
-                    <picture>
-                        <source :srcset="require('../images/' + this.project.image.detail1 + '.webp')" type="image/webp">
-                        <source :srcset="require('../images/' + this.project.image.detail1 + '.png')" type="image/jpeg">
-                        <img :src="require('../images/' + this.project.image.detail1 + '.png')" :alt="this.project.name">
-                    </picture>
-                </figure>
-
-                <article>
-                    <h2>My role</h2>
-                    <p v-html="this.project.myRole"></p>
-                </article>
-            </div>
+            <figure class="projectDetail__mainImage">
+                <picture>
+                    <source :srcset="require('../images/' + this.project.image.detail1 + '.webp')" type="image/webp">
+                    <source :srcset="require('../images/' + this.project.image.detail1 + '.png')" type="image/jpeg">
+                    <img :src="require('../images/' + this.project.image.detail1 + '.png')" :alt="this.project.name">
+                </picture>
+            </figure>
 
             <article>
-                <h2 class="breakpointCircle">Lighthouse results</h2>
-                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages, by running a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for screen readers and such), Best Practices (General development practices) and SEO (search engine optimization)</p>
-                <p>Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS,write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.</p>
+                <h2 class="threeDHover" data-text="Summary">Summary</h2>
+                <p v-html="this.project.description"></p>
+            </article>
+
+            <article>
+                <h2 class="threeDHover" data-text="My role">My role</h2>
+                <p v-html="this.project.myRole"></p>
+            </article>
+
+            <article>
+                <h2 class="threeDHover" data-text="Responsive development">Responsive development</h2>
+
+                <!-- <div class="projectDetail__slider"> -->
+                <div class="projectDetail__slider" data-flickity='{ "wrapAround": true, "pageDots": true }'>
+                    <figure class="projectDetail__detailImage">
+                        <picture>
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                        </picture>
+                    </figure>
+                    <figure class="projectDetail__detailImage">
+                        <picture>
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                        </picture>
+                    </figure>
+                    <figure class="projectDetail__detailImage">
+                        <picture>
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
+                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                        </picture>
+                    </figure>
+                </div>
+            </article>
+
+            <article>
+                <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
+                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for screen readers and such), Best Practices (General development practices) and SEO (search engine optimization)</p>
+                <p>Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.</p>
 
                 <div class="projectDetail__progressCircleContainer">
                     <div class="projectDetail__progressCircle" data-progress="95">
@@ -48,23 +75,12 @@
                 </div>
             </article>
 
-            <article>
-                <h2 class="breakpointCircle">Responsive development</h2>
-
-                <figure class="projectDetail__detailImage">
-                    <picture>
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                        <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
-                    </picture>
-                </figure>
-            </article>
-
         </div>
     </section>
 </template>
 
 <script>
+import flickity from 'flickity';
 import animatedLetters from './../components/animatedLetters.vue';
 
 export default {
@@ -111,8 +127,9 @@ $circleBackColor: $backgroundMainColor;
 
     }
 
-    .breakpointCircle {
+    .animatedLetters {
         position: relative;
+        margin-bottom: 70px;
 
         &:before {
             content: '';
@@ -128,45 +145,10 @@ $circleBackColor: $backgroundMainColor;
 
     }
 
-    .animatedLetters {
-        position: relative;
-        margin-bottom: 70px;
-    }
-
-    &__description {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 2%;
-
-        > article {
-            padding-left: 20px;
-        }
-
-        p span {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-    }
-
-    &__mainImage {
-        width: 100%;
-        grid-row: span 2;
-        position: relative;
-        top: 0;
-        right: 0;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-    }
-
     article {
         width: 100%;
         @include fontM;
+        text-align: justify;
         margin-bottom: 40px;
 
         > * {
@@ -179,20 +161,41 @@ $circleBackColor: $backgroundMainColor;
         }
 
         h2 {
+            position: relative;
             @include fontL ($darkOrange);
-            letter-spacing: 2.5px;
+            font-weight: $fontBold;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+
+            &:after {
+                content: '';
+                width: 17px;
+                height: 17px;
+                position: absolute;
+                top: 50%;
+                left: -36px;
+                transform: translateY(-50%);
+                background: $lightGrey;
+                border-radius: 50%;
+            }
+
+            &.threeDHover:before {
+                content: attr(data-text);
+            }
+
+        }
+
+        p span {
+            display: block;
+            margin-bottom: 20px;
         }
 
     }
 
-    &__detailImage {
-        width: 100%;
-        position: relative;
-        top: 0;
-        right: 0;
-        overflow: hidden;
+    &__mainImage {
+        width: 50%;
+        float: right;
 
         img {
             width: 100%;
@@ -201,14 +204,86 @@ $circleBackColor: $backgroundMainColor;
 
     }
 
+    &__slider {
+        width: 95%;
+        margin: auto;
+    }
+
+    &__detailImage {
+        width: 50%;
+        position: relative;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        transform: scale(.6);
+        @include transition (transform, .5s);
+
+        &.is-selected {
+            transform: scale(1);
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    // Flickity slider
+
+    .flickity-button-icon {
+        fill: $white;
+    }
+
+    .flickity-prev-next-button {
+        @include transition;
+
+        &:hover {
+            opacity: 1;
+        }
+
+    }
+
+    .flickity-prev-next-button.previous {
+        left: -50px;
+
+        &:hover {
+            left: -55px;
+        }
+
+    }
+
+    .flickity-prev-next-button.next {
+        right: -50px;
+
+        &:hover {
+            right: -55px;
+        }
+
+    }
+
+    .flickity-page-dots {
+        display: none;
+
+        .dot {
+            background: $white;
+        }
+
+    }
+
     &__progressCircleContainer {
-        display: flex;
+        display: grid;
+        grid-template: 140px / repeat(4, 140px);
+        grid-column-gap: 2%;
         justify-content: space-around;
     }
 
     &__progressCircle {
-        width: 140px;
-        height: 140px;
         position: relative;
         border-radius: 50%;
         background: $circleBarColor;
@@ -221,9 +296,9 @@ $circleBackColor: $backgroundMainColor;
             justify-content: center;
             position: absolute;
             background: $circleCenterColor;
-            @include fontM;
+            @include fontL;
+            font-weight: $fontBold;
             text-align: center;
-            color: $white;
             border-radius: 50%;
             margin: 20px 0 0 20px;
         }
@@ -248,6 +323,62 @@ $circleBackColor: $backgroundMainColor;
                 $nextdeg: -90deg + ($increment * ($i - $half));
                 background-image: linear-gradient($nextdeg, $circleBarColor 50%, transparent 50%, transparent), linear-gradient(270deg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);
             }
+        }
+    }
+
+    @include tablet {
+        .flickity-prev-next-button {
+            display: none;
+        }
+
+        .flickity-page-dots {
+            display: block;
+        }
+
+        &__progressCircleContainer {
+            grid-template: repeat(2, 140px) / repeat(2, 140px);
+            grid-gap: 40px 0;
+        }
+
+        &__progressCircle span {
+            font-size: 24px;
+            line-height: 33px;
+            letter-spacing: -.2px;
+        }
+    }
+
+    @include mobile {
+        .wrapper {
+            padding: 0 30px;
+
+            &:before {
+                left: 10px;
+            }
+
+        }
+
+        .animatedLetters {
+            font-size: 25px;
+            margin-bottom: 40px;
+
+            &:before {
+                width: 14px;
+                height: 14px;
+                left: -24px;
+            }
+
+        }
+
+        article h2:after {
+            width: 14px;
+            height: 14px;
+            left: -24px;
+        }
+
+        &__mainImage {
+            width: 100%;
+            float: none;
+            margin-bottom: 40px;
         }
     }
 

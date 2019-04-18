@@ -1,7 +1,7 @@
 <template>
     <footer>
 
-        <small>André Marques</small>
+        <small class="threeDHover">André Marques</small>
 
         <nav>
             <ul>
@@ -50,25 +50,11 @@ footer {
     perspective: 800px;
     padding: 40px 4%;
 
-    small {
-        position: relative;
+    .threeDHover {
         color: $white;
-        transform-style: preserve-3d;
-        @include transition (all, .4s);
 
         &:before {
             content: 'André Marques';
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: -100%;
-            transform-origin: 0% 100%;
-            transform: rotateX(90deg);
-        }
-
-        &:hover {
-            transform-origin: 50% 100%;
-            transform: rotateX(-90deg) translateY(100%);
         }
 
     }
