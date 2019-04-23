@@ -6,22 +6,22 @@
         <nav>
             <ul>
                 <li>
-                    <a href="https://github.com/AndreMarquesDev" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/AndreMarquesDev" target="_blank" rel="noreferrer" aria-label="Check out my GitHub">
                         <fontAwesomeIcon :icon="['fab', 'github']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://codepen.io/AndreMarquesDev" target="_blank" rel="noreferrer">
+                    <a href="https://codepen.io/AndreMarquesDev" target="_blank" rel="noreferrer" aria-label="Check out my CodePen">
                         <fontAwesomeIcon :icon="['fab', 'codepen']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/BazingaCS" target="_blank" rel="noreferrer">
+                    <a href="https://twitter.com/BazingaCS" target="_blank" rel="noreferrer" aria-label="Check out my Twitter">
                         <fontAwesomeIcon :icon="['fab', 'twitter']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/andr%C3%A9-gouveia-marques-675ab3127" target="_blank" rel="noreferrer">
+                    <a href="https://www.linkedin.com/in/andr%C3%A9-gouveia-marques-675ab3127" target="_blank" rel="noreferrer" aria-label="Check out my LinkedIn">
                         <fontAwesomeIcon :icon="['fab', 'linkedin-in']" />
                     </a>
                 </li>
