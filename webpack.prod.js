@@ -64,7 +64,8 @@ module.exports = merge(common, {
                     // Fall back to the cache after 'n' seconds.
                     networkTimeoutSeconds: 5,
                 }
-            }]
+            }],
+            navigateFallback: '/'
         })
     ]
 });

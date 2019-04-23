@@ -13,24 +13,11 @@ export default {
         shapesAnimation(event) {
             if (window.innerWidth < 768) return;
 
-            const translateBackground = event => {
-                const background = this.$el.querySelector('.triangleBackground'),
-                    mouseX = event.clientX / (window.innerWidth / 5),
-                    mouseY = event.clientY / (window.innerHeight / 5);
+            const background = this.$el.querySelector('.triangleBackground'),
+                mouseX = event.clientX / (window.innerWidth / 5),
+                mouseY = event.clientY / (window.innerHeight / 5);
 
-                background.style.transform = `translate(-${mouseX}%, -${mouseY}%)`;
-            };
-
-            // debounce
-            let timeout;
-
-            const runLater = () => {
-                timeout = null;
-                translateBackground(event);
-            };
-
-            clearTimeout(timeout);
-            timeout = setTimeout(runLater, 10);
+            background.style.transform = `translate(-${mouseX}%, -${mouseY}%)`;
         }
     },
     updated() {

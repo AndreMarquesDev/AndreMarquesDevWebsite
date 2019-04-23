@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         makeItemsSquare(elements) {
-            elements.forEach(element => element.style.height = element.offsetWidth + 'px');
+            elements.forEach(element => element.style.height = element.offsetWidth > 500 ? '500px' : element.offsetWidth + 'px');
         },
 
         addSlideAnimation(event, action) {
@@ -120,6 +120,10 @@ export default {
         grid-template: auto / repeat(2, minmax(200px, 500px));
         grid-gap: 100px 3%;
         justify-content: space-around;
+    }
+
+    li {
+        max-height: 500px;
     }
 
     figure {
