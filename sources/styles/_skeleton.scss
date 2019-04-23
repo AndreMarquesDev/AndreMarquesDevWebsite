@@ -23,10 +23,21 @@ main {
     // background: url('../images/mapa-dummy.jpg') no-repeat center/cover;
     overflow: hidden; // because of shapes background movement
 
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('../images/background-lines.png') no-repeat center bottom/contain;
+        opacity: .6;
+    }
+
     > *:not(.menu):not(.navigation) {
         @include transition (filter, .4s);
 
-        &.shapesBackground {
+        &.triangleBackground {
             transition: filter .4s, -webkit-filter .4s, transform .1s, -webkit-transform .1s; // so that it doesn't flick on the first mousemove; had to be given here, otherwise it would be overwritten by the filter transition
         }
 

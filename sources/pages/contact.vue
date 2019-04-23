@@ -1,6 +1,6 @@
 <template>
     <main>
-        <shapesBackground/>
+        <triangleBackground/>
         <navigation/>
         <contactForm/>
         <footerNavigation/>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import shapesBackground from './../components/shapesBackground.vue';
+import triangleBackground from './../components/triangleBackground.vue';
 import navigation from './../components/navigation.vue';
 import contactForm from './../components/contactForm.vue';
 import menuOverlay from './../components/menuOverlay.vue';
@@ -22,7 +22,7 @@ import scrollReveal from 'scrollreveal';
 export default {
     name: 'contact',
     components: {
-        shapesBackground,
+        triangleBackground,
         navigation,
         contactForm,
         menuOverlay,
@@ -34,6 +34,10 @@ export default {
             distance: '200px',
             origin: 'bottom'
         });
+
+        // On 'projectDetail.vue', the <article> right after the slider would stay hidden on hard refresh;
+        // this is a 'just in case' that solves it and eventual future bugs.
+        setTimeout(() => scrollReveal().destroy(), 700);
     }
 }
 </script>

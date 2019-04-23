@@ -1,19 +1,21 @@
 <template>
     <section class="menu" :class="{menuOpen: this.$store.state.menuOpen}" @click="toggleMenu">
 
-        <nav class="menu__links">
-            <li>
-                <router-link to="/about">{{ menuLinks.about }}</router-link>
-                <span :text="menuLinks.about"></span>
-            </li>
-            <li>
-                <router-link to="/work">{{ menuLinks.work }}</router-link>
-                <span :text="menuLinks.work"></span>
-            </li>
-            <li>
-                <router-link to="/contact">{{ menuLinks.contact }}</router-link>
-                <span :text="menuLinks.contact"></span>
-            </li>
+        <nav>
+            <ul class="menu__links">
+                <li>
+                    <router-link to="/about">{{ menuLinks.about }}</router-link>
+                    <span :text="menuLinks.about"></span>
+                </li>
+                <li>
+                    <router-link to="/work">{{ menuLinks.work }}</router-link>
+                    <span :text="menuLinks.work"></span>
+                </li>
+                <li>
+                    <router-link to="/contact">{{ menuLinks.contact }}</router-link>
+                    <span :text="menuLinks.contact"></span>
+                </li>
+            </ul>
         </nav>
 
     </section>
@@ -61,6 +63,10 @@ export default {
             left: 0;
         }
 
+    }
+
+    nav {
+        height: inherit;
     }
 
     &__links {

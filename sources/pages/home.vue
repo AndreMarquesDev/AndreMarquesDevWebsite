@@ -1,6 +1,6 @@
 <template>
     <main>
-        <shapesBackground/>
+        <triangleBackground/>
         <navigation/>
         <homepage/>
         <footerNavigation/>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import shapesBackground from './../components/shapesBackground.vue';
+import triangleBackground from './../components/triangleBackground.vue';
 import navigation from './../components/navigation.vue';
 import homepage from './../components/homepage.vue';
 import menuOverlay from './../components/menuOverlay.vue';
@@ -20,7 +20,7 @@ import transitionComponent from './../components/transitionComponent.vue';
 export default {
     name: 'home',
     components: {
-        shapesBackground,
+        triangleBackground,
         navigation,
         homepage,
         menuOverlay,

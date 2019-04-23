@@ -25,7 +25,7 @@
             <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Responsive development">Responsive development</h2>
 
-                <div class="projectDetail__slider" data-flickity='{ "wrapAround": true, "pageDots": true }'>
+                <div class="projectDetail__slider">
                     <figure class="projectDetail__detailImage">
                         <picture>
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
@@ -48,6 +48,18 @@
                         </picture>
                     </figure>
                 </div>
+            </article>
+
+            <article class="scrollReveal">
+                <h2 class="threeDHover" data-text="More pages">More pages</h2>
+
+                <figure class="projectDetail__detailImage">
+                    <picture>
+                        <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
+                        <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
+                        <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                    </picture>
+                </figure>
             </article>
 
             <article class="scrollReveal">
@@ -85,6 +97,19 @@ export default {
     beforeMount() {
         // Get current project
         this.projectsArray.forEach(project => this.$route.params.project === project.path && (this.project = project));
+
+        // Set document title
+        this.$route.meta.title = this.project.name + this.$route.meta.title;
+        document.title = this.$route.meta.title;
+    },
+    mounted() {
+        // the slider mounting was bugged
+        setTimeout(() => {
+            new flickity(this.$el.querySelector('.projectDetail__slider'), {
+                wrapAround: true,
+                pageDots: true
+            });
+        }, 250);
     }
 }
 </script>
@@ -205,25 +230,30 @@ $circleBackColor: $backgroundMainColor;
     &__slider {
         width: 95%;
         margin: auto;
+
+        .projectDetail__detailImage {
+            width: 50%;
+            transform: scale(.6);
+            @include transition (transform, .5s);
+
+            &.is-selected {
+                transform: scale(1);
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+            }
+        }
+
     }
 
     &__detailImage {
-        width: 50%;
+        width: 100%;
         position: relative;
         top: 0;
         right: 0;
         overflow: hidden;
-        transform: scale(.6);
-        @include transition (transform, .5s);
-
-        &.is-selected {
-            transform: scale(1);
-
-            &:hover {
-                transform: scale(1.1);
-            }
-
-        }
 
         img {
             width: 100%;
@@ -325,6 +355,20 @@ $circleBackColor: $backgroundMainColor;
     }
 
     @include tablet {
+        &__slider {
+            width: 100%;
+
+            .projectDetail__detailImage {
+                width: 100%;
+                transform: none;
+
+                &.is-selected:hover {
+                    transform: none;
+                }
+            }
+
+        }
+
         .flickity-prev-next-button {
             display: none;
         }

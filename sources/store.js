@@ -14,10 +14,10 @@ export default new Vuex.Store({
                 myRole: `<span>I was full-time at this project from the beginning until its conclusion, which means I was the one making most of the Frontend technical decisions and was in constant communication with Backend, UX and UI, as well as with the client itself. The team consisted on one person per area (Frontend, Backend, UX, UI and Project Management) for most of the time but, when needed, more people would be added to the project, which means I also had to work with another Frontend developer for some time.</span> <span>I'm very happy with the final result since it was a quick and 'clean' project, meaning it came out a pretty nice and solid content-driven website, developed in a short span of time.</span> <span>We used SASS for the styling, mostly vanilla JavaScript (with just some bits of jQuery) and Gulp for the Frontend files compilation. Internet Explorer 10 and 11 had to be supported, as well as every other major browser.</span>`,
                 lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
                 lighthouseResults: {
-                    'Performance': '95%',
-                    'Accessibility': '65%',
-                    'Best Practices': '75%',
-                    'SEO': '100%',
+                    'Performance': 95,
+                    'Accessibility': 65,
+                    'Best Practices': 75,
+                    'SEO': 100,
                 },
                 image: {
                     main: 'ageas-portugal',
@@ -30,6 +30,13 @@ export default new Vuex.Store({
                 path: 'seguro-directo',
                 description: 'Seguro Directo description',
                 myRole: 'My role at Seguro Directo was',
+                lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
+                lighthouseResults: {
+                    'Performance': 30,
+                    'Accessibility': 55,
+                    'Best Practices': 75,
+                    'SEO': 100,
+                },
                 image: {
                     main: 'seguro-directo',
                     detail1: 'seguro-directo-detail-1',

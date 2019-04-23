@@ -21,7 +21,7 @@
     "devDependencies": {
         "@babel/core": "^7.4.3",
         "@babel/preset-env": "^7.4.3",
-        "@fullhuman/postcss-purgecss": "^1.1.0",
+        "@fullhuman/postcss-purgecss": "^1.2.0",
         "autoprefixer": "^9.5.1",
         "babel-loader": "^8.0.5",
         "clean-webpack-plugin": "^2.0.1",
@@ -45,7 +45,7 @@
         "vue-loader": "^15.7.0",
         "vue-template-compiler": "^2.6.10",
         "webpack": "^4.30.0",
-        "webpack-cli": "^3.3.0",
+        "webpack-cli": "^3.3.1",
         "webpack-dev-server": "^3.3.1",
         "webpack-merge": "^4.2.1",
         "workbox-webpack-plugin": "^4.3.0"
@@ -59,7 +59,7 @@
         "flickity": "^2.2.0",
         "scrollreveal": "^4.0.5",
         "vue": "^2.6.10",
-        "vue-router": "^3.0.5",
+        "vue-router": "^3.0.6",
         "vuex": "^3.1.0"
     }
 }

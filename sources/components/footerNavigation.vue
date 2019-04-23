@@ -1,27 +1,27 @@
 <template>
     <footer>
 
-        <small class="threeDHover">André Marques</small>
+        <small>Designed by <a href="https://www.instagram.com/aguarela.project" target="_blank" rel="noreferrer" class="alternativeLink">Aguarela</a></small>
 
         <nav>
             <ul>
                 <li>
-                    <a href="https://github.com/AndreMarquesDev" target="_blank">
+                    <a href="https://github.com/AndreMarquesDev" target="_blank" rel="noreferrer">
                         <fontAwesomeIcon :icon="['fab', 'github']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://codepen.io/AndreMarquesDev/" target="_blank">
+                    <a href="https://codepen.io/AndreMarquesDev" target="_blank" rel="noreferrer">
                         <fontAwesomeIcon :icon="['fab', 'codepen']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/BazingaCS" target="_blank">
+                    <a href="https://twitter.com/BazingaCS" target="_blank" rel="noreferrer">
                         <fontAwesomeIcon :icon="['fab', 'twitter']" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/BazingaCS" target="_blank">
+                    <a href="https://www.linkedin.com/in/andr%C3%A9-gouveia-marques-675ab3127" target="_blank" rel="noreferrer">
                         <fontAwesomeIcon :icon="['fab', 'linkedin-in']" />
                     </a>
                 </li>
@@ -50,13 +50,12 @@ footer {
     perspective: 800px;
     padding: 40px 4%;
 
-    .threeDHover {
+    small {
         color: $white;
+    }
 
-        &:before {
-            content: 'André Marques';
-        }
-
+    .alternativeLink:before {
+        bottom: -5px;
     }
 
     ul {
