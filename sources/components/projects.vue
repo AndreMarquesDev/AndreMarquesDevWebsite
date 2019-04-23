@@ -6,7 +6,7 @@
 
             <ul>
                 <li v-for="project in projects" :project="project.name" @mouseenter="addSlideAnimation($event, 'in')" @mouseleave="addSlideAnimation($event, 'out')" class="scrollReveal">
-                    <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }">
+                    <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }" aria-label="Link to project page">
                         <figure>
                             <picture>
                                 <source :srcset="require('../images/' + project.image.main + '.webp')" type="image/webp">

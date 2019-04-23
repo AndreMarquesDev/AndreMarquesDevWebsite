@@ -3,9 +3,9 @@
         <div class="wrapper">
 
             <h1>Hi, my name is André Marques and I'm a Frontend Developer</h1>
-            <p>Get to know me <router-link to="about"><animatedLetters text="<about/>"/></router-link></p>
-            <p>Check out my <router-link to="work"><animatedLetters text="<projects/>"/></router-link></p>
-            <p>Get in touch <router-link to="contact"><animatedLetters text="<contact/>"/></router-link></p>
+            <p>Get to know me <router-link to="about" aria-label="Link to about page"><animatedLetters text="<about/>"/></router-link></p>
+            <p>Check out my <router-link to="work" aria-label="Link to work page"><animatedLetters text="<projects/>"/></router-link></p>
+            <p>Get in touch <router-link to="contact" aria-label="Link to contact page"><animatedLetters text="<contact/>"/></router-link></p>
 
         </div>
     </section>
