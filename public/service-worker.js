@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.2a1457d183cbffd877c03709a290c650.js"
+  "/precache-manifest.cb9a0a6b48449d64b19d0f5d37ce5885.js"
 );
 
 workbox.core.skipWaiting();
@@ -30,7 +30,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.precaching.cleanupOutdatedCaches();
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/"));
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"));
 
 workbox.routing.registerRoute("/*", new workbox.strategies.NetworkFirst({ "networkTimeoutSeconds":5, plugins: [] }), 'GET');
 

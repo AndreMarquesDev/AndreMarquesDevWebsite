@@ -65,7 +65,7 @@ module.exports = merge(common, {
                     networkTimeoutSeconds: 5,
                 }
             }],
-            navigateFallback: '/'
+            navigateFallback: '/index.html'
         })
     ]
 });
