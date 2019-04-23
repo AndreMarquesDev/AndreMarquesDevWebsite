@@ -2,7 +2,7 @@
     <section class="content">
         <div class="wrapper">
 
-            <h1>Hi, my name is sgsgdl and I'm a Frontend Developer</h1>
+            <h1>Hi, my name is André Marques and I'm a Frontend Developer</h1>
             <p>Get to know me <router-link to="about"><animatedLetters text="<about/>"/></router-link></p>
             <p>Check out my <router-link to="work"><animatedLetters text="<projects/>"/></router-link></p>
             <p>Get in touch <router-link to="contact"><animatedLetters text="<contact/>"/></router-link></p>
