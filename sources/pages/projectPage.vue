@@ -34,10 +34,6 @@ export default {
             distance: '200px',
             origin: 'bottom'
         });
-
-        // On 'projectDetail.vue', the <article> right after the slider would stay hidden on hard refresh;
-        // this is a 'just in case' that solves it and eventual future bugs.
-        setTimeout(() => scrollReveal().destroy(), 700);
     }
 }
 </script>

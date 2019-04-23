@@ -47,8 +47,7 @@ footer {
     align-items: center;
     position: absolute;
     bottom: 0;
-    perspective: 800px;
-    padding: 40px 4%;
+    padding: 40px 20px;
 
     small {
         color: $white;
@@ -62,6 +61,12 @@ footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    @include mobile {
+        .svg-inline--fa {
+            margin: 0 7px;
+        }
     }
 
 }

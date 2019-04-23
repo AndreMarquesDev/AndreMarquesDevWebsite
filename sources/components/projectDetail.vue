@@ -422,6 +422,27 @@ $circleBackColor: $backgroundMainColor;
             float: none;
             margin-bottom: 40px;
         }
+
+        &__progressCircleContainer {
+            grid-template: repeat(2, 100px) / repeat(2, 100px);
+        }
+
+        &__progressCircle {
+
+            span {
+                width: 70px;
+                height: 70px;
+                line-height: 25px;
+                margin: 15px 0 0 15px;
+                padding: 0 9px;
+            }
+
+            small {
+                font-size: 8px;
+                line-height: 10px;
+            }
+
+        }
     }
 
 }
