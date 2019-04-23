@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.2e1fc8428982747438fd1f0b044740f0.js"
+  "/precache-manifest.60d38cbf824780eba237608223767dea.js"
 );
 
 workbox.core.skipWaiting();
@@ -30,5 +30,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.precaching.cleanupOutdatedCaches();
+
+workbox.routing.registerRoute("/*", new workbox.strategies.NetworkFirst({ "networkTimeoutSeconds":5, plugins: [] }), 'GET');
 
 workbox.googleAnalytics.initialize({});

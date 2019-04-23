@@ -54,7 +54,17 @@ module.exports = merge(common, {
             skipWaiting: true,
             exclude: ['_redirects'],
             offlineGoogleAnalytics: true,
-            cleanupOutdatedCaches: true
+            cleanupOutdatedCaches: true,
+            runtimeCaching: [{
+                // Match any same-origin request that contains 'api'.
+                urlPattern: '/*',
+                // Apply a network-first strategy.
+                handler: 'NetworkFirst',
+                options: {
+                    // Fall back to the cache after 'n' seconds.
+                    networkTimeoutSeconds: 5,
+                }
+            }]
         })
     ]
 });
