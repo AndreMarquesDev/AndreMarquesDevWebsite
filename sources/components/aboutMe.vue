@@ -96,7 +96,7 @@ export default {
                     identation: 'identation3'
                 },
                 {
-                    html: `<a href="https://edit.com.pt/formacao/curso-frontend-development-lisboa" target="_blank" class="link"><span class="green">'@ EDIT. - Disruptive Digital Education'</span></a>,`,
+                    html: `<a href="https://edit.com.pt/formacao/curso-frontend-development-lisboa" target="_blank" rel="noreferrer" aria-label="EDIT. website" class="link"><span class="green">'@ EDIT. - Disruptive Digital Education'</span></a>,`,
                     identation: 'identation3'
                 },
                 {
@@ -228,7 +228,7 @@ export default {
                     identation: 'identation1'
                 },
                 {
-                    html: `company <span class="orange">=</span> <a href="https://www.fullsix.pt" target="_blank" class="link"><span class="green">'Fullsix Portugal'</span></a>;`,
+                    html: `company <span class="orange">=</span> <a href="https://www.fullsix.pt" target="_blank" rel="noreferrer" aria-label="Fullsix website" class="link"><span class="green">'Fullsix Portugal'</span></a>;`,
                     identation: 'identation2'
                 },
                 {

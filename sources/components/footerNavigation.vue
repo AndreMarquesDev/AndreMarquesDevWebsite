@@ -1,7 +1,7 @@
 <template>
     <footer>
 
-        <small>Designed by <a href="https://www.instagram.com/aguarela.project" target="_blank" rel="noreferrer" class="alternativeLink">Aguarela</a></small>
+        <small>Designed by <a href="https://www.instagram.com/aguarela.project" target="_blank" rel="noreferrer" aria-label="Aguarela Instagram" class="alternativeLink">Aguarela</a></small>
 
         <nav>
             <ul>
