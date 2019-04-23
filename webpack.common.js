@@ -94,6 +94,7 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: 'sources/manifest.json' },
             { from: '_redirects' },
+            { from: 'robots.txt' },
             { from: 'sources/images/logoIcon-57x57.png', to: 'images' },
             { from: 'sources/images/logoIcon-60x60.png', to: 'images' },
             { from: 'sources/images/logoIcon-72x72.png', to: 'images' },
