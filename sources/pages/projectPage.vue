@@ -32,8 +32,15 @@ export default {
     mounted() {
         scrollReveal().reveal('.scrollReveal', {
             distance: '200px',
-            origin: 'bottom'
+            origin: 'bottom',
+            cleanup: true
         });
+
+        // On desktop, the last element of the page was sometimes not being shown at all
+        window.addEventListener('scroll', event => {
+            // If scroll is at the bottom
+            window.innerHeight + window.scrollY === this.$el.parentElement.offsetHeight && setTimeout(() => scrollReveal().destroy(), 700);
+        })
     }
 }
 </script>

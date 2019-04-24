@@ -32,7 +32,8 @@ export default {
     mounted() {
         scrollReveal().reveal('.scrollReveal', {
             distance: '200px',
-            origin: 'bottom'
+            origin: 'bottom',
+            cleanup: true
         });
     }
 }

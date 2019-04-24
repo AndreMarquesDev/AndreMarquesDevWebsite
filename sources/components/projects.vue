@@ -42,7 +42,6 @@ export default {
         this.makeItemsSquare(projects);
         window.addEventListener('resize', () => this.makeItemsSquare(projects));
 
-
         if (window.innerWidth < 570) this.mobileSlideAnimationBehavior();
     },
     methods: {

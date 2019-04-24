@@ -3,6 +3,7 @@
         <div class="wrapper">
 
             <animatedLetters :text="this.project.name"/>
+            <animatedLetters :text="this.project.year"/>
 
             <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
@@ -24,6 +25,18 @@
 
             <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Responsive development">Responsive development</h2>
+
+                <figure class="projectDetail__detailImage">
+                    <picture>
+                        <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
+                        <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
+                        <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                    </picture>
+                </figure>
+            </article>
+
+            <article class="scrollReveal">
+                <h2 class="threeDHover" data-text="More pages">More pages</h2>
 
                 <div class="projectDetail__slider">
                     <figure class="projectDetail__detailImage">
@@ -51,25 +64,23 @@
             </article>
 
             <article class="scrollReveal">
-                <h2 class="threeDHover" data-text="More pages">More pages</h2>
-
-                <figure class="projectDetail__detailImage">
-                    <picture>
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                        <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
-                    </picture>
-                </figure>
-            </article>
-
-            <article class="scrollReveal">
                 <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
-                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for screen readers and such), Best Practices (General development practices) and SEO (search engine optimization)</p>
+                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for invisuals using screen readers for example), Best Practices (general development practices) and SEO (search engine optimization)</p>
                 <p>{{ this.project.lighthouseText }}</p>
 
                 <ul class="projectDetail__progressCircleContainer">
-                    <li v-for="(result, index) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
-                        <span>{{ result }} <small>{{ index }}</small></span>
+                    <li v-for="(result, key) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
+                        <span>{{ result }} <small>{{ key }}</small></span>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="scrollReveal">
+                <h2 class="threeDHover" data-text="Lighthouse results">Credits</h2>
+
+                <ul>
+                    <li v-for="area in project.credits">
+                        <p>{{ area }}</p>
                     </li>
                 </ul>
             </article>
@@ -80,7 +91,6 @@
 
 <script>
 import flickity from 'flickity';
-
 import animatedLetters from './../components/animatedLetters.vue';
 
 export default {
@@ -151,10 +161,12 @@ $circleBackColor: $backgroundMainColor;
     }
 
     .animatedLetters {
+        width: auto;
+        display: inline-block;
         position: relative;
         margin-bottom: 70px;
 
-        &:before {
+        &:first-of-type:before {
             content: '';
             width: 17px;
             height: 17px;
@@ -164,6 +176,12 @@ $circleBackColor: $backgroundMainColor;
             transform: translateY(-50%);
             background: $lightGrey;
             border-radius: 50%;
+        }
+
+        &:last-of-type {
+            font-size: 20px;
+            vertical-align: text-bottom;
+            margin-bottom: 0;
         }
 
     }
@@ -403,10 +421,14 @@ $circleBackColor: $backgroundMainColor;
             font-size: 25px;
             margin-bottom: 40px;
 
-            &:before {
+            &:first-of-type:before {
                 width: 14px;
                 height: 14px;
                 left: -24px;
+            }
+
+            &:last-of-type {
+                font-size: 14px;
             }
 
         }

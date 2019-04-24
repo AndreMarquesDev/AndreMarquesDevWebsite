@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "545c28a6b70382c08210e0111aae2910",
+    "revision": "194d27c1c7efc33ff2359036a94e1459",
     "url": "/icons-938241fe1d52cf5b525889e1078bc737/.cache"
   },
   {
@@ -208,19 +208,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/ageas-portugal.webp"
   },
   {
-    "revision": "5a19f01096ab7fdff0867838c6033d7f",
+    "revision": "884e97acf71724628557afe2658ee1df",
     "url": "/images/aguarela-detail-1.png"
   },
   {
-    "revision": "03f40c45dc434c015c84df3cfe12ba7a",
+    "revision": "87ea8fab8529b1890e6dd02f39b639fa",
     "url": "/images/aguarela-detail-1.webp"
   },
   {
-    "revision": "5a19f01096ab7fdff0867838c6033d7f",
+    "revision": "884e97acf71724628557afe2658ee1df",
     "url": "/images/aguarela-detail-2.png"
   },
   {
-    "revision": "03f40c45dc434c015c84df3cfe12ba7a",
+    "revision": "87ea8fab8529b1890e6dd02f39b639fa",
     "url": "/images/aguarela-detail-2.webp"
   },
   {
@@ -324,19 +324,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/projectDetailBackground.png"
   },
   {
-    "revision": "1d9f843ec089f78254e744eb9145a02d",
+    "revision": "07aea16a71681aa2dabb78456aca02d2",
     "url": "/images/seguro-directo-detail-1.png"
   },
   {
-    "revision": "de269c9fc0a9832a15fe6a6a7f438c47",
+    "revision": "f42bfa2770b04226cb40d6463bfab108",
     "url": "/images/seguro-directo-detail-1.webp"
   },
   {
-    "revision": "1d9f843ec089f78254e744eb9145a02d",
+    "revision": "07aea16a71681aa2dabb78456aca02d2",
     "url": "/images/seguro-directo-detail-2.png"
   },
   {
-    "revision": "de269c9fc0a9832a15fe6a6a7f438c47",
+    "revision": "f42bfa2770b04226cb40d6463bfab108",
     "url": "/images/seguro-directo-detail-2.webp"
   },
   {
@@ -392,27 +392,27 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images\\logoIcon-76x76.png"
   },
   {
-    "revision": "6aee809739e58fda4c9ce07097473d2c",
+    "revision": "42e88be32671388a0a228db3cbe40def",
     "url": "/index.html"
   },
   {
-    "revision": "a8061564b2910f267ccbd3b6edcfca1c",
+    "revision": "91d1206f56e5de730fa662094f843e14",
     "url": "/index.html.gz"
   },
   {
-    "revision": "49c6eac0eb9ec4a7b683",
+    "revision": "322c1d734a3e5669840c",
     "url": "/main.css"
   },
   {
-    "revision": "ab492690f7af57ed2d48257d66c209a3",
+    "revision": "612d8527081b089e997aa35dbd6f354f",
     "url": "/main.css.gz"
   },
   {
-    "revision": "49c6eac0eb9ec4a7b683",
+    "revision": "322c1d734a3e5669840c",
     "url": "/main.js"
   },
   {
-    "revision": "3314bee455e4ea409b67d055ca2483b8",
+    "revision": "66c8369b4b7f88f381bb6b0d82ecd719",
     "url": "/main.js.gz"
   },
   {
