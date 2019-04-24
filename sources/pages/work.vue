@@ -17,8 +17,6 @@ import menuOverlay from './../components/menuOverlay.vue';
 import footerNavigation from './../components/footerNavigation.vue';
 import transitionComponent from './../components/transitionComponent.vue';
 
-import scrollReveal from 'scrollreveal';
-
 export default {
     name: 'work',
     components: {
@@ -28,13 +26,6 @@ export default {
         menuOverlay,
         footerNavigation,
         transitionComponent
-    },
-    mounted() {
-        scrollReveal().reveal('.scrollReveal', {
-            distance: '200px',
-            origin: 'bottom',
-            cleanup: true
-        });
     }
 }
 </script>

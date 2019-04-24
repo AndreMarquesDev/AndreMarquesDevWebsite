@@ -36,9 +36,18 @@ export default {
             cleanup: true
         });
 
+        // ver isto que tá a dar undefined às vezes
+        // e meter os quadrados dos projects on load para corrigir aquele bug e tirar o height do css e do make items square
+
         // On desktop, the last element of the page was sometimes not being shown at all
         window.addEventListener('scroll', event => {
-            // If scroll is at the bottom
+            // if (!this.$el.querySelector('.scrollReveal').length) return;
+            // console.log(this.$el.querySelector('.scrollReveal').length);
+            // console.log(!this.$el.querySelector('.scrollReveal').length);
+
+            // // If scroll is at the bottom
+            // console.log(this.$el);
+            // console.log(this.$el.parentElement);
             window.innerHeight + window.scrollY === this.$el.parentElement.offsetHeight && setTimeout(() => scrollReveal().destroy(), 700);
         })
     }

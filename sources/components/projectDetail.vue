@@ -43,21 +43,21 @@
                         <picture>
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
                         </picture>
                     </figure>
                     <figure class="projectDetail__detailImage">
                         <picture>
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
                         </picture>
                     </figure>
                     <figure class="projectDetail__detailImage">
                         <picture>
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
                             <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
                         </picture>
                     </figure>
                 </div>
@@ -104,6 +104,15 @@ export default {
             project: {}
         }
     },
+    methods: {
+        initSlider() {
+            // this runs on img load because otherwise the slider would bugged since it ran before the whole image was there
+            new flickity(this.$el.querySelector('.projectDetail__slider'), {
+                wrapAround: true,
+                pageDots: true
+            });
+        }
+    },
     beforeMount() {
         // Get current project
         this.projectsArray.forEach(project => this.$route.params.project === project.path && (this.project = project));
@@ -111,15 +120,6 @@ export default {
         // Set document title
         this.$route.meta.title = this.project.name + this.$route.meta.title;
         document.title = this.$route.meta.title;
-    },
-    mounted() {
-        // the slider mounting was bugged
-        setTimeout(() => {
-            new flickity(this.$el.querySelector('.projectDetail__slider'), {
-                wrapAround: true,
-                pageDots: true
-            });
-        }, 250);
     }
 }
 </script>
