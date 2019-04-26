@@ -11,7 +11,7 @@
                             <picture>
                                 <source :srcset="require('../images/' + project.image.main + '.webp')" type="image/webp">
                                 <source :srcset="require('../images/' + project.image.main + '.jpg')" type="image/jpeg">
-                                <img :src="require('../images/' + project.image.main + '.jpg')" :alt="project.name">
+                                <img :src="require('../images/' + project.image.main + '.jpg')" :alt="project.name" @load="makeItemsSquare">
                             </picture>
                             <span :projectName="project.name" class="overlay"></span>
                         </figure>
@@ -38,15 +38,14 @@ export default {
     },
     mounted() {
         const projects = this.$el.querySelectorAll('li');
-
-        this.makeItemsSquare(projects);
-        window.addEventListener('resize', () => this.makeItemsSquare(projects));
+        window.addEventListener('resize', () => projects.forEach(project => this.makeItemsSquare(project)));
 
         if (window.innerWidth < 570) this.mobileSlideAnimationBehavior();
     },
     methods: {
-        makeItemsSquare(elements) {
-            elements.forEach(element => element.style.height = element.offsetWidth > 500 ? '500px' : element.offsetWidth + 'px');
+        makeItemsSquare(element) {
+            element = event.target.tagName === 'IMG' ? event.target.closest('li') : element;
+            element.style.height = element.offsetWidth + 'px';
         },
 
         addSlideAnimation(event, action) {
@@ -119,10 +118,6 @@ export default {
         grid-template: auto / repeat(2, minmax(200px, 500px));
         grid-gap: 100px 3%;
         justify-content: space-around;
-    }
-
-    li {
-        max-height: 500px;
     }
 
     figure {
