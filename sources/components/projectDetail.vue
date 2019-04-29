@@ -92,12 +92,18 @@ export default {
     },
     methods: {
         initSlider() {
+            const sliderContainer = sliderContainer || this.$el.querySelector('.projectDetail__slider'),
+                sliderHeightElement = sliderContainer.firstChild;
+
             // this runs on img load because otherwise the slider would bugged since it ran before the whole image was there
-            new flickity(this.$el.querySelector('.projectDetail__slider'), {
+            const slider = new flickity(sliderContainer, {
                 wrapAround: true,
                 pageDots: true,
                 adaptiveHeight: true
             });
+
+            // the height was bugged after setting 'adaptiveHeight' to true
+            slider.on('change', () => sliderHeightElement.style.height = sliderContainer.querySelector('.is-selected').offsetHeight);
         }
     },
     beforeMount() {
@@ -240,13 +246,14 @@ $circleBackColor: $backgroundMainColor;
             width: 50%;
             top: 50%;
             transform: translateY(-50%) scale(.6);
-            @include transition (transform, .5s);
+            transition: transform .5s ease 0s, top .7s ease 0s;
 
             &.is-selected {
-                transform: translateY(-50%) scale(1);
+                top: 0;
+                transform: scale(1);
 
                 &:hover {
-                    transform: translateY(-50%) scale(1.1);
+                    transform: scale(1.1);
                 }
 
             }
