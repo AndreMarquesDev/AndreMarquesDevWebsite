@@ -10,7 +10,7 @@ export default new Vuex.Store({
             {
                 name: 'Ageas Portugal',
                 path: 'ageas-portugal',
-                year: ' - 2019',
+                year: 2019,
                 description: `<a href="https://www.grupoageas.pt" target="_blank" rel="noreferrer" aria-label="Ageas Portugal Website" class="alternativeLink">Ageas Portugal</a> is the institutional website for the Portuguese headquarters of <a href="https://www.ageas.com" target="_blank" rel="noreferrer" aria-label="Ageas website" class="alternativeLink">Ageas</a>, a Belgian multinational insurance company, where it's also the largest one. It operates in 14 countries worldwide and is very relevant in Portugal, with their offer varying from life, house, health, car or even pet insurances.`,
                 myRole: `<span>I was full-time at this project from the beginning until its conclusion, which means I was the one making most of the Frontend technical decisions and was in constant communication with Backend, UX and UI, as well as with the client itself. The team consisted on one person per area (Frontend, Backend, UX, UI and Project Management) for most of the time but, when needed, more people would be added to the project, which means I also had to work with another Frontend developer for some time.</span> <span>I'm very happy with the final result since it was a quick and 'clean' project, meaning it came out a pretty nice and solid content-driven website, developed in a short span of time.</span> <span>We used SASS for the styling, mostly vanilla JavaScript (with just some bits of jQuery) and Gulp for the Frontend files compilation. Internet Explorer 10 and 11 had to be supported, as well as every other major browser.</span>`,
                 lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
@@ -21,9 +21,28 @@ export default new Vuex.Store({
                     'SEO': 100,
                 },
                 image: {
-                    main: 'ageas-portugal',
-                    detail1: 'ageas-portugal-detail-1',
-                    detail2: 'ageas-portugal-detail-2'
+                    thumbnail: 'ageas-portugal-thumbnail',
+                    detailMain: 'ageas-portugal-detail-main',
+                    detailResponsive: 'ageas-portugal-detail-responsive',
+                    slider: [
+                        'ageas-portugal-detail-slider-1',
+                        'ageas-portugal-detail-slider-2',
+                        'ageas-portugal-detail-slider-3',
+                        'ageas-portugal-detail-slider-4',
+                        'ageas-portugal-detail-slider-5',
+                        'ageas-portugal-detail-slider-6',
+                        'ageas-portugal-detail-slider-7',
+                        'ageas-portugal-detail-slider-8',
+                        'ageas-portugal-detail-slider-9',
+                        'ageas-portugal-detail-slider-10',
+                        'ageas-portugal-detail-slider-11',
+                        'ageas-portugal-detail-slider-12',
+                        'ageas-portugal-detail-slider-13',
+                        'ageas-portugal-detail-slider-14',
+                        'ageas-portugal-detail-slider-15',
+                        'ageas-portugal-detail-slider-16',
+                        'ageas-portugal-detail-slider-17'
+                    ]
                 },
                 credits: [
                     'Frontend - André Marques, Pedro Duarte & Ricardo Melo',
@@ -36,10 +55,10 @@ export default new Vuex.Store({
             {
                 name: 'Seguro Directo',
                 path: 'seguro-directo',
-                year: ' - 2018',
+                year: 2018,
                 description: `<a href="https://www.segurodirecto.pt/" target="_blank" rel="noreferrer" aria-label="Seguro Directo Website" class="alternativeLink">Seguro Directo</a> is a Portuguese automobile insurance company member of the <a href="https://www.grupoageas.pt/marcas-do-grupo/seguro-directo" target="_blank" rel="noreferrer" aria-label="Seguro Directo page in Ageas Portugal website" class="alternativeLink">Ageas Group</a> and was established in 1996. This project's goal was to replace their (really) aged website, improving not only the visual aspect but also the insurance simulation experience.`,
-                myRole: 'My role at Seguro Directo was',
-                lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
+                myRole: `<span>This was my first big project and one that I worked on from its beginning to its conclusion. I was not the main Frontend developer but that didn't stop me from giving my inputs and approaching each challenge in my own way.</span><span>This project had a different workflow when compared to our usual one at <a href="https://www.fullsix.pt" target="_blank" rel="noreferrer" aria-label="Fullsix website" class="alternativeLink">Fullsix</a> though since the backend was the clients' responsibility. Furthermore, the client requested me and another Frontend developer to move to their location until the project finished, which turned out in daily communication with them, not only in UI feedbacks but also in backend integration.</span><span>I'm happy with the result since it was, as I said above, my first big project and therefore a huge learning experience. There were ups and downs through it and it wasn't easy having to rellocate to the clients' headquarters but I am proud of what the website turned out to be, especially with its complex simulation flow.</span><span>Regarding the code, it was mostly written in jQuery with a few plugins like slick.js, selectize.js, bodymobin.js and a few others. We used Sass for the styling and pure HTML for the content, getting our code compiled by Gulp. Internet Explorer 10 and 11 had to be supported, as well as every other major browser.</span>`,
+                lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance and is the case here) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
                 lighthouseResults: {
                     'Performance': 35,
                     'Accessibility': 60,
@@ -47,9 +66,21 @@ export default new Vuex.Store({
                     'SEO': 100,
                 },
                 image: {
-                    main: 'seguro-directo',
-                    detail1: 'seguro-directo-detail-1',
-                    detail2: 'seguro-directo-detail-2'
+                    thumbnail: 'seguro-directo-thumbnail',
+                    detailMain: 'seguro-directo-detail-main',
+                    detailResponsive: 'seguro-directo-detail-responsive',
+                    slider: [
+                        'seguro-directo-detail-slider-1',
+                        'seguro-directo-detail-slider-2',
+                        'seguro-directo-detail-slider-3',
+                        'seguro-directo-detail-slider-4',
+                        'seguro-directo-detail-slider-5',
+                        'seguro-directo-detail-slider-6',
+                        'seguro-directo-detail-slider-7',
+                        'seguro-directo-detail-slider-8',
+                        'seguro-directo-detail-slider-9',
+                        'seguro-directo-detail-slider-10'
+                    ]
                 },
                 credits: [
                     'Frontend - André Marques, Paulo Garcia, Pedro Duarte, Ricardo Melo & Jorge Chagas',
@@ -62,10 +93,10 @@ export default new Vuex.Store({
             {
                 name: 'Aguarela',
                 path: 'aguarela',
-                year: ' - 2019',
-                description: 'Aguarela description',
-                myRole: 'My role at Aguarela was',
-                lighthouseText: `Since I only had control over the frontend, I was a bit limited on the possible improvements. I can't control the images sizes (which usually takes a huge toll in performance) or any of the backend behavior. The best I could do was write efficient JavaScript and CSS, write semantic HTML with no unnecessary tags and not use JavaScript plugins that weren't needed.`,
+                year: 2019,
+                description: `<a href="https://www.aguarelaproject.com" target="_blank" rel="noreferrer" aria-label="Aguarela Website" class="alternativeLink">Aguarela</a> is the website for <a href="https://www.instagram.com/aguarela.project" target="_blank" rel="noreferrer" aria-label="Aguarela Instagram" class="alternativeLink">Aguarela Project</a>`,
+                myRole: `<span>I was responsible for the whole implementation of the website except for the UI design. Other than that, I developed the code, optimized images, acquired the domain and took care of the website hosting.</span><span>Even though it was a simple static website, this allowed me to have a broader view of the whole process of building a website and putting it online. Furthermore, I was all by myself while doing it and therefore I can consider it as my first freelance job.</span><span>Since I was aiming for the cleanest and most efficient code possible, I used plain vanilla JavaScript with no plugins or frameworks whatsoever. This means that all the neat features were hand-made by me and you can see some of the examples on my <a href="https://codepen.io/AndreMarquesDev" target="_blank" rel="noreferrer" aria-label="André Marques CodePen" class="alternativeLink">CodePen</a>page</span>. For the styling I just used SASS and Gulp to process it.</span>`,
+                lighthouseText: `Since this is a static website that didn't rely on backend, I had total control over its content. This includes the biggest performance throttler: images. In this website, all of them are optimized and that makes a huge difference, contributing heavily to the 100% score. Apart from that, I was very strict with the quality of my code and that reflects on the high scores on the ohter departments.`,
                 lighthouseResults: {
                     'Performance': 100,
                     'Accessibility': 85,
@@ -73,9 +104,15 @@ export default new Vuex.Store({
                     'SEO': 100,
                 },
                 image: {
-                    main: 'aguarela',
-                    detail1: 'aguarela-detail-1',
-                    detail2: 'aguarela-detail-2'
+                    thumbnail: 'aguarela-thumbnail',
+                    detailMain: 'aguarela-detail-main',
+                    detailResponsive: 'aguarela-detail-responsive',
+                    slider: [
+                        'aguarela-detail-slider-1',
+                        'aguarela-detail-slider-2',
+                        'aguarela-detail-slider-3',
+                        'aguarela-detail-slider-4'
+                    ]
                 },
                 credits: [
                     'Frontend - André Marques',
@@ -85,20 +122,19 @@ export default new Vuex.Store({
             {
                 name: 'Galp Corporate Event 2019',
                 path: 'galp',
-                year: ' - 2019',
+                year: 2019,
                 description: 'Galp description',
                 myRole: 'My role at Galp was',
                 image: {
-                    main: 'galp',
-                    detail1: 'galp-detail-1',
-                    detail2: 'galp-detail-2'
+                    thumbnail: 'galp-thumbnail',
+                    detailMain: 'galp-detail-main',
+                    detailResponsive: 'galp-detail-responsive'
                 },
                 credits: [
-                    'Frontend - ',
-                    'Backend - ',
+                    'Frontend - André Dargains, Ricardo Melo & André Marques',
+                    'Backend - Francisco Pinto Coelho & Alexandre Salsinha',
                     'UI - ',
-                    'UX - ',
-                    'Project Management - '
+                    'Project Management - Joana André & Gonçalo Caldas'
                 ]
             }
         ]

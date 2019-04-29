@@ -40,7 +40,7 @@ export default {
         window.addEventListener('scroll', event => {
             // If scroll is at the bottom
             // this.$el was returning null when changed page
-            window.innerHeight + window.scrollY === document.querySelector('#app').offsetHeight && setTimeout(() => scrollReveal().destroy(), 700);
+            window.innerHeight + window.scrollY === document.querySelector('#app').offsetHeight && setTimeout(() => scrollReveal().destroy(), 600);
         })
     }
 }

@@ -12,9 +12,10 @@
 }
 
 .flickity-viewport {
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    @include transition;
 }
 
 .flickity-slider {

@@ -3,13 +3,13 @@
         <div class="wrapper">
 
             <animatedLetters :text="this.project.name"/>
-            <animatedLetters :text="this.project.year"/>
+            <animatedLetters :text="` - ${this.project.year}`"/>
 
             <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
-                    <source :srcset="require('../images/' + this.project.image.detail1 + '.webp')" type="image/webp">
-                    <source :srcset="require('../images/' + this.project.image.detail1 + '.png')" type="image/jpeg">
-                    <img :src="require('../images/' + this.project.image.detail1 + '.png')" :alt="this.project.name">
+                    <source :srcset="require('../images/' + this.project.image.detailMain + '.webp')" type="image/webp">
+                    <source :srcset="require('../images/' + this.project.image.detailMain + '.png')" type="image/png">
+                    <img :src="require('../images/' + this.project.image.detailMain + '.png')" :alt="this.project.name">
                 </picture>
             </figure>
 
@@ -28,9 +28,9 @@
 
                 <figure class="projectDetail__detailImage">
                     <picture>
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                        <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                        <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name">
+                        <source :srcset="require('../images/' + this.project.image.detailResponsive + '.webp')" type="image/webp">
+                        <source :srcset="require('../images/' + this.project.image.detailResponsive + '.png')" type="image/png">
+                        <img :src="require('../images/' + this.project.image.detailResponsive + '.png')" :alt="this.project.name">
                     </picture>
                 </figure>
             </article>
@@ -39,25 +39,11 @@
                 <h2 class="threeDHover" data-text="More pages">More pages</h2>
 
                 <div class="projectDetail__slider">
-                    <figure class="projectDetail__detailImage">
+                    <figure class="projectDetail__detailImage" v-for="image in project.image.slider">
                         <picture>
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
-                        </picture>
-                    </figure>
-                    <figure class="projectDetail__detailImage">
-                        <picture>
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
-                        </picture>
-                    </figure>
-                    <figure class="projectDetail__detailImage">
-                        <picture>
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.webp')" type="image/webp">
-                            <source :srcset="require('../images/' + this.project.image.detail2 + '.png')" type="image/jpeg">
-                            <img :src="require('../images/' + this.project.image.detail2 + '.png')" :alt="this.project.name" @load="initSlider">
+                            <source :srcset="require('../images/' + image + '.webp')" type="image/webp">
+                            <source :srcset="require('../images/' + image + '.jpg')" type="image/jpeg">
+                            <img :src="require('../images/' + image + '.jpg')" :alt="project.name" @load="initSlider">
                         </picture>
                     </figure>
                 </div>
@@ -109,7 +95,8 @@ export default {
             // this runs on img load because otherwise the slider would bugged since it ran before the whole image was there
             new flickity(this.$el.querySelector('.projectDetail__slider'), {
                 wrapAround: true,
-                pageDots: true
+                pageDots: true,
+                adaptiveHeight: true
             });
         }
     },

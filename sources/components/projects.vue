@@ -9,9 +9,9 @@
                     <router-link :to="{ name: 'projectPage', params: {project: project.path, projectName: project.name} }" aria-label="Link to project page">
                         <figure>
                             <picture>
-                                <source :srcset="require('../images/' + project.image.main + '.webp')" type="image/webp">
-                                <source :srcset="require('../images/' + project.image.main + '.jpg')" type="image/jpeg">
-                                <img :src="require('../images/' + project.image.main + '.jpg')" :alt="project.name" @load="makeItemsSquare">
+                                <source :srcset="require('../images/' + project.image.thumbnail + '.webp')" type="image/webp">
+                                <source :srcset="require('../images/' + project.image.thumbnail + '.jpg')" type="image/jpeg">
+                                <img :src="require('../images/' + project.image.thumbnail + '.jpg')" :alt="project.name" @load="makeItemsSquare">
                             </picture>
                             <span :projectName="project.name" class="overlay"></span>
                         </figure>
