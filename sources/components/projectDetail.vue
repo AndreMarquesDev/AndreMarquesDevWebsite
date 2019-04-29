@@ -35,7 +35,19 @@
                 </figure>
             </article>
 
-            <article class="scrollReveal">
+            <article class="scrollReveal" v-if="this.project.image.slider">
+                <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
+                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for invisuals using screen readers for example), Best Practices (general development practices) and SEO (search engine optimization)</p>
+                <p>{{ this.project.lighthouseText }}</p>
+
+                <ul class="projectDetail__progressCircleContainer">
+                    <li v-for="(result, key) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
+                        <span>{{ result }} <small>{{ key }}</small></span>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="scrollReveal" v-if="this.project.lighthouseResults">
                 <h2 class="threeDHover" data-text="More pages">More pages</h2>
 
                 <div class="projectDetail__slider">
@@ -50,19 +62,7 @@
             </article>
 
             <article class="scrollReveal">
-                <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
-                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for invisuals using screen readers for example), Best Practices (general development practices) and SEO (search engine optimization)</p>
-                <p>{{ this.project.lighthouseText }}</p>
-
-                <ul class="projectDetail__progressCircleContainer">
-                    <li v-for="(result, key) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
-                        <span>{{ result }} <small>{{ key }}</small></span>
-                    </li>
-                </ul>
-            </article>
-
-            <article class="scrollReveal">
-                <h2 class="threeDHover" data-text="Lighthouse results">Credits</h2>
+                <h2 class="threeDHover" data-text="Credits">Credits</h2>
 
                 <ul>
                     <li v-for="area in project.credits">
@@ -238,14 +238,15 @@ $circleBackColor: $backgroundMainColor;
 
         .projectDetail__detailImage {
             width: 50%;
-            transform: scale(.6);
+            top: 50%;
+            transform: translateY(-50%) scale(.6);
             @include transition (transform, .5s);
 
             &.is-selected {
-                transform: scale(1);
+                transform: translateY(-50%) scale(1);
 
                 &:hover {
-                    transform: scale(1.1);
+                    transform: translateY(-50%) scale(1.1);
                 }
 
             }
@@ -320,6 +321,11 @@ $circleBackColor: $backgroundMainColor;
         position: relative;
         border-radius: 50%;
         background: $circleBarColor;
+        @include transition (transform, .5s);
+
+        &:hover {
+            transform: scale(1.2);
+        }
 
         span {
             width: 100px;
@@ -394,7 +400,7 @@ $circleBackColor: $backgroundMainColor;
         }
     }
 
-    @include mobile {
+    @include mq (0, 640px) {
         .wrapper {
             padding: 0 30px;
 

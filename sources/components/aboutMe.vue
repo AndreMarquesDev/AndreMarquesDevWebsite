@@ -160,6 +160,18 @@ export default {
                     identation: 'identation3'
                 },
                 {
+                    html: `<span class="green">'REST'</span>,`,
+                    identation: 'identation3'
+                },
+                {
+                    html: `<span class="green">'Ajax'</span>,`,
+                    identation: 'identation3'
+                },
+                {
+                    html: `<span class="green">'Axios'</span>,`,
+                    identation: 'identation3'
+                },
+                {
                     html: `<span class="green">'Progressive Web Apps'</span>,`,
                     identation: 'identation3'
                 },
