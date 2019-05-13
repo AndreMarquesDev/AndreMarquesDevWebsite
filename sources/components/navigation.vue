@@ -68,6 +68,7 @@ export default {
         img {
             max-height: $navHeight;
             height: 100%;
+            transform: rotate(180deg);
         }
 
     }
