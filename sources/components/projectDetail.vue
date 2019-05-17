@@ -55,7 +55,7 @@
                         <picture>
                             <source :srcset="require('../images/' + image + '.webp')" type="image/webp">
                             <source :srcset="require('../images/' + image + '.jpg')" type="image/jpeg">
-                            <img :src="require('../images/' + image + '.jpg')" :alt="project.name" @load="initSlider">
+                            <img :src="require('../images/' + image + '.jpg')" :alt="project.name" @load="allImagesLoaded">
                         </picture>
                     </figure>
                 </div>
@@ -91,19 +91,20 @@ export default {
         }
     },
     methods: {
+        allImagesLoaded() {
+            // If this returns true, it means the <figure>/slide is the last one
+            // this is needed so that the slider can be initiated properly; otherwise it bug out a lot
+            if (!event.target.parentElement.parentElement.nextElementSibling) this.initSlider();
+        },
         initSlider() {
-            const sliderContainer = sliderContainer || this.$el.querySelector('.projectDetail__slider'),
-                sliderHeightElement = sliderContainer.firstChild;
+            const sliderContainer = this.$el.querySelector('.projectDetail__slider');
 
             // this runs on img load because otherwise the slider would bugged since it ran before the whole image was there
-            const slider = new flickity(sliderContainer, {
+            new flickity(sliderContainer, {
                 wrapAround: true,
                 pageDots: true,
                 adaptiveHeight: true
             });
-
-            // the height was bugged after setting 'adaptiveHeight' to true
-            slider.on('change', () => sliderHeightElement.style.height = sliderContainer.querySelector('.is-selected').offsetHeight);
         }
     },
     beforeMount() {
@@ -133,7 +134,10 @@ $circleBackColor: $backgroundMainColor;
         position: absolute;
         top: 0;
         left: 0;
-        background: url('../images/projectDetailBackground.png') no-repeat center/cover;
+        background-image: url('/images/projectDetailBackground.png');
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-size: cover;
     }
 
     .wrapper {
@@ -378,11 +382,19 @@ $circleBackColor: $backgroundMainColor;
 
             .projectDetail__detailImage {
                 width: 100%;
+                top: 0;
                 transform: none;
+                opacity: 0;
+                @include transition (opacity, .5s);
 
-                &.is-selected:hover {
-                    transform: none;
+                &.is-selected {
+                    opacity: 1;
+
+                    &:hover {
+                        transform: none;
+                    }
                 }
+
             }
 
         }

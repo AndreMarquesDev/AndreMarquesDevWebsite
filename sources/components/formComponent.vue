@@ -112,7 +112,10 @@ export default {
         display: flex;
         flex-direction: column;
         position: relative;
-        background: url('../images/background.jpg') no-repeat center/cover;
+        background-image: url('/images/background.png');
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-size: cover;
         margin: auto;
         padding: 30px;
 

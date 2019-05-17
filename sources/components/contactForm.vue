@@ -29,6 +29,8 @@ export default {
 .contactForm {
 
     .animatedLetters {
+        @include fontXXL;
+        font-weight: $fontBold;
         margin-bottom: 100px;
     }
 

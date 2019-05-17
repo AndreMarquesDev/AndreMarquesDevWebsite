@@ -19,8 +19,10 @@ body {
 main {
     min-height: 100vh;
     position: relative;
-    background: url('../images/background.jpg') no-repeat center/cover;
-    // background: url('../images/mapa-dummy.jpg') no-repeat center/cover;
+    background-image: url('/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-size: cover;
     overflow: hidden; // because of shapes background movement
 
     &:before {
@@ -30,7 +32,10 @@ main {
         position: absolute;
         top: 0;
         left: 0;
-        background: url('../images/background-lines.png') no-repeat center bottom/contain;
+        background-image: url('/images/background-lines.png');
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: contain;
         opacity: .6;
     }
 

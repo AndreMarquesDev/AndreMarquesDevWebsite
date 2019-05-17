@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import 'intersection-observer';
 import animatedLetters from './../components/animatedLetters.vue';
 
 export default {

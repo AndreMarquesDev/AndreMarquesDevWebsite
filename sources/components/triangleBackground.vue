@@ -17,7 +17,10 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    background: url('../images/background-triangles.png') no-repeat center bottom/contain;
+    background-image: url('/images/background-triangles.png');
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
     opacity: .6;
 }
 </style>
