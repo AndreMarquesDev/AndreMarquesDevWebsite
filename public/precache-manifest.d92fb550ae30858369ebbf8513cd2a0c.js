@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ddeee6230d26ad0b9533a88cd44cdf73",
+    "revision": "5e1d95ddf4ca1d292dd227b1d581356f",
     "url": "/icons-938241fe1d52cf5b525889e1078bc737/.cache"
   },
   {
@@ -336,7 +336,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/ageas-portugal-detail-slider-9.webp"
   },
   {
-    "revision": "316714094e5e1c6f0d5e7f7c37fd6cf9",
+    "revision": "bdda17da9777674d9683e14ffec13ced",
     "url": "/images/ageas-portugal-thumbnail.jpg"
   },
   {
@@ -392,7 +392,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/aguarela-detail-slider-4.webp"
   },
   {
-    "revision": "aae91d094037c6d3f9f15d70d4840619",
+    "revision": "3895ed01bbdb43fc79a5b8769396be60",
     "url": "/images/aguarela-thumbnail.jpg"
   },
   {
@@ -428,7 +428,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/galp-detail-responsive.webp"
   },
   {
-    "revision": "e40aa627228419b86cb3c2f5c91aea34",
+    "revision": "c2b6c10ba9eb3e2439dd5d0e88f82fa7",
     "url": "/images/galp-thumbnail.jpg"
   },
   {
@@ -584,7 +584,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/seguro-directo-detail-slider-9.webp"
   },
   {
-    "revision": "52cc57cfd63d0164d2888faa71ca45e3",
+    "revision": "9ef244a31e8f9159a81e9106a31bd7cc",
     "url": "/images/seguro-directo-thumbnail.jpg"
   },
   {
@@ -636,15 +636,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images\\logoIcon-76x76.png"
   },
   {
-    "revision": "dca48c9137f95e8cc144be80e2d979e6",
+    "revision": "90ef4b72edd766c0f7949deb97518075",
     "url": "/index.html"
   },
   {
-    "revision": "64c12389b06e85197bc354934212b116",
+    "revision": "a875eff25edfea456ddcd4c951911b65",
     "url": "/index.html.gz"
   },
   {
-    "revision": "aed0d770e8b24e9669f0",
+    "revision": "00d2e0cc1f216dc4e702",
     "url": "/main.css"
   },
   {
@@ -652,11 +652,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/main.css.gz"
   },
   {
-    "revision": "aed0d770e8b24e9669f0",
+    "revision": "00d2e0cc1f216dc4e702",
     "url": "/main.js"
   },
   {
-    "revision": "eb8a463af568cfa597066107bc78ff8c",
+    "revision": "0bc1228a9f5ce5e53c4db26131998c84",
     "url": "/main.js.gz"
   },
   {

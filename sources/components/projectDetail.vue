@@ -94,7 +94,7 @@ export default {
         allImagesLoaded() {
             // If this returns true, it means the <figure>/slide is the last one
             // this is needed so that the slider can be initiated properly; otherwise it bug out a lot
-            if (!event.target.parentElement.parentElement.nextElementSibling) this.initSlider();
+            if (!event.target.parentElement.parentElement.nextElementSibling) setTimeout(() => this.initSlider(), 100);
         },
         initSlider() {
             const sliderContainer = this.$el.querySelector('.projectDetail__slider');
