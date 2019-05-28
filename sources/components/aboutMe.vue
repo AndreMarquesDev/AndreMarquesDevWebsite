@@ -193,14 +193,16 @@ export default {
                     html: `<span class="green">'Netlify'</span>,`,
                     identation: 'identation3'
                 },
-
                 {
                     html: `<span class="green">'Slick.js'</span>,`,
                     identation: 'identation3'
                 },
-
                 {
                     html: `<span class="green">'Flickity.js'</span>`,
+                    identation: 'identation3'
+                },
+                {
+                    html: `<span class="green">'FusionCharts.js'</span>`,
                     identation: 'identation3'
                 },
                 {
@@ -220,6 +222,10 @@ export default {
                     identation: 'identation3'
                 },
                 {
+                    html: `<span class="green">'Express'</span>`,
+                    identation: 'identation3'
+                },
+                {
                     html: `<span class="green">'Shopify'</span>`,
                     identation: 'identation3'
                 },
@@ -236,7 +242,7 @@ export default {
                     identation: null
                 },
                 {
-                    html: '<span class="yellow">workExperience</span><span class="purple">(</span>company, role, years, jobDescription<span class="purple">) {</span>',
+                    html: '<span class="yellow">workExperience</span><span class="purple">(</span>company, role, years, jobDescription, projects<span class="purple">) {</span>',
                     identation: 'identation1'
                 },
                 {
@@ -257,6 +263,30 @@ export default {
                 },
                 {
                     html: `projects <span class="orange">=</span> <a href="work" class="link innerLink"><span class="green">'Ageas Portugal'</span></a> <span class="orange">+</span> <a href="work" class="link innerLink"><span class="green">'Seguro Directo'</span></a> <span class="orange">+</span> <a href="work" class="link innerLink"><span class="green">'Galp Corporate Event'</span></a>;`,
+                    identation: 'identation2'
+                },
+                {
+                    html: '<span class="purple">}</span>',
+                    identation: 'identation1'
+                },
+                {
+                    html: '',
+                    identation: null
+                },
+                {
+                    html: '<span class="yellow">currentJob</span><span class="purple">(</span>company, role, from<span class="purple">) {</span>',
+                    identation: 'identation1'
+                },
+                {
+                    html: `company <span class="orange">=</span> <a href="https://aboutfarfetch.com" target="_blank" rel="noreferrer" aria-label="Farfetch about website" class="link"><span class="green">'Farfetch'</span></a>;`,
+                    identation: 'identation2'
+                },
+                {
+                    html: `role <span class="orange">=</span> <span class="green">'Frontend Developer'</span>;`,
+                    identation: 'identation2'
+                },
+                {
+                    html: `from <span class="orange">=</span> <span class="red">June 2019</span>;`,
                     identation: 'identation2'
                 },
                 {

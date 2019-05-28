@@ -3,7 +3,7 @@
 
         <nav>
             <router-link to="/" class="navigation__logo" aria-label="Link to homepage">
-                <img src="../images/logo.svg" alt="logo">
+                <img src="../images/logo.png" alt="logo">
             </router-link>
 
             <i class="navigation__menuIcon" @click="toggleMenu"><span></span></i>
@@ -55,6 +55,7 @@ export default {
     }
 
     nav {
+        height: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -66,11 +67,9 @@ export default {
         max-width: 200px;
 
         img {
-            max-height: $navHeight;
+            max-height: calc(#{$navHeight} - 20px);
             height: 100%;
-            transform: rotate(180deg);
         }
-
     }
 
     &__menuIcon {

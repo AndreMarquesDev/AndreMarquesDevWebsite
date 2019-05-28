@@ -1,11 +1,11 @@
 <template>
-    <section class="content">
+    <section class="content scrollReveal" >
         <div class="wrapper">
 
-            <h1>Hi, my name is André Marques and I'm a Frontend Developer</h1>
-            <p>Get to know me <router-link to="about" aria-label="Link to about page"><animatedLetters text="<about/>"/></router-link></p>
+            <h1>Hi! My name is <animatedLetters text="André Marques"/> and I'm a Frontend Developer</h1>
+            <p>Get to know more <router-link to="about" aria-label="Link to about page"><animatedLetters text="<about/>"/></router-link>me</p>
             <p>Check out my <router-link to="work" aria-label="Link to work page"><animatedLetters text="<projects/>"/></router-link></p>
-            <p>Get in touch <router-link to="contact" aria-label="Link to contact page"><animatedLetters text="<contact/>"/></router-link></p>
+            <p>Get in touch through the <router-link to="contact" aria-label="Link to contact page"><animatedLetters text="<contact/>"/></router-link>form</p>
 
         </div>
     </section>
@@ -26,19 +26,35 @@ export default {
 @import '../styles/variables.scss';
 
 .content {
+    min-height: inherit;
     width: 100%;
-    display: flex;
     position: relative;
-    padding: calc(#{$navHeight + 100}) 0 calc(#{$footerHeight + 40});
+    text-align: center;
+    padding: $navHeight 0 calc(#{$footerHeight + 40});
+
+    .wrapper {
+        min-height: calc(100vh - (#{$navHeight} + #{$footerHeight + 40}));
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     h1 {
-        width: 60%;
+        max-width: 800px;
+        width: 100%;
         @include fontXXL;
-        margin-bottom: 40px;
+        margin-bottom: 100px;
+
+        p {
+            @include fontXXL;
+        }
     }
 
     p {
-        width: 60%;
+        max-width: 800px;
+        width: 100%;
         @include fontXL;
     }
 

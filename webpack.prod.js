@@ -40,7 +40,7 @@ module.exports = merge(common, {
             })]
         }),
         new FaviconsWebpackPlugin({
-            logo: './sources/images/logo.svg',
+            logo: './sources/images/logo.png',
             background: '#09101c',
             title: 'André Marques Dev',
             icons: {
