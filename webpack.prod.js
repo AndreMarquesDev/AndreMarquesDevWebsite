@@ -42,7 +42,7 @@ module.exports = merge(common, {
         new FaviconsWebpackPlugin({
             logo: './sources/images/logo.png',
             background: '#09101c',
-            title: 'André Marques Dev',
+            title: 'André Marques',
             icons: {
                 opengraph: true,
                 twitter: true,

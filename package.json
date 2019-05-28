@@ -1,7 +1,7 @@
 {
-    "name": "AndreMarquesDevWebsite",
+    "name": "AndreMarquesWebsite",
     "version": "1.0.0",
-    "description": "André Marques Dev Website",
+    "description": "André Marques Website",
     "private": true,
     "browserslist": [
         "> 0.25%",

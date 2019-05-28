@@ -95,14 +95,16 @@ module.exports = {
             { from: 'sources/manifest.json' },
             { from: '_redirects' },
             { from: 'robots.txt' },
+            { from: 'sources/images/logoIcon-57x57.png', to: 'images' },
+            { from: 'sources/images/logoIcon-60x60.png', to: 'images' },
             { from: 'sources/images/logoIcon-72x72.png', to: 'images' },
-            { from: 'sources/images/logoIcon-96x96.png', to: 'images' },
-            { from: 'sources/images/logoIcon-128x128.png', to: 'images' },
+            { from: 'sources/images/logoIcon-76x76.png', to: 'images' },
+            { from: 'sources/images/logoIcon-114x114.png', to: 'images' },
+            { from: 'sources/images/logoIcon-120x120.png', to: 'images' },
             { from: 'sources/images/logoIcon-144x144.png', to: 'images' },
             { from: 'sources/images/logoIcon-152x152.png', to: 'images' },
-            { from: 'sources/images/logoIcon-192x192.png', to: 'images' },
-            { from: 'sources/images/logoIcon-384x384.png', to: 'images' },
-            { from: 'sources/images/logoIcon-512x512.png', to: 'images' }
+            { from: 'sources/images/logoIcon-180x180.png', to: 'images' },
+            { from: 'sources/images/logoIcon-192x192.png', to: 'images' }
         ])
     ],
     devServer: {

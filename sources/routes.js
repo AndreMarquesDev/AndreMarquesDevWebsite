@@ -16,7 +16,7 @@ const routes = new router ({
             name: 'home',
             component: home,
             meta: {
-                title: '<home/> - André Marques Dev Website'
+                title: '<home/> - André Marques Website'
             }
         },
         {
@@ -24,7 +24,7 @@ const routes = new router ({
             name: 'contact',
             component: contact,
             meta: {
-                title: '<contact/> - André Marques Dev Website'
+                title: '<contact/> - André Marques Website'
             }
         },
         {
@@ -32,7 +32,7 @@ const routes = new router ({
             name: 'work',
             component: work,
             meta: {
-                title: '<work/> - André Marques Dev Website'
+                title: '<work/> - André Marques Website'
             }
         },
         {
@@ -40,7 +40,7 @@ const routes = new router ({
             name: 'projectPage',
             component: projectPage,
             meta: {
-                title: ' - André Marques Dev Website'
+                title: ' - André Marques Website'
             }
         },
         {
@@ -48,7 +48,7 @@ const routes = new router ({
             name: 'about',
             component: about,
             meta: {
-                title: '<about/> - André Marques Dev Website'
+                title: '<about/> - André Marques Website'
             }
         },
         {
@@ -65,7 +65,7 @@ const routes = new router ({
 // Set document title
 // for '/work/:project' check 'projectDetail.vue' because its dynamic
 routes.beforeEach((to, from, next) => {
-    document.title = to.meta.title || 'André Marques Dev Website';
+    document.title = to.meta.title || 'André Marques Website';
     next();
 });
 

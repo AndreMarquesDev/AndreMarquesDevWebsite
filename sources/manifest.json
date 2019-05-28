@@ -1,8 +1,8 @@
 {
     "lang" : "en",
-    "name": "André Marques Dev",
+    "name": "André Marques",
     "short_name": "AndréMarques",
-    "description": "André Marques Dev website",
+    "description": "André Marques website",
     "start_url": "/index.html",
     "display": "standalone",
     "orientation": "any",
@@ -10,16 +10,28 @@
     "theme_color": "#09101c",
     "dir": "ltr",
     "icons": [{
+        "src": "images/logoIcon-57x57.png",
+            "sizes": "57x57",
+            "type": "image/png"
+    }, {
+        "src": "images/logoIcon-60x60.png",
+            "sizes": "60x60",
+            "type": "image/png"
+    }, {
         "src": "images/logoIcon-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
     }, {
-        "src": "images/logoIcon-96x96.png",
-            "sizes": "96x96",
+        "src": "images/logoIcon-76x76.png",
+            "sizes": "76x76",
             "type": "image/png"
     }, {
-        "src": "images/logoIcon-128x128.png",
-            "sizes": "128x128",
+        "src": "images/logoIcon-114x114.png",
+            "sizes": "114x114",
+            "type": "image/png"
+    }, {
+        "src": "images/logoIcon-120x120.png",
+            "sizes": "120x120",
             "type": "image/png"
     }, {
         "src": "images/logoIcon-144x144.png",
@@ -30,16 +42,16 @@
             "sizes": "152x152",
             "type": "image/png"
     }, {
+        "src": "images/logoIcon-180x180.png",
+            "sizes": "180x180",
+            "type": "image/png"
+    }, {
+        "src": "images/logoIcon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+    }, {
         "src": "images/logoIcon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
-    }, {
-        "src": "images/logoIcon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-    }, {
-        "src": "images/logoIcon-512x512.png",
-            "sizes": "512x512",
             "type": "image/png"
     }]
 }
