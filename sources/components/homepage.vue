@@ -65,11 +65,17 @@ export default {
     }
 
     @include tablet {
-        h1, p:not(.animatedLetters) {
+        padding: calc(#{$navHeight + 20}) 0 calc(#{$footerHeight + 40});
+
+        h1 {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        p:not(.animatedLetters) {
             width: 100%;
         }
     }
-
 }
 
 </style>

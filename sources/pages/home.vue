@@ -30,15 +30,25 @@ export default {
         transitionComponent
     },
     mounted() {
-        scrollReveal().reveal('.scrollReveal', {
-            duration: 1000,
-            distance: '100%',
-            origin: 'bottom',
-            // easing: 'ease-out',
-            easing: 'cubic-bezier(.46, .03, 0, 1)',
-            scale: 3,
-            cleanup: true
-        });
+        if (window.innerWidth < 768) {
+            scrollReveal().reveal('.scrollReveal', {
+                duration: 1000,
+                distance: '20%',
+                origin: 'bottom',
+                easing: 'cubic-bezier(.46, .03, 0, 1)',
+                scale: 2,
+                cleanup: true
+            });
+        } else {
+            scrollReveal().reveal('.scrollReveal', {
+                duration: 1000,
+                distance: '100%',
+                origin: 'bottom',
+                easing: 'cubic-bezier(.46, .03, 0, 1)',
+                scale: 3,
+                cleanup: true
+            });
+        }
     }
 }
 </script>
