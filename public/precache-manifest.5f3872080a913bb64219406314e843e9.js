@@ -464,6 +464,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/logoIcon-192x192.png"
   },
   {
+    "revision": "8946b0661113fa41f3261e529e2f003b",
+    "url": "/images/logoIcon-512x512.png"
+  },
+  {
     "revision": "227c6997df34fe49fb86b05349a30994",
     "url": "/images/logoIcon-57x57.png"
   },
@@ -612,6 +616,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images\\logoIcon-192x192.png"
   },
   {
+    "revision": "8946b0661113fa41f3261e529e2f003b",
+    "url": "/images\\logoIcon-512x512.png"
+  },
+  {
     "revision": "227c6997df34fe49fb86b05349a30994",
     "url": "/images\\logoIcon-57x57.png"
   },
@@ -636,7 +644,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html.gz"
   },
   {
-    "revision": "94a657ef947d2914517e",
+    "revision": "b839392535908e013ca5",
     "url": "/main.css"
   },
   {
@@ -644,15 +652,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/main.css.gz"
   },
   {
-    "revision": "94a657ef947d2914517e",
+    "revision": "b839392535908e013ca5",
     "url": "/main.js"
   },
   {
-    "revision": "f3865075c59e8b3a02a29628739f0115",
+    "revision": "76d1e23c05aee9c46e395020c2167dcf",
     "url": "/main.js.gz"
   },
   {
-    "revision": "61b0a2c8e44560759f489ca4931370ea",
+    "revision": "319f51f3f1609eb68c154281f7cf03ff",
     "url": "/manifest.json"
   },
   {

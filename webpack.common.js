@@ -104,7 +104,8 @@ module.exports = {
             { from: 'sources/images/logoIcon-144x144.png', to: 'images' },
             { from: 'sources/images/logoIcon-152x152.png', to: 'images' },
             { from: 'sources/images/logoIcon-180x180.png', to: 'images' },
-            { from: 'sources/images/logoIcon-192x192.png', to: 'images' }
+            { from: 'sources/images/logoIcon-192x192.png', to: 'images' },
+            { from: 'sources/images/logoIcon-512x512.png', to: 'images' }
         ])
     ],
     devServer: {

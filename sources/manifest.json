@@ -53,5 +53,9 @@
         "src": "images/logoIcon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
+    }, {
+        "src": "images/logoIcon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
     }]
 }
