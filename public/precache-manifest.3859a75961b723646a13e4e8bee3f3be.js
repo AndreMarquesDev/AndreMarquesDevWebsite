@@ -648,7 +648,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/main.css"
   },
   {
-    "revision": "a16256e85d89340f0a28ee7c02ac931b",
+    "revision": "b2aea021c3037fa525baed00b3f39a10",
     "url": "/main.css.gz"
   },
   {

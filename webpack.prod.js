@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
     common = require('./webpack.common.js'),
 
     TerserPlugin = require('terser-webpack-plugin'),
+    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 
     ImageminPlugin = require('imagemin-webpack-plugin').default,
     imageminMozjpeg = require('imagemin-mozjpeg'),
@@ -23,6 +24,10 @@ module.exports = merge(common, {
                     ie8: true,
                     safari10: true
                 }
+            }),
+            new OptimizeCssAssetsPlugin({
+                cssProcessorOptions: { discardComments: { removeAll: true } },
+                canPrint: true
             })
         ]
     },
