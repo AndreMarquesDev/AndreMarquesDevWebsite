@@ -1,42 +1,83 @@
 <template>
     <div class="formComponent scrollReveal">
-
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeflKZw6gkJ2uxaIlOE_XdDVYHU3KsmJPNzR7RcQrPAKsB-eg/formResponse" target="hiddenIframe" method="POST" id="mG61Hd" @submit="formSubmitted = true" novalidate>
-            <animatedLetters text="<!-- Get in touch -->"/>
-
-            <input type="text" name="entry.1177017935" required placeholder="Name" tabindex="0" aria-label="Your name" @blur="checkInput($event)" @keyup="checkInput($event)">
+        <form method="POST" @submit="handleSubmit($event)" novalidate>
+            <animatedLetters text="<!-- Get in touch -->" />
+            <input
+                type="text"
+                name="name"
+                required
+                placeholder="Name"
+                tabindex="0"
+                aria-label="Your name"
+                @blur="checkInput($event)"
+                @keyup="checkInput($event)"
+                v-model="name"
+            />
             <span class="errorText">Please enter your first and last name</span>
-            <input type="email" name="emailAddress" required placeholder="Email" tabindex="0" aria-label="Your email address" @blur="checkInput($event)" @keyup="checkInput($event)">
+            <input
+                type="email"
+                name="emailAddress"
+                required
+                placeholder="Email"
+                tabindex="0"
+                aria-label="Your email address"
+                @blur="checkInput($event)"
+                @keyup="checkInput($event)"
+                v-model="email"
+            />
             <span class="errorText">Please enter a valid email address</span>
-            <input type="text" name="entry.1964548515" placeholder="Company (optional)" tabindex="0" aria-label="Company" @blur="checkInput($event)" @keyup="checkInput($event)">
-            <textarea name="entry.1185595172" required placeholder="Message" tabindex="0" aria-label="Your message" @blur="checkInput($event)" @keyup="checkInput($event)"></textarea>
+            <input
+                type="text"
+                name="company"
+                placeholder="Company (optional)"
+                tabindex="0"
+                aria-label="Company"
+                @blur="checkInput($event)"
+                @keyup="checkInput($event)"
+                v-model="company"
+            />
+            <textarea
+                name="message"
+                required
+                placeholder="Message"
+                tabindex="0"
+                aria-label="Your message"
+                @blur="checkInput($event)"
+                @keyup="checkInput($event)"
+                v-model="message"
+            ></textarea>
             <span class="errorText">Please enter a message</span>
 
             <button type="submit" class="button">
-                <animatedLetters text="<send/>"/>
+                <animatedLetters text="<send/>" />
             </button>
         </form>
 
-        <p class="formNotification" data-success="Thank you! I will reply as soon as I can :)"></p>
-
-        <iframe name="hiddenIframe" id="hiddenIframe" title="Hidden iframe" @load="formHandler"></iframe>
-
+        <p
+            class="formNotification"
+            data-success="Thank you! I will reply as soon as I can :)"
+            data-error="Oops! There was an error. Please try again later."
+        ></p>
     </div>
 </template>
 
 <script>
-import animatedLetters from './../components/animatedLetters.vue';
+import axios from "axios";
+import animatedLetters from "./../components/animatedLetters.vue";
 
 export default {
-    name: 'formComponent',
+    name: "formComponent",
     components: {
         animatedLetters
     },
     data() {
         return {
-            formSubmitted: false,
-            formValidated: false
-        }
+            formValidated: false,
+            name: "",
+            email: "",
+            company: "",
+            message: ""
+        };
     },
     methods: {
         checkInput(event) {
@@ -45,64 +86,97 @@ export default {
                 emailRegex = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
             // Name input
-            if (input.type === 'text' && input.required === true) {
+            if (input.type === "text" && input.required === true) {
                 nameRegex.test(input.value)
-                    ? (input.classList.remove('error'), this.formValidated = true)
-                    : (input.classList.add('error'), this.formValidated = false);
+                    ? (input.classList.remove("error"),
+                      (this.formValidated = true))
+                    : (input.classList.add("error"),
+                      (this.formValidated = false));
             }
 
             // Email input
-            if (input.type === 'email') {
+            if (input.type === "email") {
                 emailRegex.test(input.value)
-                    ? (input.classList.remove('error'), this.formValidated = true)
-                    : (input.classList.add('error'), this.formValidated = false);
+                    ? (input.classList.remove("error"),
+                      (this.formValidated = true))
+                    : (input.classList.add("error"),
+                      (this.formValidated = false));
             }
 
             // Textarea
-            if (input.tagName === 'TEXTAREA') {
+            if (input.tagName === "TEXTAREA") {
                 input.value.length
-                    ? (input.classList.remove('error'), this.formValidated = true)
-                    : (input.classList.add('error'), this.formValidated = false);
+                    ? (input.classList.remove("error"),
+                      (this.formValidated = true))
+                    : (input.classList.add("error"),
+                      (this.formValidated = false));
             }
-
         },
+        handleSubmit(event) {
+            event.preventDefault();
 
-        formHandler() {
-            const form = this.$el.querySelector('form'),
-                inputs = form.querySelectorAll('input, textarea'),
-                iframe = this.$el.querySelector('iframe'),
-                formNotification = this.$el.querySelector('.formNotification');
+            const form = this.$el.querySelector("form");
+            const inputs = form.querySelectorAll("input, textarea");
+            const formNotification = this.$el.querySelector(
+                ".formNotification"
+            );
 
-            this.formSubmitted && inputs.forEach(input => {
-                if (input.required === true && (!input.value.length || input.classList.contains('error'))) {
-                    input.classList.add('error');
+            inputs.forEach(input => {
+                if (
+                    input.required === true &&
+                    (!input.value.length || input.classList.contains("error"))
+                ) {
+                    input.classList.add("error");
                     this.formValidated = false;
                 }
             });
 
-            if (this.formSubmitted && this.formValidated) {
-                formNotification.classList.add('success');
-                formNotification.innerHTML = formNotification.dataset.success;
-                setTimeout(() => {
-                    form.reset();
-                    this.formSubmitted = false;
-                    this.formValidated = false;
-                    formNotification.classList.remove('success');
-                }, 5000);
+            if (this.formValidated) {
+                const formData = {
+                    name: this.name,
+                    email: this.email,
+                    company: this.company,
+                    message: this.message
+                };
+
+                axios
+                    .post(
+                        "https://contact-form-backend-andremdev.herokuapp.com/api/sendEmail",
+                        formData
+                    )
+                    .then(res => {
+                        formNotification.classList.remove("error");
+                        formNotification.classList.add("success");
+                        formNotification.innerHTML =
+                            formNotification.dataset.success;
+
+                        setTimeout(() => {
+                            form.reset();
+                            this.formValidated = false;
+                            formNotification.classList.remove("success");
+                        }, 5000);
+                    })
+                    .catch(() => {
+                        formNotification.classList.add("error");
+                        formNotification.innerHTML =
+                            formNotification.dataset.error;
+
+                        setTimeout(() => {
+                            form.reset();
+                            this.formValidated = false;
+                            formNotification.classList.remove("error");
+                        }, 5000);
+                    });
             }
-
         }
-
     }
-}
-
+};
 </script>
 
 <style lang='scss'>
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .formComponent {
-
     > button {
         @include fontXL;
     }
@@ -112,7 +186,7 @@ export default {
         display: flex;
         flex-direction: column;
         position: relative;
-        background-image: url('/images/background.png');
+        background-image: url("/images/background.png");
         background-repeat: no-repeat;
         background-position-x: 50%;
         background-size: cover;
@@ -124,8 +198,9 @@ export default {
             margin-bottom: 0;
         }
 
-        input, textarea {
-            @include fontM ($darkGrey);
+        input,
+        textarea {
+            @include fontM($darkGrey);
             background: $lightGrey;
             border: 2px solid transparent;
             margin-top: 20px;
@@ -139,7 +214,6 @@ export default {
                     opacity: 1;
                     pointer-events: initial;
                 }
-
             }
         }
 
@@ -150,31 +224,31 @@ export default {
 
         // Placeholders
         ::-webkit-input-placeholder {
-            @include fontM ($darkGrey);
+            @include fontM($darkGrey);
             font-style: italic;
         }
         ::-moz-placeholder {
-            @include fontM ($darkGrey);
+            @include fontM($darkGrey);
             font-style: italic;
         }
         :-moz-placeholder {
-            @include fontM ($darkGrey);
+            @include fontM($darkGrey);
             font-style: italic;
         }
         :-ms-input-placeholder {
-            @include fontM ($darkGrey);
+            @include fontM($darkGrey);
             font-style: italic;
         }
 
         :focus::-webkit-input-placeholder {
             opacity: 0;
-            @include transition (opacity, .3s, ease);
+            @include transition(opacity, 0.3s, ease);
         }
 
         .errorText {
             opacity: 0;
             pointer-events: none;
-            @include fontM ($red);
+            @include fontM($red);
         }
 
         button {
@@ -188,9 +262,7 @@ export default {
                 font-weight: $fontBold;
                 margin-bottom: 0;
             }
-
         }
-
     }
 
     iframe {
@@ -206,7 +278,7 @@ export default {
         @include fontL;
         text-align: center;
         padding: 30px;
-        @include transition (transform, .5s);
+        @include transition(transform, 0.5s);
         z-index: 1;
 
         &.success {
@@ -214,6 +286,10 @@ export default {
             transform: translateY(0);
         }
 
+        &.error {
+            background: $red;
+            transform: translateY(0);
+        }
     }
 }
 </style>
