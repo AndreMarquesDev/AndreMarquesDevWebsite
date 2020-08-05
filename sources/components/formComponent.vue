@@ -48,8 +48,8 @@
             ></textarea>
             <span class="errorText">Please enter a message</span>
 
-            <button type="submit" class="button">
-                <animatedLetters text="<send/>" />
+            <button type="submit" class="button" :disabled="this.isSubmitButtonDisabled">
+                <animatedLetters text="<send/>" :shouldAnimate="!this.isSubmitButtonDisabled" />
             </button>
         </form>
 
@@ -68,7 +68,7 @@ import animatedLetters from "./../components/animatedLetters.vue";
 export default {
     name: "formComponent",
     components: {
-        animatedLetters
+        animatedLetters,
     },
     data() {
         return {
@@ -76,7 +76,8 @@ export default {
             name: "",
             email: "",
             company: "",
-            message: ""
+            message: "",
+            isSubmitButtonDisabled: false,
         };
     },
     methods: {
@@ -112,16 +113,54 @@ export default {
                       (this.formValidated = false));
             }
         },
+        showNotification(notificationType) {
+            const formNotification = this.$el.querySelector(
+                ".formNotification"
+            );
+
+            formNotification.classList.remove("error");
+            formNotification.classList.add(notificationType);
+
+            if (notificationType === "success") {
+                formNotification.innerHTML = formNotification.dataset.success;
+            } else {
+                formNotification.innerHTML = formNotification.dataset.error;
+            }
+        },
+        hideNotification(notificationType) {
+            const formNotification = this.$el.querySelector(
+                ".formNotification"
+            );
+            const wasSubmittedSuccessfully = notificationType === "success";
+
+            setTimeout(() => {
+                this.resetForm(wasSubmittedSuccessfully);
+                formNotification.classList.remove(notificationType);
+            }, 5000);
+        },
+        resetForm(wasSuccessful) {
+            this.isSubmitButtonDisabled = false;
+
+            if (!wasSuccessful) {
+                return;
+            }
+
+            const form = this.$el.querySelector("form");
+
+            form.reset();
+            this.formValidated = false;
+            this.name = "";
+            this.email = "";
+            this.company = "";
+            this.message = "";
+        },
         handleSubmit(event) {
             event.preventDefault();
 
             const form = this.$el.querySelector("form");
             const inputs = form.querySelectorAll("input, textarea");
-            const formNotification = this.$el.querySelector(
-                ".formNotification"
-            );
 
-            inputs.forEach(input => {
+            inputs.forEach((input) => {
                 if (
                     input.required === true &&
                     (!input.value.length || input.classList.contains("error"))
@@ -132,11 +171,13 @@ export default {
             });
 
             if (this.formValidated) {
+                this.isSubmitButtonDisabled = true;
+
                 const formData = {
                     name: this.name,
                     email: this.email,
                     company: this.company,
-                    message: this.message
+                    message: this.message,
                 };
 
                 axios
@@ -144,32 +185,17 @@ export default {
                         "https://contact-form-backend-andremdev.herokuapp.com/api/sendEmail",
                         formData
                     )
-                    .then(res => {
-                        formNotification.classList.remove("error");
-                        formNotification.classList.add("success");
-                        formNotification.innerHTML =
-                            formNotification.dataset.success;
-
-                        setTimeout(() => {
-                            form.reset();
-                            this.formValidated = false;
-                            formNotification.classList.remove("success");
-                        }, 5000);
+                    .then((res) => {
+                        this.showNotification("success");
+                        this.hideNotification("success");
                     })
                     .catch(() => {
-                        formNotification.classList.add("error");
-                        formNotification.innerHTML =
-                            formNotification.dataset.error;
-
-                        setTimeout(() => {
-                            form.reset();
-                            this.formValidated = false;
-                            formNotification.classList.remove("error");
-                        }, 5000);
+                        this.showNotification("error");
+                        this.hideNotification("error");
                     });
             }
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -196,6 +222,7 @@ export default {
         .animatedLetters {
             @include fontM;
             margin-bottom: 0;
+            position: relative;
         }
 
         input,
@@ -251,12 +278,44 @@ export default {
             @include fontM($red);
         }
 
+        @keyframes loading {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
         button {
+            position: relative;
             display: block;
             background: $blue;
             margin: 20px 0 auto auto;
             padding: 5px 25px;
             cursor: pointer;
+            overflow: hidden;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
+            &[disabled] {
+                cursor: not-allowed;
+                background: $submitButtonDisabled;
+
+                &:before {
+                    transform: translateX(-100%);
+                    background: linear-gradient(
+                        90deg,
+                        transparent,
+                        $submitButtonDisabledLoading,
+                        transparent
+                    );
+                    animation: loading 1s infinite;
+                }
+            }
 
             .animatedLetters {
                 font-weight: $fontBold;
@@ -278,7 +337,7 @@ export default {
         @include fontL;
         text-align: center;
         padding: 30px;
-        @include transition(transform, 0.5s);
+        @include transition(transform, 0.25s);
         z-index: 1;
 
         &.success {
