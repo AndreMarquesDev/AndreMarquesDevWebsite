@@ -25,7 +25,7 @@ new Vue({
     render: createElement => createElement(app)
 }).$mount('#root');
 
-console.log('%c| 🔧 Developed by André Marques ✏️ Designed by Aguarela |', 'background: #000; color: #fff;');
+console.log('%c| 🔧 Developed by André Marques ✏️ Designed by Aguarela Digital |', 'background: #000; color: #fff;');
 console.log('%c| 💻 Powered by Vue.js 💻 |', 'background: #000; color: #fff;');
 console.log('%c| https://github.com/AndreMarquesDev |', 'background: #000; color: #fff;');
 console.log('%c| https://codepen.io/AndreMarquesDev |', 'background: #000; color: #fff;');

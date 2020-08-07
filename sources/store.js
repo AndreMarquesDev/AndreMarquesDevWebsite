@@ -116,7 +116,7 @@ export default new Vuex.Store({
                 },
                 credits: [
                     'Frontend - André Marques',
-                    'UI - Catarina Santiago (Aguarela)',
+                    'UI - Catarina Santiago (Aguarela Digital)',
                 ]
             },
             {
@@ -139,7 +139,7 @@ export default new Vuex.Store({
                 },
                 credits: [
                     'Frontend - André Marques',
-                    'UI - Catarina Santiago (Aguarela)',
+                    'UI - Catarina Santiago (Aguarela Digital)',
                 ]
             },
             {
