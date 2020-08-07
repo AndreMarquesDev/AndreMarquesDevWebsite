@@ -6,9 +6,11 @@ import work from './pages/work.vue'
 import projectPage from './pages/projectPage.vue'
 import about from './pages/about.vue'
 
+export const defaultRouteSuffix = ' - André Marques Website';
+
 Vue.use(router);
 
-const routes = new router ({
+const routes = new router({
     mode: 'history',
     routes: [
         {
@@ -16,7 +18,7 @@ const routes = new router ({
             name: 'home',
             component: home,
             meta: {
-                title: '<home/> - André Marques Website'
+                title: '<home/>' + defaultRouteSuffix,
             }
         },
         {
@@ -24,7 +26,7 @@ const routes = new router ({
             name: 'contact',
             component: contact,
             meta: {
-                title: '<contact/> - André Marques Website'
+                title: '<contact/>' + defaultRouteSuffix,
             }
         },
         {
@@ -32,7 +34,7 @@ const routes = new router ({
             name: 'work',
             component: work,
             meta: {
-                title: '<work/> - André Marques Website'
+                title: '<work/>' + defaultRouteSuffix,
             }
         },
         {
@@ -40,7 +42,7 @@ const routes = new router ({
             name: 'projectPage',
             component: projectPage,
             meta: {
-                title: ' - André Marques Website'
+                title: defaultRouteSuffix,
             }
         },
         {
@@ -48,7 +50,7 @@ const routes = new router ({
             name: 'about',
             component: about,
             meta: {
-                title: '<about/> - André Marques Website'
+                title: '<about/>' + defaultRouteSuffix,
             }
         },
         {

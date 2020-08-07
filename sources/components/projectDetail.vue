@@ -114,6 +114,7 @@
 <script>
 import flickity from "flickity";
 import animatedLetters from "./../components/animatedLetters.vue";
+import { defaultRouteSuffix } from "../routes";
 
 export default {
     name: "projectDetail",
@@ -155,8 +156,7 @@ export default {
         );
 
         // Set document title
-        this.$route.meta.title = this.project.name + this.$route.meta.title;
-        document.title = this.$route.meta.title;
+        document.title = this.project.name + defaultRouteSuffix;
     },
 };
 </script>

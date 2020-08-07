@@ -8,7 +8,7 @@
                 rel="noreferrer"
                 aria-label="Aguarela Instagram"
                 class="alternativeLink"
-            >Aguarela Digital</a>
+            >Aguarela</a>
         </small>
 
         <nav>
