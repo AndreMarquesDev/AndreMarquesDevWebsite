@@ -120,6 +120,29 @@ export default new Vuex.Store({
                 ]
             },
             {
+                name: 'Harpoon Jobs',
+                path: 'harpoon-jobs',
+                year: 2020,
+                description: `<a href="https://harpoon.jobs/stayhomestayahead" target="_blank" rel="noreferrer" aria-label="Harpoon Jobs Stay Home and Stay Ahead Website" class="alternativeLink">Harpoon Jobs - Stay Home and Stay Ahead</a> is a static landing page created for <a href="https://harpoon.jobs" target="_blank" rel="noreferrer" aria-label="Harpoon Jobs" class="alternativeLink">Harpoon Jobs</a>, a recruitment company. It was a specific campaign launched during the COVID-19 pandemic focusing on a "Stay Home and Stay Ahead" program whose revenue reverted to the <a href="https://www.cruzvermelha.pt" target="_blank" rel="noreferrer" aria-label="Cruz Vermelha" class="alternativeLink">Portuguese Red Cross</a>.`,
+                myRole: `<span>I was responsible for the development but not the implementation, meaning I developed the HTML and CSS and delivered the bundled code to the client. The design was taken care of by <a href="https://www.instagram.com/aguareladigital" target="_blank" rel="noreferrer" aria-label="Aguarela Instagram" class="alternativeLink">Aguarela Digital</a>.</span><span>Since it was a simple landing page, with no JavaScript involved, the process was pretty straightforward and all I had to make sure was that it was responsive (a must nowadays) and cross-browser compatible.</span>`,
+                lighthouseText: `This is a static landing page with no JavaScript so it was not hard to get good scores. Clean HTML and CSS would do (and did) the trick and the performance score could be much higher had the images been properly sized and optimized. The accessibility and SEO scores were actually hampered only because of a missing "alt" attribute on the logo image.`,
+                lighthouseResults: {
+                    'Performance': 83,
+                    'Accessibility': 77,
+                    'Best Practices': 85,
+                    'SEO': 92,
+                },
+                image: {
+                    thumbnail: 'harpoon-thumbnail',
+                    detailMain: 'harpoon-detail-main',
+                    detailResponsive: 'harpoon-detail-responsive',
+                },
+                credits: [
+                    'Frontend - André Marques',
+                    'UI - Catarina Santiago (Aguarela)',
+                ]
+            },
+            {
                 name: 'Galp Corporate Event',
                 path: 'galp',
                 year: 2019,
@@ -136,7 +159,7 @@ export default new Vuex.Store({
                     'UI - Diana Gonçalves & Ana Saúde',
                     'Project Management - Joana André & Gonçalo Caldas'
                 ]
-            }
+            },
         ]
     },
     mutations: {

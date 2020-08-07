@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4a6114e282f83323b3a1ffcbd7abeb4c",
+    "revision": "bd19d3ba6075ef3de8111dfea79437ca",
     "url": "/icons-4547f695d73c629b9f4e99509e08359d/.cache"
   },
   {
@@ -436,6 +436,30 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/galp-thumbnail.webp"
   },
   {
+    "revision": "456bdc687e3e46d7be8568a639f9c1e9",
+    "url": "/images/harpoon-detail-main.png"
+  },
+  {
+    "revision": "beb0f388cf8e749ca47d51b895d0c22c",
+    "url": "/images/harpoon-detail-main.webp"
+  },
+  {
+    "revision": "6a07f33eac777cb14fdb0b62b866c71c",
+    "url": "/images/harpoon-detail-responsive.png"
+  },
+  {
+    "revision": "eca4d6a92d91d6a998dfa5dfb87f4074",
+    "url": "/images/harpoon-detail-responsive.webp"
+  },
+  {
+    "revision": "13ca47fb1728e06103b74eac9e692ab4",
+    "url": "/images/harpoon-thumbnail.jpg"
+  },
+  {
+    "revision": "cf4ff7ff313f0e6195d84988e968fb76",
+    "url": "/images/harpoon-thumbnail.webp"
+  },
+  {
     "revision": "89b14d795a1e6b60c624ed120c4e566a",
     "url": "/images/logo.png"
   },
@@ -644,7 +668,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html.gz"
   },
   {
-    "revision": "1713362004806ab0d18e",
+    "revision": "d5668cf2a955f4dd72d2",
     "url": "/main.css"
   },
   {
@@ -652,11 +676,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/main.css.gz"
   },
   {
-    "revision": "1713362004806ab0d18e",
+    "revision": "d5668cf2a955f4dd72d2",
     "url": "/main.js"
   },
   {
-    "revision": "785c789d956c66461e9c16a43aa5a3d7",
+    "revision": "bab03a5e4e69f717fbf09fc8dfa76ad3",
     "url": "/main.js.gz"
   },
   {

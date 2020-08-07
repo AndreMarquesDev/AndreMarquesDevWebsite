@@ -1,15 +1,23 @@
 <template>
     <section class="projectDetail mainSection">
         <div class="wrapper">
-
-            <animatedLetters :text="this.project.name"/>
-            <animatedLetters :text="` - ${this.project.year}`"/>
+            <animatedLetters :text="this.project.name" />
+            <animatedLetters :text="` - ${this.project.year}`" />
 
             <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
-                    <source :srcset="require('../images/' + this.project.image.detailMain + '.webp')" type="image/webp">
-                    <source :srcset="require('../images/' + this.project.image.detailMain + '.png')" type="image/png">
-                    <img :src="require('../images/' + this.project.image.detailMain + '.png')" :alt="this.project.name">
+                    <source
+                        :srcset="require('../images/' + this.project.image.detailMain + '.webp')"
+                        type="image/webp"
+                    />
+                    <source
+                        :srcset="require('../images/' + this.project.image.detailMain + '.png')"
+                        type="image/png"
+                    />
+                    <img
+                        :src="require('../images/' + this.project.image.detailMain + '.png')"
+                        :alt="this.project.name"
+                    />
                 </picture>
             </figure>
 
@@ -28,34 +36,63 @@
 
                 <figure class="projectDetail__detailImage">
                     <picture>
-                        <source :srcset="require('../images/' + this.project.image.detailResponsive + '.webp')" type="image/webp">
-                        <source :srcset="require('../images/' + this.project.image.detailResponsive + '.png')" type="image/png">
-                        <img :src="require('../images/' + this.project.image.detailResponsive + '.png')" :alt="this.project.name">
+                        <source
+                            :srcset="require('../images/' + this.project.image.detailResponsive + '.webp')"
+                            type="image/webp"
+                        />
+                        <source
+                            :srcset="require('../images/' + this.project.image.detailResponsive + '.png')"
+                            type="image/png"
+                        />
+                        <img
+                            :src="require('../images/' + this.project.image.detailResponsive + '.png')"
+                            :alt="this.project.name"
+                        />
                     </picture>
                 </figure>
             </article>
 
-            <article class="scrollReveal" v-if="this.project.image.slider">
+            <article class="scrollReveal" v-if="this.project.lighthouseResults">
                 <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
                 <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for invisuals using screen readers for example), Best Practices (general development practices) and SEO (search engine optimization)</p>
                 <p>{{ this.project.lighthouseText }}</p>
 
                 <ul class="projectDetail__progressCircleContainer">
-                    <li v-for="(result, key) in project.lighthouseResults" :progress="result" class="projectDetail__progressCircle">
-                        <span>{{ result }} <small>{{ key }}</small></span>
+                    <li
+                        v-for="(result, key) in project.lighthouseResults"
+                        :progress="result"
+                        class="projectDetail__progressCircle"
+                    >
+                        <span>
+                            {{ result }}
+                            <small>{{ key }}</small>
+                        </span>
                     </li>
                 </ul>
             </article>
 
-            <article class="scrollReveal" v-if="this.project.lighthouseResults">
+            <article class="scrollReveal" v-if="this.project.image.slider">
                 <h2 class="threeDHover" data-text="More pages">More pages</h2>
 
                 <div class="projectDetail__slider">
-                    <figure class="projectDetail__detailImage" v-for="image in project.image.slider">
+                    <figure
+                        class="projectDetail__detailImage"
+                        v-for="image in project.image.slider"
+                    >
                         <picture>
-                            <source :srcset="require('../images/' + image + '.webp')" type="image/webp">
-                            <source :srcset="require('../images/' + image + '.jpg')" type="image/jpeg">
-                            <img :src="require('../images/' + image + '.jpg')" :alt="project.name" @load="allImagesLoaded">
+                            <source
+                                :srcset="require('../images/' + image + '.webp')"
+                                type="image/webp"
+                            />
+                            <source
+                                :srcset="require('../images/' + image + '.jpg')"
+                                type="image/jpeg"
+                            />
+                            <img
+                                :src="require('../images/' + image + '.jpg')"
+                                :alt="project.name"
+                                @load="allImagesLoaded"
+                            />
                         </picture>
                     </figure>
                 </div>
@@ -70,71 +107,76 @@
                     </li>
                 </ul>
             </article>
-
         </div>
     </section>
 </template>
 
 <script>
-import flickity from 'flickity';
-import animatedLetters from './../components/animatedLetters.vue';
+import flickity from "flickity";
+import animatedLetters from "./../components/animatedLetters.vue";
 
 export default {
-    name: 'projectDetail',
+    name: "projectDetail",
     components: {
-        animatedLetters
+        animatedLetters,
     },
     data() {
         return {
             projectsArray: [...this.$store.state.projects],
-            project: {}
-        }
+            project: {},
+        };
     },
     methods: {
         allImagesLoaded() {
             // If this returns true, it means the <figure>/slide is the last one
             // this is needed so that the slider can be initiated properly; otherwise it bug out a lot
-            if (!event.target.parentElement.parentElement.nextElementSibling) setTimeout(() => this.initSlider(), 100);
+            if (!event.target.parentElement.parentElement.nextElementSibling)
+                setTimeout(() => this.initSlider(), 100);
         },
         initSlider() {
-            const sliderContainer = this.$el.querySelector('.projectDetail__slider');
+            const sliderContainer = this.$el.querySelector(
+                ".projectDetail__slider"
+            );
 
             // this runs on img load because otherwise the slider would bugged since it ran before the whole image was there
             new flickity(sliderContainer, {
                 wrapAround: true,
                 pageDots: true,
-                adaptiveHeight: true
+                adaptiveHeight: true,
             });
-        }
+        },
     },
     beforeMount() {
         // Get current project
-        this.projectsArray.forEach(project => this.$route.params.project === project.path && (this.project = project));
+        this.projectsArray.forEach(
+            (project) =>
+                this.$route.params.project === project.path &&
+                (this.project = project)
+        );
 
         // Set document title
         this.$route.meta.title = this.project.name + this.$route.meta.title;
         document.title = this.$route.meta.title;
-    }
-}
+    },
+};
 </script>
 
 <style lang='scss'>
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 $circleBarColor: $white;
 $circleCenterColor: $backgroundMainColor;
 $circleBackColor: $backgroundMainColor;
 
 .projectDetail {
-
     &:before {
-        content: '';
+        content: "";
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('/images/projectDetailBackground.png');
+        background-image: url("/images/projectDetailBackground.png");
         background-repeat: no-repeat;
         background-position-x: 50%;
         background-size: cover;
@@ -145,16 +187,15 @@ $circleBackColor: $backgroundMainColor;
         padding: 0 50px;
 
         &:before {
-            content: '';
+            content: "";
             width: 5px;
             height: 100%;
             position: absolute;
             top: 20px;
             left: 20px;
             background: $lightGrey;
-            opacity: .3;
+            opacity: 0.3;
         }
-
     }
 
     .animatedLetters {
@@ -164,7 +205,7 @@ $circleBackColor: $backgroundMainColor;
         margin-bottom: 70px;
 
         &:first-of-type:before {
-            content: '';
+            content: "";
             width: 17px;
             height: 17px;
             position: absolute;
@@ -180,7 +221,6 @@ $circleBackColor: $backgroundMainColor;
             vertical-align: text-bottom;
             margin-bottom: 0;
         }
-
     }
 
     article {
@@ -195,19 +235,18 @@ $circleBackColor: $backgroundMainColor;
             &:last-child {
                 margin-bottom: 0;
             }
-
         }
 
         h2 {
             position: relative;
-            @include fontL ($darkOrange);
+            @include fontL($darkOrange);
             font-weight: $fontBold;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
 
             &:after {
-                content: '';
+                content: "";
                 width: 17px;
                 height: 17px;
                 position: absolute;
@@ -221,14 +260,12 @@ $circleBackColor: $backgroundMainColor;
             &.threeDHover:before {
                 content: attr(data-text);
             }
-
         }
 
         p span {
             display: block;
             margin-bottom: 20px;
         }
-
     }
 
     &__mainImage {
@@ -239,7 +276,6 @@ $circleBackColor: $backgroundMainColor;
             width: 100%;
             height: auto;
         }
-
     }
 
     &__slider {
@@ -249,8 +285,8 @@ $circleBackColor: $backgroundMainColor;
         .projectDetail__detailImage {
             width: 50%;
             top: 50%;
-            transform: translateY(-50%) scale(.6);
-            transition: transform .5s ease 0s, top .7s ease 0s;
+            transform: translateY(-50%) scale(0.6);
+            transition: transform 0.5s ease 0s, top 0.7s ease 0s;
 
             &.is-selected {
                 top: 0;
@@ -259,10 +295,8 @@ $circleBackColor: $backgroundMainColor;
                 &:hover {
                     transform: scale(1.1);
                 }
-
             }
         }
-
     }
 
     &__detailImage {
@@ -276,7 +310,6 @@ $circleBackColor: $backgroundMainColor;
             width: 100%;
             height: auto;
         }
-
     }
 
     // Flickity slider
@@ -291,7 +324,6 @@ $circleBackColor: $backgroundMainColor;
         &:hover {
             opacity: 1;
         }
-
     }
 
     .flickity-prev-next-button.previous {
@@ -300,7 +332,6 @@ $circleBackColor: $backgroundMainColor;
         &:hover {
             left: -55px;
         }
-
     }
 
     .flickity-prev-next-button.next {
@@ -309,7 +340,6 @@ $circleBackColor: $backgroundMainColor;
         &:hover {
             right: -55px;
         }
-
     }
 
     .flickity-page-dots {
@@ -318,7 +348,6 @@ $circleBackColor: $backgroundMainColor;
         .dot {
             background: $white;
         }
-
     }
 
     &__progressCircleContainer {
@@ -332,7 +361,7 @@ $circleBackColor: $backgroundMainColor;
         position: relative;
         border-radius: 50%;
         background: $circleBarColor;
-        @include transition (transform, .5s);
+        @include transition(transform, 0.5s);
 
         &:hover {
             transform: scale(1.2);
@@ -356,7 +385,6 @@ $circleBackColor: $backgroundMainColor;
         small {
             @include fontXS;
         }
-
     }
 
     $steps: 5; // steps of % for created classes
@@ -368,10 +396,32 @@ $circleBackColor: $backgroundMainColor;
         [progress="#{$i * $steps}"] {
             @if ($i < $half) {
                 $nextdeg: 90deg + ($increment * $i);
-                background-image: linear-gradient(90deg, $circleBackColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);
+                background-image: linear-gradient(
+                        90deg,
+                        $circleBackColor 50%,
+                        transparent 50%,
+                        transparent
+                    ),
+                    linear-gradient(
+                        $nextdeg,
+                        $circleBarColor 50%,
+                        $circleBackColor 50%,
+                        $circleBackColor
+                    );
             } @else {
                 $nextdeg: -90deg + ($increment * ($i - $half));
-                background-image: linear-gradient($nextdeg, $circleBarColor 50%, transparent 50%, transparent), linear-gradient(270deg, $circleBarColor 50%, $circleBackColor 50%, $circleBackColor);
+                background-image: linear-gradient(
+                        $nextdeg,
+                        $circleBarColor 50%,
+                        transparent 50%,
+                        transparent
+                    ),
+                    linear-gradient(
+                        270deg,
+                        $circleBarColor 50%,
+                        $circleBackColor 50%,
+                        $circleBackColor
+                    );
             }
         }
     }
@@ -385,7 +435,7 @@ $circleBackColor: $backgroundMainColor;
                 top: 0;
                 transform: none;
                 opacity: 0;
-                @include transition (opacity, .5s);
+                @include transition(opacity, 0.5s);
 
                 &.is-selected {
                     opacity: 1;
@@ -394,9 +444,7 @@ $circleBackColor: $backgroundMainColor;
                         transform: none;
                     }
                 }
-
             }
-
         }
 
         .flickity-prev-next-button {
@@ -415,18 +463,17 @@ $circleBackColor: $backgroundMainColor;
         &__progressCircle span {
             font-size: 24px;
             line-height: 33px;
-            letter-spacing: -.2px;
+            letter-spacing: -0.2px;
         }
     }
 
-    @include mq (0, 640px) {
+    @include mq(0, 640px) {
         .wrapper {
             padding: 0 30px;
 
             &:before {
                 left: 10px;
             }
-
         }
 
         .animatedLetters {
@@ -442,7 +489,6 @@ $circleBackColor: $backgroundMainColor;
             &:last-of-type {
                 font-size: 14px;
             }
-
         }
 
         article h2:after {
@@ -462,7 +508,6 @@ $circleBackColor: $backgroundMainColor;
         }
 
         &__progressCircle {
-
             span {
                 width: 70px;
                 height: 70px;
@@ -475,10 +520,7 @@ $circleBackColor: $backgroundMainColor;
                 font-size: 8px;
                 line-height: 10px;
             }
-
         }
     }
-
 }
-
 </style>
