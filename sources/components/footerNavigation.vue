@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <a
-                        href="https://twitter.com/BazingaCS"
+                        href="https://twitter.com/axxyJS"
                         target="_blank"
                         rel="noreferrer"
                         aria-label="Check out my Twitter"
