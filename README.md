@@ -25,16 +25,3 @@ André Marques
 ### License
 
 No license = you can only view the code.
-
-## Build Setup
-
-```bash
-# Install dependencies
-npm i
-
-# Run locally
-npm start
-
-# Build for production with minification
-npm run build
-```
