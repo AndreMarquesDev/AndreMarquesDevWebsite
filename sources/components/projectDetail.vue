@@ -1,21 +1,36 @@
 <template>
     <section class="projectDetail mainSection">
         <div class="wrapper">
-            <animatedLetters :text="this.project.name" />
-            <animatedLetters :text="` - ${this.project.year}`" />
+            <animatedLetters :text="this.project.name" :shouldAnimate="true" />
+            <animatedLetters
+                :text="` - ${this.project.year}`"
+                :shouldAnimate="true"
+            />
 
             <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
                     <source
-                        :srcset="require('../images/' + this.project.image.detailMain + '.webp')"
+                        :srcset="
+                            require('../images/' +
+                                this.project.image.detailMain +
+                                '.webp')
+                        "
                         type="image/webp"
                     />
                     <source
-                        :srcset="require('../images/' + this.project.image.detailMain + '.png')"
+                        :srcset="
+                            require('../images/' +
+                                this.project.image.detailMain +
+                                '.png')
+                        "
                         type="image/png"
                     />
                     <img
-                        :src="require('../images/' + this.project.image.detailMain + '.png')"
+                        :src="
+                            require('../images/' +
+                                this.project.image.detailMain +
+                                '.png')
+                        "
                         :alt="this.project.name"
                     />
                 </picture>
@@ -32,20 +47,34 @@
             </article>
 
             <article class="scrollReveal">
-                <h2 class="threeDHover" data-text="Responsive development">Responsive development</h2>
+                <h2 class="threeDHover" data-text="Responsive development">
+                    Responsive development
+                </h2>
 
                 <figure class="projectDetail__detailImage">
                     <picture>
                         <source
-                            :srcset="require('../images/' + this.project.image.detailResponsive + '.webp')"
+                            :srcset="
+                                require('../images/' +
+                                    this.project.image.detailResponsive +
+                                    '.webp')
+                            "
                             type="image/webp"
                         />
                         <source
-                            :srcset="require('../images/' + this.project.image.detailResponsive + '.png')"
+                            :srcset="
+                                require('../images/' +
+                                    this.project.image.detailResponsive +
+                                    '.png')
+                            "
                             type="image/png"
                         />
                         <img
-                            :src="require('../images/' + this.project.image.detailResponsive + '.png')"
+                            :src="
+                                require('../images/' +
+                                    this.project.image.detailResponsive +
+                                    '.png')
+                            "
                             :alt="this.project.name"
                         />
                     </picture>
@@ -53,8 +82,18 @@
             </article>
 
             <article class="scrollReveal" v-if="this.project.lighthouseResults">
-                <h2 class="threeDHover" data-text="Lighthouse results">Lighthouse results</h2>
-                <p>Lighthouse is an open-source, automated tool created by Google for improving the quality of web pages. It runs a series of audits that generate a report indicating where and how to improve your page/website. It audits Performance (page speed), Accessibility (for invisuals using screen readers for example), Best Practices (general development practices) and SEO (search engine optimization)</p>
+                <h2 class="threeDHover" data-text="Lighthouse results">
+                    Lighthouse results
+                </h2>
+                <p>
+                    Lighthouse is an open-source, automated tool created by
+                    Google for improving the quality of web pages. It runs a
+                    series of audits that generate a report indicating where and
+                    how to improve your page/website. It audits Performance
+                    (page speed), Accessibility (for invisuals using screen
+                    readers for example), Best Practices (general development
+                    practices) and SEO (search engine optimization)
+                </p>
                 <p>{{ this.project.lighthouseText }}</p>
 
                 <ul class="projectDetail__progressCircleContainer">
@@ -81,7 +120,9 @@
                     >
                         <picture>
                             <source
-                                :srcset="require('../images/' + image + '.webp')"
+                                :srcset="
+                                    require('../images/' + image + '.webp')
+                                "
                                 type="image/webp"
                             />
                             <source

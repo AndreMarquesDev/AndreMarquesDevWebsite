@@ -1,29 +1,50 @@
 <template>
-    <section class="content scrollReveal" >
+    <section class="content scrollReveal">
         <div class="wrapper">
-
-            <h1>Hi! My name is <animatedLetters text="André Marques"/> and I'm a Frontend Developer</h1>
-            <p>Get to know more <router-link to="about" aria-label="Link to about page"><animatedLetters text="<about/>"/></router-link>me</p>
-            <p>Check out my <router-link to="work" aria-label="Link to work page"><animatedLetters text="<projects/>"/></router-link></p>
-            <p>Get in touch through the <router-link to="contact" aria-label="Link to contact page"><animatedLetters text="<contact/>"/></router-link>form</p>
-
+            <h1>
+                Hi! My name is
+                <animatedLetters text="André Marques" :shouldAnimate="true" />
+                and I'm a Frontend Developer
+            </h1>
+            <p>
+                Get to know more
+                <router-link to="about" aria-label="Link to about page"
+                    ><animatedLetters
+                        text="<about/>"
+                        :shouldAnimate="true" /></router-link
+                >me
+            </p>
+            <p>
+                Check out my
+                <router-link to="work" aria-label="Link to work page"
+                    ><animatedLetters text="<projects/>" :shouldAnimate="true"
+                /></router-link>
+            </p>
+            <p>
+                Get in touch through the
+                <router-link to="contact" aria-label="Link to contact page"
+                    ><animatedLetters
+                        text="<contact/>"
+                        :shouldAnimate="true" /></router-link
+                >form
+            </p>
         </div>
     </section>
 </template>
 
 <script>
-import animatedLetters from './../components/animatedLetters.vue';
+import animatedLetters from "./../components/animatedLetters.vue";
 
 export default {
-    name: 'homepage',
+    name: "homepage",
     components: {
-        animatedLetters
-    }
-}
+        animatedLetters,
+    },
+};
 </script>
 
 <style lang='scss'>
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .content {
     min-height: inherit;
@@ -77,5 +98,4 @@ export default {
         }
     }
 }
-
 </style>

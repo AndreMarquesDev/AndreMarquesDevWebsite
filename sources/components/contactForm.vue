@@ -1,39 +1,34 @@
 <template>
     <section class="contactForm mainSection">
         <div class="wrapper">
+            <animatedLetters text="<contact me/>" :shouldAnimate="true" />
 
-            <animatedLetters text="<contact me/>"/>
-
-            <formComponent/>
-
+            <formComponent />
         </div>
     </section>
 </template>
 
 <script>
-import animatedLetters from './../components/animatedLetters.vue';
-import formComponent from './../components/formComponent.vue';
+import animatedLetters from "./../components/animatedLetters.vue";
+import formComponent from "./../components/formComponent.vue";
 
 export default {
-    name: 'contactForm',
+    name: "contactForm",
     components: {
         animatedLetters,
-        formComponent
-    }
-}
+        formComponent,
+    },
+};
 </script>
 
 <style lang='scss'>
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .contactForm {
-
     .animatedLetters {
         @include fontXXL;
         font-weight: $fontBold;
         margin-bottom: 100px;
     }
-
 }
-
 </style>

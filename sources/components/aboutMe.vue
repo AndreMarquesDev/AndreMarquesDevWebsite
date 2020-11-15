@@ -1,7 +1,7 @@
 <template>
     <section class="aboutMe mainSection">
         <div class="wrapper">
-            <animatedLetters text="<about/>" />
+            <animatedLetters text="<about/>" :shouldAnimate="true" />
 
             <code class>
                 <p

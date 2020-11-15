@@ -1,7 +1,10 @@
 <template>
     <div class="formComponent scrollReveal">
         <form method="POST" @submit="handleSubmit($event)" novalidate>
-            <animatedLetters text="<!-- Get in touch -->" />
+            <animatedLetters
+                text="<!-- Get in touch -->"
+                :shouldAnimate="true"
+            />
             <input
                 type="text"
                 name="name"
@@ -48,8 +51,15 @@
             ></textarea>
             <span class="errorText">Please enter a message</span>
 
-            <button type="submit" class="button" :disabled="this.isSubmitButtonDisabled">
-                <animatedLetters text="<send/>" :shouldAnimate="!this.isSubmitButtonDisabled" />
+            <button
+                type="submit"
+                class="button"
+                :disabled="this.isSubmitButtonDisabled"
+            >
+                <animatedLetters
+                    text="<send/>"
+                    :shouldAnimate="!this.isSubmitButtonDisabled"
+                />
             </button>
         </form>
 
