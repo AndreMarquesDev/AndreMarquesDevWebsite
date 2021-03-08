@@ -3,12 +3,13 @@
         <small>
             Designed by
             <a
-                href="https://www.instagram.com/aguareladigital"
+                href="https://aguareladigital.com/"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Aguarela Instagram"
+                aria-label="Aguarela Website"
                 class="alternativeLink"
-            >Aguarela</a>
+                >Aguarela</a
+            >
         </small>
 
         <nav>

@@ -8,6 +8,29 @@ export default new Vuex.Store({
         menuOpen: false,
         projects: [
             {
+                name: 'Aguarela Digital',
+                path: 'aguarela',
+                year: 2020,
+                description: `<a href="https://aguareladigital.com/" target="_blank" rel="noreferrer" aria-label="Aguarela Digital Website" class="alternativeLink">Aguarela</a> is the website for <a href="https://www.instagram.com/aguareladigital" target="_blank" rel="noreferrer" aria-label="Aguarela Instagram" class="alternativeLink">Aguarela Digital</a>, a digital agency founded in 2018. The project was created to help local brands and businesses with their digital platforms by creating unique social media strategies and quality content. Aguarela provides services like social media management, content creation, communication design and social paid campaigns.`,
+                myRole: `<span>I was responsible for the whole development and implementation of the website except for the UI design. Other than that, I developed the code, optimized images, acquired the domain and took care of the website hosting.</span><span>Even though it was a simple static website, this allowed me to have a broader view of the whole process of building a website and putting it online. Furthermore, I was all by myself while doing it and therefore I can consider it as my first freelance job.</span><span>Next.js and React were the two main technologies used in development since the goal was to use the latest tech stack available for a relatively simple and static website.</span>`,
+                lighthouseText: `Since this is a static website that didn't rely on backend, I had total control over its content. This includes the biggest performance throttler: images. In this website, all of them are optimized and that makes a huge difference, contributing heavily to the 95% score. Apart from that, I was very strict with the quality of my code and that reflects on the high scores on the other departments.`,
+                lighthouseResults: {
+                    'Performance': 95,
+                    'Accessibility': 98,
+                    'Best Practices': 100,
+                    'SEO': 92,
+                },
+                image: {
+                    thumbnail: 'aguarela-thumbnail',
+                    detailMain: 'aguarela-detail-main',
+                    detailResponsive: 'aguarela-detail-responsive',
+                },
+                credits: [
+                    'Frontend - André Marques',
+                    'UI - Catarina Santiago (Aguarela Digital)',
+                ]
+            },
+            {
                 name: 'Ageas Portugal',
                 path: 'ageas-portugal',
                 year: 2019,
@@ -88,35 +111,6 @@ export default new Vuex.Store({
                     'UI - Edmundo Ramos & Renato Miguel',
                     'UX - Rita Pereira & Susana Vilaça',
                     'Project Management - Fábio Farinha & Marta Santos'
-                ]
-            },
-            {
-                name: 'Aguarela',
-                path: 'aguarela',
-                year: 2019,
-                description: `<a href="https://www.aguarelaproject.com" target="_blank" rel="noreferrer" aria-label="Aguarela Website" class="alternativeLink">Aguarela</a> is the website for <a href="https://www.instagram.com/aguareladigital" target="_blank" rel="noreferrer" aria-label="Aguarela Instagram" class="alternativeLink">Aguarela Digital</a>, a digital agency founded in 2018. The project was created to help local brands and businesses with their digital platforms by creating unique social media strategies and quality content. Aguarela provides services like social media management, content creation, communication design and social paid campaigns.`,
-                myRole: `<span>I was responsible for the whole development and implementation of the website except for the UI design. Other than that, I developed the code, optimized images, acquired the domain and took care of the website hosting.</span><span>Even though it was a simple static website, this allowed me to have a broader view of the whole process of building a website and putting it online. Furthermore, I was all by myself while doing it and therefore I can consider it as my first freelance job.</span><span>Since I was aiming for the cleanest and most efficient code possible, I used plain vanilla JavaScript with no plugins or frameworks whatsoever. This means that all the neat features were handmade by me and you can see some of the examples on my <a href="https://codepen.io/AndreMarquesDev" target="_blank" rel="noreferrer" aria-label="André Marques CodePen" class="alternativeLink">CodePen</a> page.</span><span>I used SASS for the styling and Gulp as the automated compiler.</span><span>This is currently a <a href="https://developers.google.com/web/progressive-web-apps" target="_blank" rel="noreferrer" aria-label="Progressive Web Apps by Google" class="alternativeLink">Progressive Web App</a>. It was not demanded but i figured it would be an excellent opportunity to get hands on with this technology.</span>`,
-                lighthouseText: `Since this is a static website that didn't rely on backend, I had total control over its content. This includes the biggest performance throttler: images. In this website, all of them are optimized and that makes a huge difference, contributing heavily to the 100% score. Apart from that, I was very strict with the quality of my code and that reflects on the high scores on the other departments.`,
-                lighthouseResults: {
-                    'Performance': 100,
-                    'Accessibility': 85,
-                    'Best Practices': 95,
-                    'SEO': 100,
-                },
-                image: {
-                    thumbnail: 'aguarela-thumbnail',
-                    detailMain: 'aguarela-detail-main',
-                    detailResponsive: 'aguarela-detail-responsive',
-                    slider: [
-                        'aguarela-detail-slider-1',
-                        'aguarela-detail-slider-2',
-                        'aguarela-detail-slider-3',
-                        'aguarela-detail-slider-4'
-                    ]
-                },
-                credits: [
-                    'Frontend - André Marques',
-                    'UI - Catarina Santiago (Aguarela Digital)',
                 ]
             },
             {
