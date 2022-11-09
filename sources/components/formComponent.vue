@@ -1,73 +1,27 @@
 <template>
     <div class="formComponent scrollReveal">
         <form method="POST" @submit="handleSubmit($event)" novalidate>
-            <animatedLetters
-                text="<!-- Get in touch -->"
-                :shouldAnimate="true"
-            />
-            <input
-                type="text"
-                name="name"
-                required
-                placeholder="Name"
-                tabindex="0"
-                aria-label="Your name"
-                @blur="checkInput($event)"
-                @keyup="checkInput($event)"
-                v-model="name"
-            />
+            <animatedLetters text="<!-- Get in touch -->" :shouldAnimate="true" />
+            <input type="text" name="name" required placeholder="Name" tabindex="0" aria-label="Your name"
+                @blur="checkInput($event)" @keyup="checkInput($event)" v-model="name" />
             <span class="errorText">Please enter your first and last name</span>
-            <input
-                type="email"
-                name="emailAddress"
-                required
-                placeholder="Email"
-                tabindex="0"
-                aria-label="Your email address"
-                @blur="checkInput($event)"
-                @keyup="checkInput($event)"
-                v-model="email"
-            />
+            <input type="email" name="emailAddress" required placeholder="Email" tabindex="0"
+                aria-label="Your email address" @blur="checkInput($event)" @keyup="checkInput($event)"
+                v-model="email" />
             <span class="errorText">Please enter a valid email address</span>
-            <input
-                type="text"
-                name="company"
-                placeholder="Company (optional)"
-                tabindex="0"
-                aria-label="Company"
-                @blur="checkInput($event)"
-                @keyup="checkInput($event)"
-                v-model="company"
-            />
-            <textarea
-                name="message"
-                required
-                placeholder="Message"
-                tabindex="0"
-                aria-label="Your message"
-                @blur="checkInput($event)"
-                @keyup="checkInput($event)"
-                v-model="message"
-            ></textarea>
+            <input type="text" name="company" placeholder="Company (optional)" tabindex="0" aria-label="Company"
+                @blur="checkInput($event)" @keyup="checkInput($event)" v-model="company" />
+            <textarea name="message" required placeholder="Message" tabindex="0" aria-label="Your message"
+                @blur="checkInput($event)" @keyup="checkInput($event)" v-model="message"></textarea>
             <span class="errorText">Please enter a message</span>
 
-            <button
-                type="submit"
-                class="button"
-                :disabled="this.isSubmitButtonDisabled"
-            >
-                <animatedLetters
-                    text="<send/>"
-                    :shouldAnimate="!this.isSubmitButtonDisabled"
-                />
+            <button type="submit" class="button" :disabled="this.isSubmitButtonDisabled">
+                <animatedLetters text="<send/>" :shouldAnimate="!this.isSubmitButtonDisabled" />
             </button>
         </form>
 
-        <p
-            class="formNotification"
-            data-success="Thank you! I will reply as soon as I can :)"
-            data-error="Oops! There was an error. Please try again later."
-        ></p>
+        <p class="formNotification" data-success="Thank you! I will reply as soon as I can :)"
+            data-error="Oops! There was an error. Please try again later."></p>
     </div>
 </template>
 
@@ -100,27 +54,27 @@ export default {
             if (input.type === "text" && input.required === true) {
                 nameRegex.test(input.value)
                     ? (input.classList.remove("error"),
-                      (this.formValidated = true))
+                        (this.formValidated = true))
                     : (input.classList.add("error"),
-                      (this.formValidated = false));
+                        (this.formValidated = false));
             }
 
             // Email input
             if (input.type === "email") {
                 emailRegex.test(input.value)
                     ? (input.classList.remove("error"),
-                      (this.formValidated = true))
+                        (this.formValidated = true))
                     : (input.classList.add("error"),
-                      (this.formValidated = false));
+                        (this.formValidated = false));
             }
 
             // Textarea
             if (input.tagName === "TEXTAREA") {
                 input.value.length
                     ? (input.classList.remove("error"),
-                      (this.formValidated = true))
+                        (this.formValidated = true))
                     : (input.classList.add("error"),
-                      (this.formValidated = false));
+                        (this.formValidated = false));
             }
         },
         showNotification(notificationType) {
@@ -192,10 +146,10 @@ export default {
 
                 axios
                     .post(
-                        "https://contact-form-backend-andremdev.herokuapp.com/api/sendEmail",
+                        '/.netlify/functions/submitContactForm',
                         formData
                     )
-                    .then((res) => {
+                    .then(() => {
                         this.showNotification("success");
                         this.hideNotification("success");
                     })
@@ -213,7 +167,7 @@ export default {
 @import "../styles/variables.scss";
 
 .formComponent {
-    > button {
+    >button {
         @include fontXL;
     }
 
@@ -247,7 +201,7 @@ export default {
             &.error {
                 border: 2px solid $red;
 
-                + .errorText {
+                +.errorText {
                     opacity: 1;
                     pointer-events: initial;
                 }
@@ -264,14 +218,17 @@ export default {
             @include fontM($darkGrey);
             font-style: italic;
         }
+
         ::-moz-placeholder {
             @include fontM($darkGrey);
             font-style: italic;
         }
+
         :-moz-placeholder {
             @include fontM($darkGrey);
             font-style: italic;
         }
+
         :-ms-input-placeholder {
             @include fontM($darkGrey);
             font-style: italic;
@@ -311,18 +268,17 @@ export default {
                 height: 100%;
                 width: 100%;
             }
+
             &[disabled] {
                 cursor: not-allowed;
                 background: $submitButtonDisabled;
 
                 &:before {
                     transform: translateX(-100%);
-                    background: linear-gradient(
-                        90deg,
-                        transparent,
-                        $submitButtonDisabledLoading,
-                        transparent
-                    );
+                    background: linear-gradient(90deg,
+                            transparent,
+                            $submitButtonDisabledLoading,
+                            transparent);
                     animation: loading 1s infinite;
                 }
             }
