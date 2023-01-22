@@ -1,7 +1,7 @@
 const path = require('path'),
 
     CleanWebpackPlugin = require('clean-webpack-plugin'),
-    {VueLoaderPlugin} = require('vue-loader'),
+    { VueLoaderPlugin } = require('vue-loader'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin"),
@@ -92,7 +92,6 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         new CopyWebpackPlugin([
-            { from: 'sources/manifest.json' },
             { from: '_redirects' },
             { from: 'robots.txt' },
             { from: 'sources/images/logoIcon-57x57.png', to: 'images' },

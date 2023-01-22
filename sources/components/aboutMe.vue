@@ -480,7 +480,7 @@ $identation3: #{$identation1 * 3};
             }
 
             .threeDHover:before {
-                content: "27yo";
+                content: "30yo";
             }
         }
     }

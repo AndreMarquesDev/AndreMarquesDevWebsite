@@ -1,15 +1,11 @@
 const merge = require('webpack-merge');
-    common = require('./webpack.common.js'),
-
-    TerserPlugin = require('terser-webpack-plugin'),
-    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-
-    ImageminPlugin = require('imagemin-webpack-plugin').default,
-    imageminMozjpeg = require('imagemin-mozjpeg'),
-    CompressionPlugin = require('compression-webpack-plugin'),
-    FaviconsWebpackPlugin = require('favicons-webpack-plugin'),
-
-    WorkboxPlugin = require('workbox-webpack-plugin');
+const common = require('./webpack.common.js');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const CompressionPlugin = require('compression-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 
 module.exports = merge(common, {
@@ -54,23 +50,5 @@ module.exports = merge(common, {
                 windows: true
             }
         }),
-        new WorkboxPlugin.GenerateSW({
-            clientsClaim: true,
-            skipWaiting: true,
-            exclude: ['_redirects'],
-            offlineGoogleAnalytics: true,
-            cleanupOutdatedCaches: true,
-            runtimeCaching: [{
-                // Match any same-origin request that contains 'api'.
-                urlPattern: '/*',
-                // Apply a network-first strategy.
-                handler: 'NetworkFirst',
-                options: {
-                    // Fall back to the cache after 'n' seconds.
-                    networkTimeoutSeconds: 5,
-                }
-            }],
-            navigateFallback: '/index.html'
-        })
     ]
 });
