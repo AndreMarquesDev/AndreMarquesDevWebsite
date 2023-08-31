@@ -4,14 +4,14 @@
             <animatedLetters text="<about/>" :shouldAnimate="true" />
 
             <code class>
-                <p
-                    v-for="(line, index) in code"
-                    :key="index + line"
-                    v-html="line.html"
-                    :class="['scrollReveal', line.identation]"
-                    :lineNumber="index + 1"
-                ></p>
-            </code>
+                            <p
+                                v-for="(line, index) in code"
+                                :key="index + line"
+                                v-html="line.html"
+                                :class="['scrollReveal', line.identation]"
+                                :lineNumber="index + 1"
+                            ></p>
+                        </code>
         </div>
     </section>
 </template>
@@ -136,6 +136,10 @@ export default {
                     identation: "identation3",
                 },
                 {
+                    html: `<span class="green">'Typescript'</span>,`,
+                    identation: "identation3",
+                },
+                {
                     html: `<span class="green">'React'</span>,`,
                     identation: "identation3",
                 },
@@ -144,15 +148,23 @@ export default {
                     identation: "identation3",
                 },
                 {
+                    html: `<span class="green">'Svelte'</span>,`,
+                    identation: "identation3",
+                },
+                {
+                    html: `<span class="green">'Node'</span>,`,
+                    identation: "identation3",
+                },
+                {
+                    html: `<span class="green">'Jest'</span>,`,
+                    identation: "identation3",
+                },
+                {
                     html: `<span class="green">'HTML'</span>,`,
                     identation: "identation3",
                 },
                 {
                     html: `<span class="green">'CSS'</span>,`,
-                    identation: "identation3",
-                },
-                {
-                    html: `<span class="green">'jQuery'</span>,`,
                     identation: "identation3",
                 },
                 {
@@ -169,11 +181,15 @@ export default {
                     identation: "identation2",
                 },
                 {
+                    html: `<span class="green">'jQuery'</span>,`,
+                    identation: "identation3",
+                },
+                {
                     html: `<span class="green">'SASS'</span>,`,
                     identation: "identation3",
                 },
                 {
-                    html: `<span class="green">'NextJS'</span>,`,
+                    html: `<span class="green">'Next.js'</span>,`,
                     identation: "identation3",
                 },
                 {
@@ -181,23 +197,11 @@ export default {
                     identation: "identation3",
                 },
                 {
-                    html: `<span class="green">'Firebase'</span>,`,
+                    html: `<span class="green">'REST'</span>,`,
                     identation: "identation3",
                 },
                 {
-                    html: `<span class="green">'Heroku'</span>,`,
-                    identation: "identation3",
-                },
-                {
-                    html: `<span class="green">'Express'</span>,`,
-                    identation: "identation3",
-                },
-                {
-                    html: `<span class="green">'Shopify'</span>,`,
-                    identation: "identation3",
-                },
-                {
-                    html: `<span class="green">'Axios'</span>,`,
+                    html: `<span class="green">'GraphQL'</span>,`,
                     identation: "identation3",
                 },
                 {
@@ -206,10 +210,6 @@ export default {
                 },
                 {
                     html: `<span class="green">'Webpack'</span>,`,
-                    identation: "identation3",
-                },
-                {
-                    html: `<span class="green">'Gulp'</span>,`,
                     identation: "identation3",
                 },
                 {
@@ -263,7 +263,7 @@ export default {
                     identation: "identation2",
                 },
                 {
-                    html: `role <span class="orange">=</span> <span class="green">'Software Engineer - UI'</span>;`,
+                    html: `role <span class="orange">=</span> <span class="green">'Software Engineer - Frontend'</span>;`,
                     identation: "identation2",
                 },
                 {
@@ -310,70 +310,6 @@ export default {
         });
     },
 };
-
-// Code sample
-
-// const hireMe = (education, skills, workExperience) => {
-
-//     if (skills === false) return;
-
-//     const aboutMe = {
-//         name: 'André Marques',
-//         year: 1993,
-//         city: 'Lisbon',
-//         country: 'Portugal',
-//         email: 'andregm_7@hotmail.com',
-//         role: 'Frontend Developer'
-//     }
-
-//     education() {
-//         2016 &&
-//             'Graduated in Law'
-//         2017 &&
-//             'Frontend and Responsive Web Development',
-//             '@ EDIT. - Disruptive Digital Education',
-//             '248h intensive course in HTML, CSS and JavaScript'
-//     },
-
-//     skills() {
-//         mainSkills = [
-//             'JavaScript',
-//             'Vue (including Vuex and Vue-Router)',
-//             'HTML',
-//             'CSS',
-//             'jQuery'
-//         ]
-
-//         extras = [
-//             'SASS',
-//             'BEM',
-//             'Progressive Web Apps',
-//             'Webpack',
-//             'Gulp',
-//             'Firebase',
-//             'Netlify',
-//             'Slick.js',
-//             'Flickity.js'
-//         ]
-
-//         basicUnderstanding = [
-//             'React',
-//             'Shopify'
-//         ]
-//     }
-
-//     workExperience(role, company, jobDescription) {
-//         role = 'Frontend Developer';
-//         company = 'Fullsix';
-//         jobDescription = `I've been working at Fullsix for 2 years as a Frontend Developer. I'm used to deal with high profile clients, since this is one of Portugal's biggest digital agencies.
-//                             We work in a team environment with constant communication with UI and UX teams, as well as the Backend developers.`;
-//         projects = 'Ageas Portugal' + 'Seguro Directo' + 'Galp Corporate Event';
-//     }
-
-//     return education, skills, workExperience;
-// }
-
-// if (needNewWebsite === true) hireMe();
 </script>
 
 <style lang='scss'>
