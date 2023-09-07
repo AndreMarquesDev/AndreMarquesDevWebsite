@@ -2,37 +2,22 @@
     <section class="projectDetail mainSection">
         <div class="wrapper">
             <animatedLetters :text="this.project.name" :shouldAnimate="true" />
-            <animatedLetters
-                :text="` - ${this.project.year}`"
-                :shouldAnimate="true"
-            />
+            <animatedLetters :text="` - ${this.project.year}`" :shouldAnimate="true" />
 
             <figure class="projectDetail__mainImage scrollReveal">
                 <picture>
-                    <source
-                        :srcset="
-                            require('../images/' +
-                                this.project.image.detailMain +
-                                '.webp')
-                        "
-                        type="image/webp"
-                    />
-                    <source
-                        :srcset="
-                            require('../images/' +
-                                this.project.image.detailMain +
-                                '.png')
-                        "
-                        type="image/png"
-                    />
-                    <img
-                        :src="
-                            require('../images/' +
-                                this.project.image.detailMain +
-                                '.png')
-                        "
-                        :alt="this.project.name"
-                    />
+                    <source :srcset="require('../images/' +
+                        this.project.image.detailMain +
+                        '.webp')
+                        " type="image/webp" />
+                    <source :srcset="require('../images/' +
+                        this.project.image.detailMain +
+                        '.png')
+                        " type="image/png" />
+                    <img :src="require('../images/' +
+                        this.project.image.detailMain +
+                        '.png')
+                        " :alt="this.project.name" />
                 </picture>
             </figure>
 
@@ -53,30 +38,18 @@
 
                 <figure class="projectDetail__detailImage">
                     <picture>
-                        <source
-                            :srcset="
-                                require('../images/' +
-                                    this.project.image.detailResponsive +
-                                    '.webp')
-                            "
-                            type="image/webp"
-                        />
-                        <source
-                            :srcset="
-                                require('../images/' +
-                                    this.project.image.detailResponsive +
-                                    '.png')
-                            "
-                            type="image/png"
-                        />
-                        <img
-                            :src="
-                                require('../images/' +
-                                    this.project.image.detailResponsive +
-                                    '.png')
-                            "
-                            :alt="this.project.name"
-                        />
+                        <source :srcset="require('../images/' +
+                            this.project.image.detailResponsive +
+                            '.webp')
+                            " type="image/webp" />
+                        <source :srcset="require('../images/' +
+                            this.project.image.detailResponsive +
+                            '.png')
+                            " type="image/png" />
+                        <img :src="require('../images/' +
+                            this.project.image.detailResponsive +
+                            '.png')
+                            " :alt="this.project.name" />
                     </picture>
                 </figure>
             </article>
@@ -97,11 +70,8 @@
                 <p>{{ this.project.lighthouseText }}</p>
 
                 <ul class="projectDetail__progressCircleContainer">
-                    <li
-                        v-for="(result, key) in project.lighthouseResults"
-                        :progress="result"
-                        class="projectDetail__progressCircle"
-                    >
+                    <li v-for="(result, key) in project.lighthouseResults" :progress="result"
+                        class="projectDetail__progressCircle">
                         <span>
                             {{ result }}
                             <small>{{ key }}</small>
@@ -114,26 +84,13 @@
                 <h2 class="threeDHover" data-text="More pages">More pages</h2>
 
                 <div class="projectDetail__slider">
-                    <figure
-                        class="projectDetail__detailImage"
-                        v-for="image in project.image.slider"
-                    >
+                    <figure class="projectDetail__detailImage" v-for="image in project.image.slider">
                         <picture>
-                            <source
-                                :srcset="
-                                    require('../images/' + image + '.webp')
-                                "
-                                type="image/webp"
-                            />
-                            <source
-                                :srcset="require('../images/' + image + '.jpg')"
-                                type="image/jpeg"
-                            />
-                            <img
-                                :src="require('../images/' + image + '.jpg')"
-                                :alt="project.name"
-                                @load="allImagesLoaded"
-                            />
+                            <source :srcset="require('../images/' + image + '.webp')
+                                " type="image/webp" />
+                            <source :srcset="require('../images/' + image + '.jpg')" type="image/jpeg" />
+                            <img :src="require('../images/' + image + '.jpg')" :alt="project.name"
+                                @load="allImagesLoaded" />
                         </picture>
                     </figure>
                 </div>
@@ -270,7 +227,7 @@ $circleBackColor: $backgroundMainColor;
         text-align: justify;
         margin-bottom: 40px;
 
-        > * {
+        >* {
             margin-bottom: 40px;
 
             &:last-child {
@@ -429,40 +386,34 @@ $circleBackColor: $backgroundMainColor;
     }
 
     $steps: 5; // steps of % for created classes
-    $loops: round(100 / $steps);
-    $increment: 360 / $loops;
-    $half: round($loops / 2);
+    $loops: calc(100 / $steps);
+    $increment: calc(360 / $loops);
+    $half: calc($loops / 2);
 
     @for $i from 0 through $loops {
         [progress="#{$i * $steps}"] {
             @if ($i < $half) {
                 $nextdeg: 90deg + ($increment * $i);
-                background-image: linear-gradient(
-                        90deg,
+                background-image: linear-gradient(90deg,
                         $circleBackColor 50%,
                         transparent 50%,
-                        transparent
-                    ),
-                    linear-gradient(
-                        $nextdeg,
+                        transparent),
+                    linear-gradient($nextdeg,
                         $circleBarColor 50%,
                         $circleBackColor 50%,
-                        $circleBackColor
-                    );
-            } @else {
+                        $circleBackColor );
+            }
+
+            @else {
                 $nextdeg: -90deg + ($increment * ($i - $half));
-                background-image: linear-gradient(
-                        $nextdeg,
+                background-image: linear-gradient($nextdeg,
                         $circleBarColor 50%,
                         transparent 50%,
-                        transparent
-                    ),
-                    linear-gradient(
-                        270deg,
+                        transparent),
+                    linear-gradient(270deg,
                         $circleBarColor 50%,
                         $circleBackColor 50%,
-                        $circleBackColor
-                    );
+                        $circleBackColor );
             }
         }
     }

@@ -1,11 +1,11 @@
-const path = require('path'),
-
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
-    { VueLoaderPlugin } = require('vue-loader'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin"),
-    CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const sass = require('sass');
 
 module.exports = {
     mode: 'development',
@@ -59,7 +59,11 @@ module.exports = {
                 {
                     loader: 'sass-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
+                        implementation: sass,
+                        sassOptions: {
+                            fiber: false,
+                        },
                     }
                 }
             ]

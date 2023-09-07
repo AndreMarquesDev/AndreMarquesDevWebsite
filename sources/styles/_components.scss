@@ -11,7 +11,8 @@
 
 }
 
-.svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-14 {
+.svg-inline--fa,
+.svg-inline--fa {
     width: 30px;
     height: 30px;
 }
@@ -34,7 +35,9 @@
         @include transition (width, .3s, ease-out);
     }
 
-    &:hover:before, &:focus:before, &:active:before {
+    &:hover:before,
+    &:focus:before,
+    &:active:before {
         width: 100%;
         left: 0;
         right: auto;
@@ -59,7 +62,9 @@
         @include transition (width, .3s, ease-out);
     }
 
-    &:hover:before, &:focus:before, &:active:before {
+    &:hover:before,
+    &:focus:before,
+    &:active:before {
         width: 0;
         right: 0;
     }
